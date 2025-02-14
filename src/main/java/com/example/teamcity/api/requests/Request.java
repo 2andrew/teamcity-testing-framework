@@ -6,7 +6,7 @@ import io.restassured.specification.RequestSpecification;
 public class Request {
     /**
      * Request - это класс, описывающий меняющиеся параметры запроса, такие как:
-     *  спецификация, эндпоинт (relative URL, model)
+     * спецификация, эндпоинт (relative URL, model)
      */
     protected final RequestSpecification spec;
     protected final Endpoint endpoint;

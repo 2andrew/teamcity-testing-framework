@@ -2,7 +2,6 @@ package com.example.teamcity.api.spec;
 
 import com.example.teamcity.api.config.Config;
 import com.example.teamcity.api.models.User;
-import io.restassured.authentication.BasicAuthScheme;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.filter.log.RequestLoggingFilter;
 import io.restassured.filter.log.ResponseLoggingFilter;
@@ -24,7 +23,7 @@ public class Specifications {
         return reqBuilder;
     }
 
-    public static RequestSpecification superUserAuth() {
+    public static RequestSpecification superUserSpec() {
         var requestBuilder = reqBuilder();
         requestBuilder.setBaseUri("http://%s:%s@%s/httpAuth".formatted("", Config.getProperty("superUserToken"), Config.getProperty("host")));
         return requestBuilder.build();
