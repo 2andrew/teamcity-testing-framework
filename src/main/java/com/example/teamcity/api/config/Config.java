@@ -7,7 +7,7 @@ import java.util.Properties;
 public class Config {
     private static final String CONFIG_PROPERTIES = "config.properties";
     private static Config config;
-    private Properties properties;
+    private final Properties properties;
 
     private Config() {
         properties = new Properties();
@@ -21,6 +21,10 @@ public class Config {
         return config;
     }
 
+    public static String getProperty(String key) {
+        return getInstance().properties.getProperty(key);
+    }
+
     private void loadProperties(String filename) {
         try (InputStream inputStream = Config.class.getClassLoader().getResourceAsStream(filename)) {
             if (inputStream == null) {
@@ -31,9 +35,5 @@ public class Config {
             System.err.println("Error while file reading" + filename + ": " + e.getMessage());
             throw new RuntimeException(e);
         }
-    }
-
-    public static String getProperty(String key) {
-        return getInstance().properties.getProperty(key);
     }
 }
