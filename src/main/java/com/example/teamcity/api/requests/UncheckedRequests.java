@@ -10,7 +10,7 @@ public class UncheckedRequests {
     private final EnumMap<Endpoint, UncheckedBase> requests = new EnumMap<>(Endpoint.class);
 
     public UncheckedRequests(RequestSpecification spec) {
-        for (var endpoint: Endpoint.values()) {
+        for (var endpoint : Endpoint.values()) {
             requests.put(endpoint, new UncheckedBase(spec, endpoint));
         }
     }

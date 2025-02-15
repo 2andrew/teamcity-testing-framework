@@ -11,7 +11,7 @@ public class CheckedRequests {
     private final EnumMap<Endpoint, CheckedBase<?>> requests = new EnumMap<>(Endpoint.class);
 
     public CheckedRequests(RequestSpecification spec) {
-        for (var endpoint: Endpoint.values()) {
+        for (var endpoint : Endpoint.values()) {
             requests.put(endpoint, new CheckedBase<>(spec, endpoint));
         }
     }
