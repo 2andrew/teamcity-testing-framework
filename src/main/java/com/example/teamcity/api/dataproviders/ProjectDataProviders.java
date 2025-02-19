@@ -19,10 +19,10 @@ public class ProjectDataProviders {
         return new Object[][]{
                 {generate(Project.class)},
                 {generate(Project.class, RandomData.getRandomCharacter(), RandomData.getRandomCharacter())},
-                {generate(Project.class, RandomData.getString(ID_MAX_LENGTH), RandomData.getString(NAME_MAX_LENGTH_UI * 2000))}, // name is not limited
+                {generate(Project.class, RandomData.getString(ID_MAX_LENGTH), RandomData.getString(NAME_MAX_LENGTH_UI * 2000))}, // name is not limited in API
                 {generate(Project.class, RandomData.getString(), RandomData.getUnderscoreString())},
                 {generate(Project.class, RandomData.getString(), RandomData.getRandomNumber() + RandomData.getString())},
-                {generate(Project.class, RandomData.getString() + RandomData.getUnderscoreString() + RandomData.getRandomNumber(), RandomData.getString())},
+                {generate(Project.class, RandomData.getString() + RandomData.getUnderscoreString() + RandomData.getAlphaNumbericString())},
         };
     }
 
@@ -37,7 +37,7 @@ public class ProjectDataProviders {
 
         return new Object[][]{
                 {project1, HttpStatus.SC_INTERNAL_SERVER_ERROR, "Project ID must not be empty."},
-                {project6, HttpStatus.SC_BAD_REQUEST, "Project name cannot be empty."},
+                {project6, HttpStatus.SC_BAD_REQUEST, "Project name cannot be empty."}, // weird that empty ID and Name produce different status codes
                 {project2, HttpStatus.SC_INTERNAL_SERVER_ERROR, ("Project ID \"%s\" is invalid: it is %d characters long while the maximum length is %d. " + ID_COMMON_RULE).formatted(project2.getId(), ID_MAX_LENGTH + 1, ID_MAX_LENGTH, ID_MAX_LENGTH)},
                 {project3, HttpStatus.SC_INTERNAL_SERVER_ERROR, (ID_STARTS_RULE + "'?'. " + ID_COMMON_RULE).formatted(project3.getId(), ID_MAX_LENGTH)},
                 {project4, HttpStatus.SC_INTERNAL_SERVER_ERROR, (ID_STARTS_RULE + "'%s'. " + ID_COMMON_RULE).formatted(project4.getId(), project4.getId().substring(0, 1), ID_MAX_LENGTH)},

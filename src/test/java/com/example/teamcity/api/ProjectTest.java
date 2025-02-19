@@ -18,7 +18,6 @@ import static com.example.teamcity.api.generators.TestDataGenerator.generate;
 @Test(groups = {"Regression"})
 public class ProjectTest extends BaseApiTest {
 
-
     @Test(description = "User should be able to create project",
             dataProvider = "validProjects",
             dataProviderClass = ProjectDataProviders.class,

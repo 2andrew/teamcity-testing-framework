@@ -23,6 +23,10 @@ public final class RandomData {
                 .randomAlphabetic(Math.max(length - TEST_PREFIX_LENGTH, MAX_LENGTH));
     }
 
+    public static String getAlphaNumbericString() {
+        return  TEST_PREFIX + RandomStringUtils.randomAlphanumeric(MAX_LENGTH);
+    }
+
     public static String getUnderscoreString() {
         return UNDERSCORE_TEST_PREFIX + RandomStringUtils.randomAlphabetic(MAX_LENGTH);
     }
