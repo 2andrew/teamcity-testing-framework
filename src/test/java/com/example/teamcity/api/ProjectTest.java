@@ -26,7 +26,10 @@ public class ProjectTest extends BaseApiTest {
         superUserCheckRequests.getRequest(USERS).create(testData.getUser());
         var userCheckRequests = new CheckedRequests(Specifications.authSpec(testData.getUser()));
 
-        userCheckRequests.<Project>getRequest(PROJECTS).create(project);
+        Project createdProject = userCheckRequests.<Project>getRequest(PROJECTS).create(project);
+
+        softy.assertEquals(createdProject.getId(), createdProject.getId(), "ID is not correct");
+        softy.assertEquals(createdProject.getName(), createdProject.getName(), "Name is not correct");
     }
 
     @Test(description = "User should not be able to create two projects with the same id", groups = {"Negative", "Uniqueness", "CRUD"})
@@ -68,5 +71,13 @@ public class ProjectTest extends BaseApiTest {
                 .create(project)
                 .then().assertThat().statusCode(statusCode)
                 .body(Matchers.containsString(expectedErrorMessage));
+    }
+
+    @Test(description = "Unathorized user should not be able to create project", groups = {"Negative", "Security", "CRUD"})
+    public void unathorizedUserShouldntBeAbleCreateProjectTest() {
+        new UncheckedBase(Specifications.unauthSpec(), PROJECTS)
+                .create(generate(Project.class))
+                .then().assertThat().statusCode(HttpStatus.SC_UNAUTHORIZED)
+                .body(Matchers.containsString("Authentication required"));
     }
 }
