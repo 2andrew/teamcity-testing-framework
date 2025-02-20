@@ -28,8 +28,7 @@ public class ProjectTest extends BaseApiTest {
 
         Project createdProject = userCheckRequests.<Project>getRequest(PROJECTS).create(project);
 
-        softy.assertEquals(createdProject.getId(), createdProject.getId(), "ID is not correct");
-        softy.assertEquals(createdProject.getName(), createdProject.getName(), "Name is not correct");
+        softy.assertEquals(createdProject,project, "Invalid project created");
     }
 
     @Test(description = "User should not be able to create two projects with the same id", groups = {"Negative", "Uniqueness", "CRUD"})
