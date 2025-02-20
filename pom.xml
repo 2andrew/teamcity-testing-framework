@@ -18,6 +18,7 @@
         <lombok.version>1.18.36</lombok.version>
         <allure.version>2.29.1</allure.version>
         <jackson.version>2.18.2</jackson.version>
+        <wiremock.version>3.9.1</wiremock.version>
     </properties>
 
     <dependencies>
@@ -60,7 +61,12 @@
             <artifactId>jackson-annotations</artifactId>
             <version>${jackson.version}</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.wiremock</groupId>
+            <artifactId>wiremock</artifactId>
+            <version>${wiremock.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
 </project>

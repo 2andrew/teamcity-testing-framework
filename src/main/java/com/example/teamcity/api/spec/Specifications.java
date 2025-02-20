@@ -39,4 +39,10 @@ public class Specifications {
         requestBuilder.setBaseUri("http://%s:%s@%s".formatted(user.getUsername(), user.getPassword(), Config.getProperty("host")));
         return requestBuilder.build();
     }
+
+    public static RequestSpecification mockSpec() {
+        return reqBuilder()
+                .setBaseUri("http://localhost:8081")
+                .build();
+    }
 }
