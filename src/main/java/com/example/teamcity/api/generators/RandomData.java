@@ -23,7 +23,7 @@ public final class RandomData {
                 .randomAlphabetic(Math.max(length - TEST_PREFIX_LENGTH, MAX_LENGTH));
     }
 
-    public static String getAlphaNumbericString() {
+    public static String getAlphaNumericString() {
         return  TEST_PREFIX + RandomStringUtils.randomAlphanumeric(MAX_LENGTH);
     }
 

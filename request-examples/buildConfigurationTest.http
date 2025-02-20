@@ -13,6 +13,11 @@ GET http://{{user}}:{{password}}@{{host}}:{{port}}/app/rest/projects
 Content-Type: application/json
 Accept: application/json
 
+### Search projects by name
+GET http://{{user}}:{{password}}@{{host}}:{{port}}/app/rest/projects/name:Project123
+Content-Type: application/json
+Accept: application/json
+
 ### Step 1: create project
 # @no-cookie-jar
 POST http://{{user}}:{{password}}@{{host}}:{{port}}/app/rest/projects

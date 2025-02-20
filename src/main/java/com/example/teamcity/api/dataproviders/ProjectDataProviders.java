@@ -22,7 +22,7 @@ public class ProjectDataProviders {
                 {generate(Project.class, RandomData.getString(ID_MAX_LENGTH), RandomData.getString(NAME_MAX_LENGTH_UI * 2000))}, // name is not limited in API?
                 {generate(Project.class, RandomData.getString(), RandomData.getUnderscoreString())},
                 {generate(Project.class, RandomData.getString(), RandomData.getRandomNumber() + RandomData.getString())},
-                {generate(Project.class, RandomData.getString() + RandomData.getUnderscoreString() + RandomData.getAlphaNumbericString())},
+                {generate(Project.class, RandomData.getString() + RandomData.getUnderscoreString() + RandomData.getAlphaNumericString())},
         };
     }
 
