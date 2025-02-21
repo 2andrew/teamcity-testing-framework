@@ -1,8 +1,10 @@
 package com.example.teamcity.api;
 
 import com.example.teamcity.api.dataproviders.ProjectDataProviders;
+import com.example.teamcity.api.enums.AvailableScopes;
 import com.example.teamcity.api.generators.RandomData;
 import com.example.teamcity.api.models.Project;
+import com.example.teamcity.api.models.Role;
 import com.example.teamcity.api.requests.CheckedRequests;
 import com.example.teamcity.api.requests.unchecked.UncheckedBase;
 import com.example.teamcity.api.spec.Specifications;
@@ -10,11 +12,12 @@ import org.apache.http.HttpStatus;
 import org.hamcrest.Matchers;
 import org.testng.annotations.Test;
 
+import java.util.Collections;
+
 import static com.example.teamcity.api.enums.Endpoint.PROJECTS;
 import static com.example.teamcity.api.enums.Endpoint.USERS;
 import static com.example.teamcity.api.errors.CommonErrorMessages.AUTH_REQUIRED;
-import static com.example.teamcity.api.errors.ProjectErrorMessages.ID_IN_USE;
-import static com.example.teamcity.api.errors.ProjectErrorMessages.NAME_IN_USE;
+import static com.example.teamcity.api.errors.ProjectErrorMessages.*;
 import static com.example.teamcity.api.generators.TestDataGenerator.generate;
 
 
@@ -73,6 +76,23 @@ public class ProjectTest extends BaseApiTest {
                 .create(project)
                 .then().assertThat().statusCode(statusCode)
                 .body(Matchers.containsString(expectedErrorMessage));
+    }
+
+    @Test(description = "User should not be able to create project with invalid roles",
+            dataProvider = "invalidRoles",
+            dataProviderClass = ProjectDataProviders.class,
+            groups = {"Negative", "Roles", "CRUD"})
+    public void userCreatesProjectWithInvalidRolesTest(String roleName) {
+        var user = testData.getUser();
+        user.getRoles().setRole(Collections.singletonList(
+                new Role(roleName, AvailableScopes.GLOBAL.getScope())));
+
+        superUserCheckRequests.getRequest(USERS).create(user);
+
+        new UncheckedBase(Specifications.authSpec(user), PROJECTS)
+                .create(testData.getProject())
+                .then().assertThat().statusCode(HttpStatus.SC_FORBIDDEN)
+                .body(Matchers.containsString(NO_PERMISSION_CREATE.getError().formatted(testData.getProject().getId())));
     }
 
     @Test(description = "Unathorized user should not be able to create project", groups = {"Negative", "Security", "CRUD"})

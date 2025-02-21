@@ -12,7 +12,11 @@ public final class RandomData {
     private static final int TEST_PREFIX_LENGTH = TEST_PREFIX.length();
 
     private static final String UNDERSCORE_TEST_PREFIX = "_test";
+
     private static final List<String> EMOJIS = List.of("😊", "😂", "😍", "👍", "🙌", "🎉");
+    private static final String SPECIAL_SYMBOLS = "!@#$%^&*()_+-=[]{}|;:'\",.<>?/";
+    private static final String CYRILLIC_SYMBOLS = "АБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдежзийклмнопрстуфхцчшщъыьэюя";
+
 
     public static String getString() {
         return TEST_PREFIX + RandomStringUtils.randomAlphabetic(MAX_LENGTH);
@@ -24,7 +28,7 @@ public final class RandomData {
     }
 
     public static String getAlphaNumericString() {
-        return  TEST_PREFIX + RandomStringUtils.randomAlphanumeric(MAX_LENGTH);
+        return TEST_PREFIX + RandomStringUtils.randomAlphanumeric(MAX_LENGTH);
     }
 
     public static String getUnderscoreString() {
@@ -42,5 +46,13 @@ public final class RandomData {
     public static String getEmoji() {
         Random random = new Random();
         return EMOJIS.get(random.nextInt(EMOJIS.size()));
+    }
+
+    public static String getSpecialCharacterString() {
+        return RandomStringUtils.random(MAX_LENGTH, SPECIAL_SYMBOLS);
+    }
+
+    public static String getCyrillicString() {
+        return RandomStringUtils.random(MAX_LENGTH, CYRILLIC_SYMBOLS);
     }
 }

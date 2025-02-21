@@ -8,13 +8,13 @@ import org.testng.annotations.DataProvider;
 import java.util.List;
 import java.util.stream.IntStream;
 
+import static com.example.teamcity.api.enums.AvailableRoles.*;
 import static com.example.teamcity.api.errors.ProjectErrorMessages.*;
 import static com.example.teamcity.api.generators.TestDataGenerator.generate;
 
 public class ProjectDataProviders {
     private static final int ID_MAX_LENGTH = 225;
     private static final int NAME_MAX_LENGTH = 80;
-
 
     @DataProvider(name = "validProjects")
     public static Object[][] validProjects() {
@@ -25,6 +25,7 @@ public class ProjectDataProviders {
                 {generate(Project.class, RandomData.getString(), RandomData.getUnderscoreString())},
                 {generate(Project.class, RandomData.getString(), RandomData.getRandomNumber() + RandomData.getString())},
                 {generate(Project.class, RandomData.getString() + RandomData.getUnderscoreString() + RandomData.getAlphaNumericString())},
+                {generate(Project.class, RandomData.getString(), RandomData.getCyrillicString())},
         };
     }
 
@@ -38,12 +39,16 @@ public class ProjectDataProviders {
                 generate(Project.class, RandomData.getString(ID_MAX_LENGTH + 1), RandomData.getString()),
                 generate(Project.class, RandomData.getEmoji() + RandomData.getString(), RandomData.getString()),
                 generate(Project.class, RandomData.getRandomNumber() + RandomData.getString(), RandomData.getString()),
-                generate(Project.class, RandomData.getUnderscoreString(), RandomData.getString()));
+                generate(Project.class, RandomData.getUnderscoreString(), RandomData.getString()),
+                generate(Project.class, RandomData.getCyrillicString(), RandomData.getString()),
+                generate(Project.class, RandomData.getSpecialCharacterString(), RandomData.getString()));
 
         List<Integer> statuses = List.of(
                 HttpStatus.SC_INTERNAL_SERVER_ERROR,
                 HttpStatus.SC_INTERNAL_SERVER_ERROR,
                 HttpStatus.SC_BAD_REQUEST,
+                HttpStatus.SC_INTERNAL_SERVER_ERROR,
+                HttpStatus.SC_INTERNAL_SERVER_ERROR,
                 HttpStatus.SC_INTERNAL_SERVER_ERROR,
                 HttpStatus.SC_INTERNAL_SERVER_ERROR,
                 HttpStatus.SC_INTERNAL_SERVER_ERROR,
@@ -57,13 +62,25 @@ public class ProjectDataProviders {
                 EMPTY_NAME.getError(),
                 EMPTY_GIVEN_NAME.getError(),
                 INVALID_CHARACTER_ID.getError().formatted(projects.get(4).getId(), ID_MAX_LENGTH + 1, ID_MAX_LENGTH, ID_MAX_LENGTH),
-                INVALID_NON_LETTER_ID.getError().formatted(projects.get(5).getId(), "?", ID_MAX_LENGTH),
-                INVALID_NON_LETTER_ID.getError().formatted(projects.get(6).getId(), projects.get(6).getId().substring(0, 1), ID_MAX_LENGTH),
-                INVALID_NON_LETTER_ID.getError().formatted(projects.get(7).getId(), "_", ID_MAX_LENGTH)
+                INVALID_NON_LETTER_STARTS_ID.getError().formatted(projects.get(5).getId(), "?", ID_MAX_LENGTH),
+                INVALID_NON_LETTER_STARTS_ID.getError().formatted(projects.get(6).getId(), projects.get(6).getId().substring(0, 1), ID_MAX_LENGTH),
+                INVALID_NON_LETTER_STARTS_ID.getError().formatted(projects.get(7).getId(), "_", ID_MAX_LENGTH),
+                INVALID_NON_LETTER_CONTAINS_ID.getError().formatted(projects.get(8).getId(), projects.get(8).getId().substring(0, 1), ID_MAX_LENGTH),
+                INVALID_NON_LETTER_STARTS_ID.getError().formatted(projects.get(9).getId(), projects.get(9).getId().substring(0, 1), ID_MAX_LENGTH)
         );
 
         return IntStream.range(0, projects.size())
                 .mapToObj(i -> new Object[]{projects.get(i), statuses.get(i), errors.get(i)})
                 .toArray(Object[][]::new);
     }
+
+    @DataProvider(name = "invalidRoles")
+    public static Object[][] roles() {
+        return new Object[][]{
+                {PROJECT_VIEWER.getRoleName()},
+                {PROJECT_DEVELOPER.getRoleName()},
+                {AGENT_MANAGER.getRoleName()},
+        };
+    }
+
 }
