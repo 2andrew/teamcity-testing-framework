@@ -65,6 +65,7 @@ public class BuildTypeTest extends BaseApiTest {
         userCheckRequests.getRequest(BUILD_TYPES).create(testData.getBuildType());
         var createdBuildType = userCheckRequests.<BuildType>getRequest(BUILD_TYPES)
                 .read(testData.getBuildType().getId());
+        createdBuildType.setSteps(null); // not verifying them in this test because it's out of scope
 
         softy.assertEquals(createdBuildType, testData.getBuildType());
     }

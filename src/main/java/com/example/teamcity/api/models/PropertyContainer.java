@@ -7,16 +7,14 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Builder
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Step extends BaseModel {
-    private String id;
-    private String name;
-    @Builder.Default
-    private String type = "simpleRunner";
-    @JsonProperty("properties")
-    private PropertyContainer propertyContainer;
+public class PropertyContainer {
+    @JsonProperty("property")
+    private List<Property> propertyList;
 }
