@@ -12,6 +12,9 @@ import org.testng.annotations.Test;
 
 import static com.example.teamcity.api.enums.Endpoint.PROJECTS;
 import static com.example.teamcity.api.enums.Endpoint.USERS;
+import static com.example.teamcity.api.errors.CommonErrorMessages.AUTH_REQUIRED;
+import static com.example.teamcity.api.errors.ProjectErrorMessages.ID_IN_USE;
+import static com.example.teamcity.api.errors.ProjectErrorMessages.NAME_IN_USE;
 import static com.example.teamcity.api.generators.TestDataGenerator.generate;
 
 
@@ -28,7 +31,7 @@ public class ProjectTest extends BaseApiTest {
 
         Project createdProject = userCheckRequests.<Project>getRequest(PROJECTS).create(project);
 
-        softy.assertEquals(createdProject,project, "Invalid project created");
+        softy.assertEquals(createdProject, project, "Invalid project created");
     }
 
     @Test(description = "User should not be able to create two projects with the same id", groups = {"Negative", "Uniqueness", "CRUD"})
@@ -42,7 +45,7 @@ public class ProjectTest extends BaseApiTest {
         new UncheckedBase(Specifications.authSpec(testData.getUser()), PROJECTS)
                 .create(projectWithSameId)
                 .then().assertThat().statusCode(HttpStatus.SC_BAD_REQUEST)
-                .body(Matchers.containsString("Project ID \"%s\" is already used by another project".formatted(testData.getProject().getId())));
+                .body(Matchers.containsString(ID_IN_USE.getError().formatted(testData.getProject().getId())));
     }
 
     @Test(description = "User should not be able to create two projects with the same name", groups = {"Negative", "Uniqueness", "CRUD"})
@@ -56,7 +59,7 @@ public class ProjectTest extends BaseApiTest {
         new UncheckedBase(Specifications.authSpec(testData.getUser()), PROJECTS)
                 .create(projectWithSameName)
                 .then().assertThat().statusCode(HttpStatus.SC_BAD_REQUEST)
-                .body(Matchers.containsString("Project with this name already exists: %s".formatted(testData.getProject().getName())));
+                .body(Matchers.containsString(NAME_IN_USE.getError().formatted(testData.getProject().getName())));
     }
 
     @Test(description = "User should not be able to create project with invalid data",
@@ -77,6 +80,6 @@ public class ProjectTest extends BaseApiTest {
         new UncheckedBase(Specifications.unauthSpec(), PROJECTS)
                 .create(generate(Project.class))
                 .then().assertThat().statusCode(HttpStatus.SC_UNAUTHORIZED)
-                .body(Matchers.containsString("Authentication required"));
+                .body(Matchers.containsString(AUTH_REQUIRED.getError()));
     }
 }
