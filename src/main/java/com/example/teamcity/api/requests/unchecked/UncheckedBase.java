@@ -4,12 +4,12 @@ import com.example.teamcity.api.enums.Endpoint;
 import com.example.teamcity.api.models.BaseModel;
 import com.example.teamcity.api.requests.CrudInterface;
 import com.example.teamcity.api.requests.Request;
-import com.example.teamcity.api.requests.UtilityInterface;
+import com.example.teamcity.api.requests.SearchInterface;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
-public class UncheckedBase extends Request implements CrudInterface, UtilityInterface {
+public class UncheckedBase extends Request implements CrudInterface, SearchInterface {
 
     public UncheckedBase(RequestSpecification spec, Endpoint endpoint) {
         super(spec, endpoint);

@@ -18,7 +18,10 @@ public enum ProjectErrorMessages {
     ID_IN_USE("Project ID \"%s\" is already used by another project"),
     NAME_IN_USE("Project with this name already exists: %s"),
 
-    NO_PERMISSION_CREATE("You do not have \"Create subproject\" permission in project");
+    NO_PERMISSION_CREATE("You do not have \"Create subproject\" permission in project"),
+
+    INVALID_PROJECT_FOUND("Invalid project found"),
+    NO_PROJECT_FOUND("No project found by name or internal/external id '%s'");
 
     private final String error;
 }

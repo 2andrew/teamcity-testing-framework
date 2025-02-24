@@ -8,7 +8,7 @@ import com.example.teamcity.api.models.Role;
 import com.example.teamcity.api.requests.CheckedRequests;
 import com.example.teamcity.api.requests.unchecked.UncheckedBase;
 import com.example.teamcity.api.spec.Specifications;
-import org.apache.http.HttpStatus;
+import com.example.teamcity.api.spec.ValidationResponseSpecifications;
 import org.hamcrest.Matchers;
 import org.testng.annotations.Test;
 
@@ -16,7 +16,6 @@ import java.util.Collections;
 
 import static com.example.teamcity.api.enums.Endpoint.PROJECTS;
 import static com.example.teamcity.api.enums.Endpoint.USERS;
-import static com.example.teamcity.api.errors.CommonErrorMessages.AUTH_REQUIRED;
 import static com.example.teamcity.api.errors.ProjectErrorMessages.*;
 import static com.example.teamcity.api.generators.TestDataGenerator.generate;
 
@@ -47,8 +46,7 @@ public class ProjectTest extends BaseApiTest {
         userCheckRequests.<Project>getRequest(PROJECTS).create(testData.getProject());
         new UncheckedBase(Specifications.authSpec(testData.getUser()), PROJECTS)
                 .create(projectWithSameId)
-                .then().assertThat().statusCode(HttpStatus.SC_BAD_REQUEST)
-                .body(Matchers.containsString(ID_IN_USE.getError().formatted(testData.getProject().getId())));
+                .then().spec(ValidationResponseSpecifications.checkIdNameInUse(ID_IN_USE.getError().formatted(projectWithSameId.getId())));
     }
 
     @Test(description = "User should not be able to create two projects with the same name", groups = {"Negative", "Uniqueness", "CRUD"})
@@ -59,10 +57,10 @@ public class ProjectTest extends BaseApiTest {
         var projectWithSameName = generate(Project.class, RandomData.getString(), testData.getProject().getName());
 
         userCheckRequests.<Project>getRequest(PROJECTS).create(testData.getProject());
+
         new UncheckedBase(Specifications.authSpec(testData.getUser()), PROJECTS)
                 .create(projectWithSameName)
-                .then().assertThat().statusCode(HttpStatus.SC_BAD_REQUEST)
-                .body(Matchers.containsString(NAME_IN_USE.getError().formatted(testData.getProject().getName())));
+                .then().spec(ValidationResponseSpecifications.checkIdNameInUse(NAME_IN_USE.getError().formatted(projectWithSameName.getName())));
     }
 
     @Test(description = "User should not be able to create project with invalid data",
@@ -91,15 +89,13 @@ public class ProjectTest extends BaseApiTest {
 
         new UncheckedBase(Specifications.authSpec(user), PROJECTS)
                 .create(testData.getProject())
-                .then().assertThat().statusCode(HttpStatus.SC_FORBIDDEN)
-                .body(Matchers.containsString(NO_PERMISSION_CREATE.getError().formatted(testData.getProject().getId())));
+                .then().spec(ValidationResponseSpecifications.checkNoPermissions(NO_PERMISSION_CREATE.getError().formatted(testData.getProject().getId())));
     }
 
     @Test(description = "Unathorized user should not be able to create project", groups = {"Negative", "Security", "CRUD"})
     public void unathorizedUserShouldntBeAbleCreateProjectTest() {
         new UncheckedBase(Specifications.unauthSpec(), PROJECTS)
                 .create(generate(Project.class))
-                .then().assertThat().statusCode(HttpStatus.SC_UNAUTHORIZED)
-                .body(Matchers.containsString(AUTH_REQUIRED.getError()));
+                .then().spec(ValidationResponseSpecifications.checkUnAuthorized());
     }
 }

@@ -34,6 +34,8 @@ public class ProjectDataProviders {
         List<Project> projects = List.of(
                 generate(Project.class, "", RandomData.getString()),
                 generate(Project.class, "              ", RandomData.getString()),
+                generate(Project.class, "", ""),
+                generate(Project.class, RandomData.getUnderscoreString(), ""),
                 generate(Project.class, RandomData.getString(), ""),
                 generate(Project.class, RandomData.getString(), "              "),
                 generate(Project.class, RandomData.getString(ID_MAX_LENGTH + 1), RandomData.getString()),
@@ -46,6 +48,8 @@ public class ProjectDataProviders {
         List<Integer> statuses = List.of(
                 HttpStatus.SC_INTERNAL_SERVER_ERROR,
                 HttpStatus.SC_INTERNAL_SERVER_ERROR,
+                HttpStatus.SC_BAD_REQUEST,
+                HttpStatus.SC_BAD_REQUEST,
                 HttpStatus.SC_BAD_REQUEST,
                 HttpStatus.SC_INTERNAL_SERVER_ERROR,
                 HttpStatus.SC_INTERNAL_SERVER_ERROR,
@@ -60,13 +64,15 @@ public class ProjectDataProviders {
                 EMPTY_ID.getError(),
                 EMPTY_ID.getError(),
                 EMPTY_NAME.getError(),
+                EMPTY_NAME.getError(),
+                EMPTY_NAME.getError(),
                 EMPTY_GIVEN_NAME.getError(),
-                INVALID_CHARACTER_ID.getError().formatted(projects.get(4).getId(), ID_MAX_LENGTH + 1, ID_MAX_LENGTH, ID_MAX_LENGTH),
-                INVALID_NON_LETTER_STARTS_ID.getError().formatted(projects.get(5).getId(), "?", ID_MAX_LENGTH),
-                INVALID_NON_LETTER_STARTS_ID.getError().formatted(projects.get(6).getId(), projects.get(6).getId().substring(0, 1), ID_MAX_LENGTH),
-                INVALID_NON_LETTER_STARTS_ID.getError().formatted(projects.get(7).getId(), "_", ID_MAX_LENGTH),
-                INVALID_NON_LETTER_CONTAINS_ID.getError().formatted(projects.get(8).getId(), projects.get(8).getId().substring(0, 1), ID_MAX_LENGTH),
-                INVALID_NON_LETTER_STARTS_ID.getError().formatted(projects.get(9).getId(), projects.get(9).getId().substring(0, 1), ID_MAX_LENGTH)
+                INVALID_CHARACTER_ID.getError().formatted(projects.get(6).getId(), ID_MAX_LENGTH + 1, ID_MAX_LENGTH, ID_MAX_LENGTH),
+                INVALID_NON_LETTER_STARTS_ID.getError().formatted(projects.get(7).getId(), "?", ID_MAX_LENGTH),
+                INVALID_NON_LETTER_STARTS_ID.getError().formatted(projects.get(8).getId(), projects.get(8).getId().substring(0, 1), ID_MAX_LENGTH),
+                INVALID_NON_LETTER_STARTS_ID.getError().formatted(projects.get(9).getId(), "_", ID_MAX_LENGTH),
+                INVALID_NON_LETTER_CONTAINS_ID.getError().formatted(projects.get(10).getId(), projects.get(10).getId().substring(0, 1), ID_MAX_LENGTH),
+                INVALID_NON_LETTER_STARTS_ID.getError().formatted(projects.get(11).getId(), projects.get(11).getId().substring(0, 1), ID_MAX_LENGTH)
         );
 
         return IntStream.range(0, projects.size())

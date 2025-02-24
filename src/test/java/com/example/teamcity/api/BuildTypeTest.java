@@ -9,13 +9,14 @@ import com.example.teamcity.api.requests.CheckedRequests;
 import com.example.teamcity.api.requests.UncheckedRequests;
 import com.example.teamcity.api.requests.unchecked.UncheckedBase;
 import com.example.teamcity.api.spec.Specifications;
-import org.apache.http.HttpStatus;
-import org.hamcrest.Matchers;
+import com.example.teamcity.api.spec.ValidationResponseSpecifications;
 import org.testng.annotations.Test;
 
 import java.util.Collections;
 
 import static com.example.teamcity.api.enums.Endpoint.*;
+import static com.example.teamcity.api.errors.BuildErrorMessages.BUILD_CONFIG_IN_USE;
+import static com.example.teamcity.api.errors.BuildErrorMessages.NO_PERMISSIONS;
 import static com.example.teamcity.api.generators.TestDataGenerator.generate;
 
 
@@ -46,10 +47,10 @@ public class BuildTypeTest extends BaseApiTest {
         userCheckRequests.<Project>getRequest(PROJECTS).create(testData.getProject());
 
         userCheckRequests.getRequest(BUILD_TYPES).create(testData.getBuildType());
+
         new UncheckedBase(Specifications.authSpec(testData.getUser()), BUILD_TYPES)
                 .create(buildTypeWithSameId)
-                .then().assertThat().statusCode(HttpStatus.SC_BAD_REQUEST)
-                .body(Matchers.containsString("The build configuration / template ID \"%s\" is already used by another configuration or template".formatted(testData.getBuildType().getId())));
+                .then().spec(ValidationResponseSpecifications.checkIdNameInUse(BUILD_CONFIG_IN_USE.getError().formatted(testData.getBuildType().getId())));
     }
 
     @Test(description = "Project admin should be able to create build type for their project", groups = {"Positive", "Roles"})
@@ -90,11 +91,9 @@ public class BuildTypeTest extends BaseApiTest {
         var buildTypeForNewProject = generate(BuildType.class);
         buildTypeForNewProject.setProject(newProject);
 
-        var userCheckRequests = new UncheckedRequests(Specifications.authSpec(projectAdmin));
-        userCheckRequests
+        new UncheckedRequests(Specifications.authSpec(projectAdmin))
                 .getRequest(BUILD_TYPES)
                 .create(buildTypeForNewProject)
-                .then().assertThat().statusCode(HttpStatus.SC_FORBIDDEN)
-                .body(Matchers.containsString("You do not have enough permissions to edit project with id: %s".formatted(newProject.getId())));
+                .then().spec(ValidationResponseSpecifications.checkNoPermissions(NO_PERMISSIONS.getError().formatted(newProject.getId())));
     }
 }
