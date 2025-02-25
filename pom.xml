@@ -20,6 +20,7 @@
         <jackson.version>2.18.2</jackson.version>
         <wiremock.version>3.9.1</wiremock.version>
         <awaitility.version>4.2.0</awaitility.version>
+        <selenide.version>7.7.3</selenide.version>
     </properties>
 
     <dependencies>
@@ -78,6 +79,13 @@
             <version>${awaitility.version}</version>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>com.codeborne</groupId>
+            <artifactId>selenide</artifactId>
+            <version>${selenide.version}</version>
+        </dependency>
+
     </dependencies>
 
 </project>

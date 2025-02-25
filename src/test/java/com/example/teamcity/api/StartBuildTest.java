@@ -44,7 +44,7 @@ public class StartBuildTest extends BaseApiTest {
                 .atMost(1, TimeUnit.MINUTES)
                 .pollInterval(1, TimeUnit.SECONDS)
                 .until(() -> {
-                    Build build = (Build) req.getRequest(BUILD_QUEUE).read(buildId);
+                    Build build = (Build) req.getRequest(BUILD_QUEUE).read("id:" + buildId);
                     return build.getState().equals("finished");
                 });
     }
@@ -92,7 +92,7 @@ public class StartBuildTest extends BaseApiTest {
     public void userStartsBuildWithHelloWorldTest() {
 
         waitUntilBuildFinished(userCheckRequests, build.getId());
-        buildResult = (Build) userCheckRequests.getRequest(BUILD_QUEUE).read(build.getId());
+        buildResult = (Build) userCheckRequests.getRequest(BUILD_QUEUE).read("id:" + build.getId());
     }
 
 
@@ -101,7 +101,7 @@ public class StartBuildTest extends BaseApiTest {
     public void userStartsBuildWithHelloWorldWireMockTest() {
 
         var checkedBuildQueueRequest = new CheckedBase<Build>(Specifications.mockSpec(), BUILD_QUEUE);
-        buildResult = checkedBuildQueueRequest.read(build.getId());
+        buildResult = checkedBuildQueueRequest.read("id:" + build.getId());
     }
 
 
