@@ -2,6 +2,7 @@ package com.example.teamcity.ui.pages.admin;
 
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
+import lombok.Getter;
 
 import static com.codeborne.selenide.Selenide.$;
 
@@ -9,6 +10,8 @@ public class CreateProjectPage extends CreateBasePage {
     private static final String PROJECT_SHOW_MODE = "createProjectMenu";
 
     private SelenideElement projectNameInput = $("#projectName");
+    @Getter
+    private SelenideElement projectNameInputError= $("#error_projectName");
 
     public static CreateProjectPage open(String projectId) {
         return Selenide.open(CREATE_URL.formatted(projectId, PROJECT_SHOW_MODE), CreateProjectPage.class);
