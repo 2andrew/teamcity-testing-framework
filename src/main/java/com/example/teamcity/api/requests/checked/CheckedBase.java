@@ -10,6 +10,8 @@ import com.example.teamcity.api.requests.unchecked.UncheckedBase;
 import io.restassured.specification.RequestSpecification;
 import org.apache.http.HttpStatus;
 
+import java.util.List;
+
 @SuppressWarnings("unchecked")
 public final class CheckedBase<T extends BaseModel> extends Request implements CrudInterface, SearchInterface {
     private final UncheckedBase uncheckedBase;
@@ -17,6 +19,17 @@ public final class CheckedBase<T extends BaseModel> extends Request implements C
     public CheckedBase(RequestSpecification spec, Endpoint endpoint) {
         super(spec, endpoint);
         this.uncheckedBase = new UncheckedBase(spec, endpoint);
+    }
+
+    @Override
+    public List<T> findAll(String attribute){
+        return (List<T>) uncheckedBase
+                .findAll(null)
+                .then()
+                .statusCode(HttpStatus.SC_OK)
+                .extract()
+                .jsonPath()
+                .getList(attribute, endpoint.getModelClass());
     }
 
     @Override

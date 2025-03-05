@@ -25,6 +25,14 @@ public class UncheckedBase extends Request implements CrudInterface, SearchInter
     }
 
     @Override
+    public Response findAll(String attribute) {
+        return RestAssured
+                .given()
+                .spec(spec)
+                .get(endpoint.getUrl());
+    }
+
+    @Override
     public Response read(String locator) {
         return RestAssured
                 .given()

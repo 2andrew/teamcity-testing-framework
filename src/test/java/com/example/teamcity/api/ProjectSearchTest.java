@@ -14,7 +14,8 @@ import org.testng.annotations.Test;
 
 import java.util.Collections;
 
-import static com.example.teamcity.api.enums.Endpoint.*;
+import static com.example.teamcity.api.enums.Endpoint.PROJECTS;
+import static com.example.teamcity.api.enums.Endpoint.USERS;
 import static com.example.teamcity.api.errors.ProjectErrorMessages.INVALID_PROJECT_FOUND;
 import static com.example.teamcity.api.generators.TestDataGenerator.generate;
 

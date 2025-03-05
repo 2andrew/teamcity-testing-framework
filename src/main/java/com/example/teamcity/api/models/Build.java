@@ -16,4 +16,5 @@ public class Build extends BaseModel {
     private BuildType buildType;
     private String state;
     private String status;
+    private String buildTypeId;
 }

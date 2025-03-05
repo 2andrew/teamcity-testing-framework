@@ -1,25 +1,20 @@
 package com.example.teamcity.api;
 
-import com.example.teamcity.api.generators.StepGenerator;
+import com.example.teamcity.api.generators.SampleBuildGenerator;
 import com.example.teamcity.api.models.Build;
-import com.example.teamcity.api.models.BuildType;
-import com.example.teamcity.api.models.Project;
-import com.example.teamcity.api.models.Steps;
 import com.example.teamcity.api.requests.CheckedRequests;
 import com.example.teamcity.api.requests.checked.CheckedBase;
 import com.example.teamcity.api.spec.Specifications;
 import com.example.teamcity.common.WireMock;
 import io.qameta.allure.Feature;
 import org.apache.http.HttpStatus;
-import org.awaitility.Awaitility;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import java.util.Collections;
-import java.util.concurrent.TimeUnit;
-
-import static com.example.teamcity.api.enums.Endpoint.*;
+import static com.example.teamcity.api.custom.AsyncConditions.waitUntilBuildFinished;
+import static com.example.teamcity.api.enums.Endpoint.BUILD_QUEUE;
+import static com.example.teamcity.api.enums.Endpoint.USERS;
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
 
 @Feature("Start build")
@@ -39,42 +34,12 @@ public class StartBuildTest extends BaseApiTest {
         WireMock.setupServer(get(urlPathMatching(BUILD_QUEUE.getUrl() + "/id%3A\\d+")), HttpStatus.SC_OK, fakeBuild);
     }
 
-    private static void waitUntilBuildFinished(CheckedRequests req, String buildId) {
-        Awaitility.await()
-                .atMost(1, TimeUnit.MINUTES)
-                .pollInterval(1, TimeUnit.SECONDS)
-                .until(() -> {
-                    Build build = (Build) req.getRequest(BUILD_QUEUE).read("id:" + buildId);
-                    return build.getState().equals("finished");
-                });
-    }
-
     @BeforeMethod
     public void setupBuildData() {
         superUserCheckRequests.getRequest(USERS).create(testData.getUser());
         userCheckRequests = new CheckedRequests(Specifications.authSpec(testData.getUser()));
-        createSampleBuild();
-    }
-
-    private void createSampleBuild() {
-        userCheckRequests.<Project>getRequest(PROJECTS).create(testData.getProject());
-
-        var buildType = testData.getBuildType();
-
-        Steps steps = Steps.builder()
-                .step(Collections.singletonList(StepGenerator.generateSampleScript()))
-                .build();
-        buildType.setSteps(steps);
-
-        BuildType buildTypeResp = (BuildType) userCheckRequests.getRequest(BUILD_TYPES).create(testData.getBuildType());
-        var buildTypeTempl = BuildType.builder()
-                .id(buildTypeResp.getId())
-                .build();
-
-        var buildToRun = Build.builder()
-                .buildType(buildTypeTempl)
-                .build();
-        build = (Build) userCheckRequests.getRequest(BUILD_QUEUE).create(buildToRun);
+        SampleBuildGenerator sampleBuildGenerator = new SampleBuildGenerator(userCheckRequests);
+        build = sampleBuildGenerator.createSampleBuild(testData, true);
     }
 
     @Test(description = "User should be able to start build (with WireMock)",
