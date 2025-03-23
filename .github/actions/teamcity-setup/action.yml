@@ -9,7 +9,7 @@ runs:
         java-version: '21'
         distribution: 'zulu'
 
-    # По умолчанию в ubuntu отсуствует команда ifconfig
+    # По умолчанию в ubuntu отсутствует команда ifconfig
     - name: Install ifconfig
       shell: bash
       run: sudo apt-get update && sudo apt-get install -y net-tools
@@ -61,10 +61,27 @@ runs:
         -p 8111:8111 \
         jetbrains/teamcity-server:2024.12.3
 
+    - name: Run TeamCity Agent
+      shell: bash
+      run: |
+        docker run -u 0 -d --name teamcity-agent \
+          -e SERVER_URL=http://$HOST:8111 \
+          -e AGENT_NAME=teamcityDefaultAgent \
+          -v $(pwd)/tmp/teamcity_agent/conf:/data/teamcity_agent/conf \
+          jetbrains/teamcity-agent:latest
+
+    - name: Wait for TeamCity Agent
+      run: sleep 15
+
     - name: Setup TeamCity server
       shell: bash
       # Настройка сервера при первом запуске (принятие лицензии, выбор базы данных и тд), реализованная в виде теста
       run: ./mvnw clean test -Dtest=SetupServerTest#setupTeamCityServerTest
+
+    - name: Setup TeamCity agent
+      shell: bash
+      # Настройка сервера при первом запуске (принятие лицензии, выбор базы данных и тд), реализованная в виде теста
+      run: ./mvnw clean test -Dtest=SetupTeamcityAgentTest#setupTeamCityAgentTest
 
     - name: Setup superUserToken environment variable
       shell: bash
