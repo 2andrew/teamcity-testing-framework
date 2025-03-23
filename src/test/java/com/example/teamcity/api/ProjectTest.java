@@ -92,7 +92,7 @@ public class ProjectTest extends BaseApiTest {
                 .then().spec(ValidationResponseSpecifications.checkNoPermissions(NO_PERMISSION_CREATE.getError().formatted(testData.getProject().getId())));
     }
 
-    @Test(description = "Unathorized user should not be able to create project", groups = {"Negative", "Security", "CRUD"})
+    @Test(description = "Unathorized user should not be able to create project if there are no admins", groups = {"Negative", "Security", "CRUD"})
     public void unathorizedUserShouldntBeAbleCreateProjectTest() {
         new UncheckedBase(Specifications.unauthSpec(), PROJECTS)
                 .create(generate(Project.class))

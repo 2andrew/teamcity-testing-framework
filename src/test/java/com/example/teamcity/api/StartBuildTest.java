@@ -8,7 +8,8 @@ import com.example.teamcity.api.spec.Specifications;
 import com.example.teamcity.common.WireMock;
 import io.qameta.allure.Feature;
 import org.apache.http.HttpStatus;
-import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -20,10 +21,8 @@ import static com.github.tomakehurst.wiremock.client.WireMock.*;
 @Feature("Start build")
 public class StartBuildTest extends BaseApiTest {
     private CheckedRequests userCheckRequests;
-    private Build build;
-    private Build buildResult;
 
-    @BeforeMethod
+    @BeforeClass
     public void setupWireMockServer() {
         var fakeBuild = Build.builder()
                 .state("finished")
@@ -38,8 +37,16 @@ public class StartBuildTest extends BaseApiTest {
     public void setupBuildData() {
         superUserCheckRequests.getRequest(USERS).create(testData.getUser());
         userCheckRequests = new CheckedRequests(Specifications.authSpec(testData.getUser()));
+    }
+
+    public Build generateBuild() {
         SampleBuildGenerator sampleBuildGenerator = new SampleBuildGenerator(userCheckRequests);
-        build = sampleBuildGenerator.createSampleBuild(testData, true);
+        return sampleBuildGenerator.createSampleBuild(testData, true);
+    }
+
+    public void checkBuildResults(Build buildResult) {
+        softy.assertEquals(buildResult.getState(), "finished");
+        softy.assertEquals(buildResult.getStatus(), "SUCCESS");
     }
 
     @Test(description = "User should be able to start build (with WireMock)",
@@ -47,36 +54,33 @@ public class StartBuildTest extends BaseApiTest {
     public void userStartsBuildWithWireMockTest() {
         var checkedBuildQueueRequest = new CheckedBase<Build>(Specifications.mockSpec(), BUILD_QUEUE);
 
-        buildResult = checkedBuildQueueRequest.create(Build.builder()
+        Build buildResult = checkedBuildQueueRequest.create(Build.builder()
                 .buildType(testData.getBuildType())
                 .build());
+        checkBuildResults(buildResult);
     }
 
     @Test(description = "User should be able to start build (without WireMock) and run echo 'Hello, world!'",
             groups = {"Regression"})
     public void userStartsBuildWithHelloWorldTest() {
-
+        Build build = generateBuild();
         waitUntilBuildFinished(userCheckRequests, build.getId());
-        buildResult = (Build) userCheckRequests.getRequest(BUILD_QUEUE).read("id:" + build.getId());
+        Build buildResult = (Build) userCheckRequests.getRequest(BUILD_QUEUE).read("id:" + build.getId());
+        checkBuildResults(buildResult);
     }
 
 
     @Test(description = "User should be able to start build (with WireMock) and run echo 'Hello, world!'",
             groups = {"Regression"})
     public void userStartsBuildWithHelloWorldWireMockTest() {
-
+        Build build = generateBuild();
         var checkedBuildQueueRequest = new CheckedBase<Build>(Specifications.mockSpec(), BUILD_QUEUE);
-        buildResult = checkedBuildQueueRequest.read("id:" + build.getId());
+
+        Build buildResult = checkedBuildQueueRequest.read("id:" + build.getId());
+        checkBuildResults(buildResult);
     }
 
-
-    @AfterMethod
-    public void checkBuildResults() {
-        softy.assertEquals(buildResult.getState(), "finished");
-        softy.assertEquals(buildResult.getStatus(), "SUCCESS");
-    }
-
-    @AfterMethod(alwaysRun = true)
+    @AfterClass(alwaysRun = true)
     public void stopWireMockServer() {
         WireMock.stopServer();
     }

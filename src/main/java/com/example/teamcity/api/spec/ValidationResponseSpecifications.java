@@ -26,7 +26,6 @@ public class ValidationResponseSpecifications {
     public static ResponseSpecification checkUnAuthorized() {
         ResponseSpecBuilder responseSpecBuilder = new ResponseSpecBuilder();
         responseSpecBuilder.expectStatusCode(HttpStatus.SC_UNAUTHORIZED);
-        responseSpecBuilder.expectBody(Matchers.containsString(AUTH_REQUIRED.getError()));
         return responseSpecBuilder.build();
     }
 

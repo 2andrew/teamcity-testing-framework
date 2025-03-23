@@ -7,7 +7,8 @@ import lombok.Getter;
 @Getter
 public enum CommonErrorMessages {
 
-    AUTH_REQUIRED("Authentication required");
+    AUTH_REQUIRED("Authentication required"),
+    NO_ADMIN_ACCOUNT_ON_SERVER("There is no administrator account on the server");
 
     private final String error;
 }
