@@ -71,6 +71,7 @@ runs:
           jetbrains/teamcity-agent:latest
 
     - name: Wait for TeamCity Agent
+      shell: bash
       run: sleep 15
 
     - name: Setup TeamCity server
