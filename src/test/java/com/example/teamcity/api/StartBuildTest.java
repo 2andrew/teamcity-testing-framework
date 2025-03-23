@@ -10,7 +10,6 @@ import io.qameta.allure.Feature;
 import org.apache.http.HttpStatus;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import static com.example.teamcity.api.custom.AsyncConditions.waitUntilBuildFinished;
@@ -20,7 +19,6 @@ import static com.github.tomakehurst.wiremock.client.WireMock.*;
 
 @Feature("Start build")
 public class StartBuildTest extends BaseApiTest {
-    private CheckedRequests userCheckRequests;
 
     @BeforeClass
     public void setupWireMockServer() {
@@ -33,13 +31,12 @@ public class StartBuildTest extends BaseApiTest {
         WireMock.setupServer(get(urlPathMatching(BUILD_QUEUE.getUrl() + "/id%3A\\d+")), HttpStatus.SC_OK, fakeBuild);
     }
 
-    @BeforeMethod
-    public void setupBuildData() {
+    public CheckedRequests setupBuildData() {
         superUserCheckRequests.getRequest(USERS).create(testData.getUser());
-        userCheckRequests = new CheckedRequests(Specifications.authSpec(testData.getUser()));
+        return new CheckedRequests(Specifications.authSpec(testData.getUser()));
     }
 
-    public Build generateBuild() {
+    public Build generateBuild(CheckedRequests userCheckRequests) {
         SampleBuildGenerator sampleBuildGenerator = new SampleBuildGenerator(userCheckRequests);
         return sampleBuildGenerator.createSampleBuild(testData, true);
     }
@@ -63,8 +60,11 @@ public class StartBuildTest extends BaseApiTest {
     @Test(description = "User should be able to start build (without WireMock) and run echo 'Hello, world!'",
             groups = {"Regression"})
     public void userStartsBuildWithHelloWorldTest() {
-        Build build = generateBuild();
+        CheckedRequests userCheckRequests = setupBuildData();
+        Build build = generateBuild(userCheckRequests);
+
         waitUntilBuildFinished(userCheckRequests, build.getId());
+
         Build buildResult = (Build) userCheckRequests.getRequest(BUILD_QUEUE).read("id:" + build.getId());
         checkBuildResults(buildResult);
     }
@@ -73,7 +73,9 @@ public class StartBuildTest extends BaseApiTest {
     @Test(description = "User should be able to start build (with WireMock) and run echo 'Hello, world!'",
             groups = {"Regression"})
     public void userStartsBuildWithHelloWorldWireMockTest() {
-        Build build = generateBuild();
+        CheckedRequests userCheckRequests = setupBuildData();
+        Build build = generateBuild(userCheckRequests);
+
         var checkedBuildQueueRequest = new CheckedBase<Build>(Specifications.mockSpec(), BUILD_QUEUE);
 
         Build buildResult = checkedBuildQueueRequest.read("id:" + build.getId());
