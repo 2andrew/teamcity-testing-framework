@@ -27,8 +27,8 @@ public final class WireMock {
                 if (wireMockServer == null) {
                     wireMockServer = new WireMockServer(PORT);
                     wireMockServer.start();
-                    configureFor("localhost", wireMockServer.port());
-                    configureFor("http://" + Config.getProperty("host").split(":")[0], wireMockServer.port());
+                    configureFor("localhost", PORT);
+                    configureFor("http://" + Config.getProperty("host").split(":")[0], PORT);
                 }
             }
         }
