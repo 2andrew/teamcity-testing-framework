@@ -15,7 +15,7 @@ import static com.github.tomakehurst.wiremock.common.ContentTypes.CONTENT_TYPE;
 public final class WireMock {
     private static final int PORT = 8175;
 
-    private static WireMockServer wireMockServer;
+    private static volatile WireMockServer wireMockServer;
 
     private WireMock() {
     }
@@ -23,10 +23,14 @@ public final class WireMock {
     @SneakyThrows
     public static void setupServer(MappingBuilder mappingBuilder, int status, BaseModel model) {
         if (wireMockServer == null) {
-            wireMockServer = new WireMockServer(PORT);
-            wireMockServer.start();
-            configureFor("localhost", wireMockServer.port());
-            configureFor(Config.getProperty("host").split(":")[0], wireMockServer.port());
+            synchronized (WireMock.class) {
+                if (wireMockServer == null) {
+                    wireMockServer = new WireMockServer(PORT);
+                    wireMockServer.start();
+                    configureFor("localhost", wireMockServer.port());
+                    configureFor(Config.getProperty("host").split(":")[0], wireMockServer.port());
+                }
+            }
         }
 
         var jsonModel = new ObjectMapper().writeValueAsString(model);
@@ -39,7 +43,7 @@ public final class WireMock {
     }
 
     public static void stopServer() {
-        if (wireMockServer != null) {
+        if (wireMockServer != null && wireMockServer.isRunning()) {
             wireMockServer.stop();
             wireMockServer = null;
         }
