@@ -8,5 +8,6 @@ target/
 *.iws
 *.iml
 *.ipr
+checkstyle.xml
 
 allure-results
