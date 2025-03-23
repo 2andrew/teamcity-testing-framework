@@ -24,3 +24,17 @@ jobs:
     uses: ./.github/workflows/automation.yml
     with:
       package: ui
+
+  # Wait for manual approval from authorized users
+  manual-prod-approval:
+    needs: [automation-ui, automation-api]
+    runs-on: ubuntu-latest
+    environment: 'production'
+    steps:
+      - name: Approve backend and frontend to production
+        run: echo Release approved
+
+  # If approval is successful, proceed with the production deployment
+  deploy-prod:
+    needs: manual-prod-approval
+    uses: ./.github/workflows/deploy-prod.yml

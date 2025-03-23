@@ -1,0 +1,10 @@
+name: Deploy to prod
+
+on: workflow_call
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Running backend and frontend deployment
+        run: echo Deployment started...
