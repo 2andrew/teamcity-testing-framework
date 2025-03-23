@@ -54,7 +54,7 @@ public class Specifications {
 
     public static RequestSpecification mockSpec() {
         return reqBuilder()
-                .setBaseUri("http://localhost:8081")
+                .setBaseUri("http://" + Config.getProperty("host").split(":")[0] + ":8081")
                 .build();
     }
 }
