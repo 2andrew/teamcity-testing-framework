@@ -6,6 +6,7 @@ import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import com.example.teamcity.ui.elements.ProjectElement;
 import com.example.teamcity.ui.elements.SidebarRow;
+import io.qameta.allure.Step;
 
 import java.time.Duration;
 import java.util.List;
@@ -30,6 +31,7 @@ public class ProjectsPage extends BasePage {
         header.shouldBe(Condition.visible, BASE_WAITING);
     }
 
+    @Step("Open projects page")
     public static ProjectsPage open() {
         return Selenide.open(PROJECTS_URL, ProjectsPage.class);
     }
