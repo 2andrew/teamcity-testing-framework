@@ -6,11 +6,11 @@ import okhttp3.mockwebserver.Dispatcher;
 import okhttp3.mockwebserver.MockWebServer;
 
 
-public final class WireMockInstance {
-    private static final int PORT = Integer.parseInt(Config.getProperty("wiremockPort"));
+public final class MockServerInstance {
+    private static final int PORT = Integer.parseInt(Config.getProperty("mockServerPort"));
     private static MockWebServer mockWebServer;
 
-    private WireMockInstance() {
+    private MockServerInstance() {
     }
 
     @SneakyThrows

@@ -5,7 +5,7 @@ import com.example.teamcity.api.models.Build;
 import com.example.teamcity.api.requests.CheckedRequests;
 import com.example.teamcity.api.requests.checked.CheckedBase;
 import com.example.teamcity.api.spec.Specifications;
-import com.example.teamcity.common.WireMockInstance;
+import com.example.teamcity.common.MockServerInstance;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.qameta.allure.Feature;
 import lombok.SneakyThrows;
@@ -51,8 +51,8 @@ public class StartBuildTest extends BaseApiTest {
     }
 
     @BeforeClass
-    public void setupWireMockServer() {
-        WireMockInstance.startServer(new CustomDispatcher());
+    public void setupMockServer() {
+        MockServerInstance.startServer(new CustomDispatcher());
     }
 
     public CheckedRequests setupBuildData() {
@@ -70,9 +70,9 @@ public class StartBuildTest extends BaseApiTest {
         softy.assertEquals(buildResult.getStatus(), "SUCCESS");
     }
 
-    @Test(description = "User should be able to start build (with WireMock)",
+    @Test(description = "User should be able to start build (with MockServer)",
             groups = {"Regression"})
-    public void userStartsBuildWithWireMockTest() {
+    public void userStartsBuildWithMockServerTest() {
         var checkedBuildQueueRequest = new CheckedBase<Build>(Specifications.mockSpec(), BUILD_QUEUE);
 
         Build buildResult = checkedBuildQueueRequest.create(Build.builder()
@@ -81,7 +81,7 @@ public class StartBuildTest extends BaseApiTest {
         checkBuildResults(buildResult);
     }
 
-    @Test(description = "User should be able to start build (without WireMock) and run echo 'Hello, world!'",
+    @Test(description = "User should be able to start build (without MockServer) and run echo 'Hello, world!'",
             groups = {"Regression"})
     public void userStartsBuildWithHelloWorldTest() {
         CheckedRequests userCheckRequests = setupBuildData();
@@ -94,9 +94,9 @@ public class StartBuildTest extends BaseApiTest {
     }
 
 
-    @Test(description = "User should be able to start build (with WireMock) and run echo 'Hello, world!'",
+    @Test(description = "User should be able to start build (with MockServer) and run echo 'Hello, world!'",
             groups = {"Regression"})
-    public void userStartsBuildWithHelloWorldWireMockTest() {
+    public void userStartsBuildWithHelloWorldMockServerTest() {
         CheckedRequests userCheckRequests = setupBuildData();
         Build build = generateBuild(userCheckRequests);
 
@@ -107,7 +107,7 @@ public class StartBuildTest extends BaseApiTest {
     }
 
     @AfterClass(alwaysRun = true)
-    public void stopWireMockServer() {
-        WireMockInstance.stopServer();
+    public void stopMockServerServer() {
+        MockServerInstance.stopServer();
     }
 }

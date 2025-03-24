@@ -54,7 +54,7 @@ public class Specifications {
 
     public static RequestSpecification mockSpec() {
         return reqBuilder()
-                .setBaseUri("http://localhost:" + Config.getProperty("wiremockPort"))
+                .setBaseUri("http://localhost:" + Config.getProperty("mockServerPort"))
                 .build();
     }
 }
