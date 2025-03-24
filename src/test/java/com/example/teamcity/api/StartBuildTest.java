@@ -5,7 +5,7 @@ import com.example.teamcity.api.models.Build;
 import com.example.teamcity.api.requests.CheckedRequests;
 import com.example.teamcity.api.requests.checked.CheckedBase;
 import com.example.teamcity.api.spec.Specifications;
-import com.example.teamcity.common.WireMock;
+import com.example.teamcity.common.WireMockInstance;
 import io.qameta.allure.Feature;
 import org.apache.http.HttpStatus;
 import org.testng.annotations.*;
@@ -25,8 +25,8 @@ public class StartBuildTest extends BaseApiTest {
                 .status("SUCCESS")
                 .build();
 
-        WireMock.setupServer(post(BUILD_QUEUE.getUrl()), HttpStatus.SC_OK, fakeBuild);
-        WireMock.setupServer(get(urlPathMatching(BUILD_QUEUE.getUrl() + "/id%3A\\d+")), HttpStatus.SC_OK, fakeBuild);
+        WireMockInstance.setupServer(post(BUILD_QUEUE.getUrl()), HttpStatus.SC_OK, fakeBuild);
+        WireMockInstance.setupServer(get(urlPathMatching(BUILD_QUEUE.getUrl() + "/id%3A\\d+")), HttpStatus.SC_OK, fakeBuild);
     }
 
     public CheckedRequests setupBuildData() {
@@ -82,6 +82,6 @@ public class StartBuildTest extends BaseApiTest {
 
     @AfterMethod(alwaysRun = true)
     public void stopWireMockServer() {
-        WireMock.stopServer();
+        WireMockInstance.stopServer();
     }
 }
