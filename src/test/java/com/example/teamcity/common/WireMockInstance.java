@@ -24,9 +24,9 @@ public final class WireMockInstance {
     public static void setupServer(MappingBuilder mappingBuilder, int status, BaseModel model) {
         if (wireMockServer == null) {
             wireMockServer = new WireMockServer(PORT);
-            wireMockServer.start();
             configureFor("localhost", PORT);
             configureFor("http://" + Config.getProperty("host").split(":")[0], PORT);
+            wireMockServer.start();
         }
 
         var jsonModel = new ObjectMapper().writeValueAsString(model);
