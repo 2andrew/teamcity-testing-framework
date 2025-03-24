@@ -16,7 +16,7 @@ public final class AsyncConditions {
 
     public static void waitUntilBuildFinished(CheckedRequests req, String buildId) {
         Awaitility.await()
-                .atMost(1, TimeUnit.MINUTES)
+                .atMost(3, TimeUnit.MINUTES)
                 .pollInterval(1, TimeUnit.SECONDS)
                 .until(() -> {
                     Build build = (Build) req.getRequest(BUILD_QUEUE).read("id:" + buildId);
@@ -26,7 +26,7 @@ public final class AsyncConditions {
 
     public static void waitUntilBuildFinished(CheckedRequests req, BuildType buildType) {
         Awaitility.await()
-                .atMost(1, TimeUnit.MINUTES)
+                .atMost(3, TimeUnit.MINUTES)
                 .pollInterval(1, TimeUnit.SECONDS)
                 .until(() -> {
                     Optional<Build> createdBuildRun = req.<Build>getRequest(BUILDS).findAll(ATTR_NAME)

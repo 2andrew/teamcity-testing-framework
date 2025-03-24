@@ -5,7 +5,6 @@ import com.example.teamcity.api.models.BaseModel;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.tomakehurst.wiremock.WireMockServer;
 import com.github.tomakehurst.wiremock.client.MappingBuilder;
-import io.qameta.allure.Allure;
 import lombok.SneakyThrows;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
@@ -35,8 +34,8 @@ public final class WireMockInstance {
                 retries--;
             }
 
-            Allure.addAttachment("WireMock Configuration1", "WireMock configured to use port: " + PORT);
-            Allure.addAttachment("WireMock Configuration2", "WireMock server started on port: " + wireMockServer.port() + ", running: " + wireMockServer.isRunning());
+            System.out.println("WireMock configured to use port: " + PORT);
+            System.out.println("WireMock server started on port: " + wireMockServer.port() + ", running: " + wireMockServer.isRunning());
         }
 
         var jsonModel = new ObjectMapper().writeValueAsString(model);
