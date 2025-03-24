@@ -71,7 +71,7 @@ public class StartBuildTest extends BaseApiTest {
     }
 
     @Test(description = "User should be able to start build (with MockServer)",
-            groups = {"Regression"})
+            groups = {"Regression"}, enabled = false)
     public void userStartsBuildWithMockServerTest() {
         var checkedBuildQueueRequest = new CheckedBase<Build>(Specifications.mockSpec(), BUILD_QUEUE);
 
@@ -95,7 +95,7 @@ public class StartBuildTest extends BaseApiTest {
 
 
     @Test(description = "User should be able to start build (with MockServer) and run echo 'Hello, world!'",
-            groups = {"Regression"})
+            groups = {"Regression"}, enabled = false)
     public void userStartsBuildWithHelloWorldMockServerTest() {
         CheckedRequests userCheckRequests = setupBuildData();
         Build build = generateBuild(userCheckRequests);

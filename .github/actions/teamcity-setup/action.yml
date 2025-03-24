@@ -61,17 +61,10 @@ runs:
         -p 8111:8111 \
         jetbrains/teamcity-server:2024.12.3
 
-    - name: Run MockServer
-      shell: bash
-      run: |
-        docker run -d --name mockserver \
-        -p 8082:8082 \
-        mockserver/mockserver:latest
-
     - name: Setup TeamCity server
       shell: bash
       # Настройка сервера при первом запуске (принятие лицензии, выбор базы данных и тд), реализованная в виде теста
-      run: ./mvnw clean test -Dtest=SetupServerTest#setupTeamCityServerTest -e -X
+      run: ./mvnw clean test -Dtest=SetupServerTest#setupTeamCityServerTest
 
     - name: Setup superUserToken environment variable
       shell: bash
