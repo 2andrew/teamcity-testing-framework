@@ -6,27 +6,53 @@ import com.example.teamcity.api.requests.CheckedRequests;
 import com.example.teamcity.api.requests.checked.CheckedBase;
 import com.example.teamcity.api.spec.Specifications;
 import com.example.teamcity.common.WireMockInstance;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import io.qameta.allure.Feature;
+import lombok.SneakyThrows;
+import okhttp3.mockwebserver.Dispatcher;
+import okhttp3.mockwebserver.MockResponse;
+import okhttp3.mockwebserver.RecordedRequest;
 import org.apache.http.HttpStatus;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
 
 import static com.example.teamcity.api.custom.AsyncConditions.waitUntilBuildFinished;
 import static com.example.teamcity.api.enums.Endpoint.BUILD_QUEUE;
 import static com.example.teamcity.api.enums.Endpoint.USERS;
-import static com.github.tomakehurst.wiremock.client.WireMock.*;
 
 @Feature("Start build")
 public class StartBuildTest extends BaseApiTest {
 
-    @BeforeMethod
-    public void setupWireMockServer() {
-        var fakeBuild = Build.builder()
-                .state("finished")
-                .status("SUCCESS")
-                .build();
+    static class CustomDispatcher extends Dispatcher {
+        @SneakyThrows
+        @Override
+        public MockResponse dispatch(RecordedRequest request) {
+            var fakeBuild = Build.builder()
+                    .state("finished")
+                    .status("SUCCESS")
+                    .build();
+            String jsonResponse = new ObjectMapper().writeValueAsString(fakeBuild);
 
-        WireMockInstance.setupServer(post(BUILD_QUEUE.getUrl()), HttpStatus.SC_OK, fakeBuild);
-        WireMockInstance.setupServer(get(urlPathMatching(BUILD_QUEUE.getUrl() + "/id%3A\\d+")), HttpStatus.SC_OK, fakeBuild);
+            String path = request.getPath();
+            if (path.equals(BUILD_QUEUE.getUrl())) {
+                return new MockResponse()
+                        .setResponseCode(HttpStatus.SC_OK)
+                        .addHeader("Content-Type", "application/json")
+                        .setBody(jsonResponse);
+            } else if (path.matches(BUILD_QUEUE.getUrl() + "/id%3A\\d+")) {
+                return new MockResponse()
+                        .setResponseCode(HttpStatus.SC_OK)
+                        .addHeader("Content-Type", "application/json")
+                        .setBody(jsonResponse);
+            }
+            return new MockResponse().setResponseCode(HttpStatus.SC_NOT_FOUND);
+        }
+    }
+
+    @BeforeClass
+    public void setupWireMockServer() {
+        WireMockInstance.startServer(new CustomDispatcher());
     }
 
     public CheckedRequests setupBuildData() {
@@ -80,7 +106,7 @@ public class StartBuildTest extends BaseApiTest {
         checkBuildResults(buildResult);
     }
 
-    @AfterMethod(alwaysRun = true)
+    @AfterClass(alwaysRun = true)
     public void stopWireMockServer() {
         WireMockInstance.stopServer();
     }
