@@ -54,7 +54,7 @@ public class Specifications {
 
     public static RequestSpecification mockSpec() {
         return reqBuilder()
-                .setBaseUri("http://localhost:" + Config.getProperty("mockServerPort"))
+                .setBaseUri("http://" + Config.getProperty("host").split(":")[0] + ":" + Config.getProperty("mockServerPort"))
                 .build();
     }
 }
