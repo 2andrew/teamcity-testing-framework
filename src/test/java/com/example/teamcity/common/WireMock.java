@@ -13,7 +13,7 @@ import static com.github.tomakehurst.wiremock.common.ContentTypes.APPLICATION_JS
 import static com.github.tomakehurst.wiremock.common.ContentTypes.CONTENT_TYPE;
 
 public final class WireMock {
-    private static final int PORT = 8175;
+    private static final int PORT = Integer.parseInt(Config.getProperty("wiremockPort"));
 
     private static volatile WireMockServer wireMockServer;
 
