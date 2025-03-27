@@ -22,11 +22,12 @@
         <selenide.version>7.7.3</selenide.version>
         <swagger-coverage-version>1.5.0</swagger-coverage-version>
         <mockito-version>5.7.0</mockito-version>
-        <wiremock.version>3.12.1</wiremock.version>
+        <wiremock.version>3.9.1</wiremock.version>
         <maven-compiler-plugin.version>3.14.0</maven-compiler-plugin.version>
         <maven-surefire-plugin>3.5.2</maven-surefire-plugin>
         <allure-maven>2.15.2</allure-maven>
         <aspectj.version>1.9.23</aspectj.version>
+        <slf4j-simple.version>2.0.9</slf4j-simple.version>
     </properties>
 
     <build>
@@ -71,6 +72,13 @@
     </build>
 
     <dependencies>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>${slf4j-simple.version}</version>
+            <scope>test</scope>
+        </dependency>
+
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
