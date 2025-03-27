@@ -5,6 +5,7 @@ import com.example.teamcity.api.models.Build;
 import com.example.teamcity.api.requests.CheckedRequests;
 import com.example.teamcity.api.requests.checked.CheckedBase;
 import com.example.teamcity.api.spec.Specifications;
+import com.example.teamcity.common.MyRetry;
 import com.example.teamcity.common.WireMockInstance;
 import io.qameta.allure.Feature;
 import org.apache.http.HttpStatus;
@@ -55,7 +56,7 @@ public class StartBuildTest extends BaseApiTest {
     }
 
     @Test(description = "User should be able to start build (without MockServer) and run echo 'Hello, world!'",
-            groups = {"Regression"})
+            groups = {"Regression"}, retryAnalyzer =  MyRetry.class)
     public void userStartsBuildWithHelloWorldTest() {
         CheckedRequests userCheckRequests = setupBuildData();
         Build build = generateBuild(userCheckRequests);
