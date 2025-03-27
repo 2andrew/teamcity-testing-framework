@@ -22,7 +22,7 @@
         <selenide.version>7.7.3</selenide.version>
         <swagger-coverage-version>1.5.0</swagger-coverage-version>
         <mockito-version>5.7.0</mockito-version>
-        <mockwebserver-version>4.12.0</mockwebserver-version>
+        <wiremock.version>3.9.1</wiremock.version>
         <maven-compiler-plugin.version>3.14.0</maven-compiler-plugin.version>
         <maven-surefire-plugin>3.5.2</maven-surefire-plugin>
         <allure-maven>2.15.2</allure-maven>
@@ -121,10 +121,9 @@
         </dependency>
 
         <dependency>
-            <groupId>com.squareup.okhttp3</groupId>
-            <artifactId>mockwebserver</artifactId>
-            <version>${mockwebserver-version}</version>
-            <scope>test</scope>
+            <groupId>org.wiremock</groupId>
+            <artifactId>wiremock</artifactId>
+            <version>${wiremock.version}</version>
         </dependency>
 
         <dependency>

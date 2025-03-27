@@ -5,13 +5,8 @@ import com.example.teamcity.api.models.Build;
 import com.example.teamcity.api.requests.CheckedRequests;
 import com.example.teamcity.api.requests.checked.CheckedBase;
 import com.example.teamcity.api.spec.Specifications;
-import com.example.teamcity.common.MockServerInstance;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.example.teamcity.common.WireMockInstance;
 import io.qameta.allure.Feature;
-import lombok.SneakyThrows;
-import okhttp3.mockwebserver.Dispatcher;
-import okhttp3.mockwebserver.MockResponse;
-import okhttp3.mockwebserver.RecordedRequest;
 import org.apache.http.HttpStatus;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -20,39 +15,19 @@ import org.testng.annotations.Test;
 import static com.example.teamcity.api.custom.AsyncConditions.waitUntilBuildFinished;
 import static com.example.teamcity.api.enums.Endpoint.BUILD_QUEUE;
 import static com.example.teamcity.api.enums.Endpoint.USERS;
+import static com.github.tomakehurst.wiremock.client.WireMock.*;
 
 @Feature("Start build")
 public class StartBuildTest extends BaseApiTest {
 
-    static class CustomDispatcher extends Dispatcher {
-        @SneakyThrows
-        @Override
-        public MockResponse dispatch(RecordedRequest request) {
-            var fakeBuild = Build.builder()
-                    .state("finished")
-                    .status("SUCCESS")
-                    .build();
-            String jsonResponse = new ObjectMapper().writeValueAsString(fakeBuild);
-
-            String path = request.getPath();
-            if (path.equals(BUILD_QUEUE.getUrl())) {
-                return new MockResponse()
-                        .setResponseCode(HttpStatus.SC_OK)
-                        .addHeader("Content-Type", "application/json")
-                        .setBody(jsonResponse);
-            } else if (path.matches(BUILD_QUEUE.getUrl() + "/id%3A\\d+")) {
-                return new MockResponse()
-                        .setResponseCode(HttpStatus.SC_OK)
-                        .addHeader("Content-Type", "application/json")
-                        .setBody(jsonResponse);
-            }
-            return new MockResponse().setResponseCode(HttpStatus.SC_NOT_FOUND);
-        }
-    }
-
     @BeforeClass
     public void setupMockServer() {
-        MockServerInstance.startServer(new CustomDispatcher());
+        var fakeBuild = Build.builder()
+                .state("finished")
+                .status("SUCCESS")
+                .build();
+        WireMockInstance.setupServer(post(BUILD_QUEUE.getUrl()), HttpStatus.SC_OK, fakeBuild);
+        WireMockInstance.setupServer(get(urlPathMatching(BUILD_QUEUE.getUrl() + "/id%3A\\d+")), HttpStatus.SC_OK, fakeBuild);
     }
 
     public CheckedRequests setupBuildData() {
@@ -71,7 +46,7 @@ public class StartBuildTest extends BaseApiTest {
     }
 
     @Test(description = "User should be able to start build (with MockServer)",
-            groups = {"Regression"}, enabled = false)
+            groups = {"Regression"})
     public void userStartsBuildWithMockServerTest() {
         var checkedBuildQueueRequest = new CheckedBase<Build>(Specifications.mockSpec(), BUILD_QUEUE);
 
@@ -95,7 +70,7 @@ public class StartBuildTest extends BaseApiTest {
 
 
     @Test(description = "User should be able to start build (with MockServer) and run echo 'Hello, world!'",
-            groups = {"Regression"}, enabled = false)
+            groups = {"Regression"})
     public void userStartsBuildWithHelloWorldMockServerTest() {
         CheckedRequests userCheckRequests = setupBuildData();
         Build build = generateBuild(userCheckRequests);
@@ -107,7 +82,7 @@ public class StartBuildTest extends BaseApiTest {
     }
 
     @AfterClass(alwaysRun = true)
-    public void stopMockServerServer() {
-        MockServerInstance.stopServer();
+    public void stopWireMockServer() {
+        WireMockInstance.stopServer();
     }
 }
