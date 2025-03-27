@@ -5,6 +5,7 @@ import com.example.teamcity.api.models.BaseModel;
 import com.example.teamcity.api.requests.CrudInterface;
 import com.example.teamcity.api.requests.Request;
 import com.example.teamcity.api.requests.SearchInterface;
+import io.qameta.allure.Step;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
@@ -16,6 +17,7 @@ public class UncheckedBase extends Request implements CrudInterface, SearchInter
     }
 
     @Override
+    @Step("Creating entity on {endpoint.getUrl()}")
     public Response create(BaseModel model) {
         return RestAssured
                 .given()
@@ -25,6 +27,7 @@ public class UncheckedBase extends Request implements CrudInterface, SearchInter
     }
 
     @Override
+    @Step("Performing findAll operation on {endpoint.getUrl()}")
     public Response findAll(String attribute) {
         return RestAssured
                 .given()
@@ -33,6 +36,7 @@ public class UncheckedBase extends Request implements CrudInterface, SearchInter
     }
 
     @Override
+    @Step("Performing read operation on {endpoint.getUrl()/{locator}")
     public Response read(String locator) {
         return RestAssured
                 .given()
@@ -41,6 +45,7 @@ public class UncheckedBase extends Request implements CrudInterface, SearchInter
     }
 
     @Override
+    @Step("Updating entity on {endpoint.getUrl()/{locator}}")
     public Response update(String locator, BaseModel model) {
         return RestAssured
                 .given()
@@ -50,6 +55,7 @@ public class UncheckedBase extends Request implements CrudInterface, SearchInter
     }
 
     @Override
+    @Step("Deleting entity on {endpoint.getUrl()/{locator}}")
     public Response delete(String locator) {
         return RestAssured
                 .given()
@@ -58,6 +64,7 @@ public class UncheckedBase extends Request implements CrudInterface, SearchInter
     }
 
     @Override
+    @Step("Performing search on {endpoint.getUrl()} with searchParameter = {searchParameter}")
     public Response search(String searchParameter) {
         var params = searchParameter.split(":");
         return RestAssured
