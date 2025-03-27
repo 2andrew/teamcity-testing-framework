@@ -17,6 +17,7 @@ public final class AsyncConditions {
     private static final Logger logger = LoggerFactory.getLogger(AsyncConditions.class);
     private static final String ATTR_NAME = "build";
 
+
     public static void waitUntilBuildFinished(CheckedRequests req, String buildId) {
         Awaitility.await()
                 .atMost(3, TimeUnit.MINUTES)
