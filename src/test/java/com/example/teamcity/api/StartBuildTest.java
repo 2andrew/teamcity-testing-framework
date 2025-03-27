@@ -61,10 +61,6 @@ public class StartBuildTest extends BaseApiTest {
     @Test(description = "User should be able to start build (without MockServer) and run echo 'Hello, world!'",
             groups = {"Regression"}, retryAnalyzer = MyRetry.class)
     public void userStartsBuildWithHelloWorldTest() {
-        // specific logic only for this test, because it requires retry mechanism
-        // teamcity sometimes cancel build with "Agent runs unknown build we're not aware of" error
-        SoftAssert localSoftAssert = new SoftAssert();
-
         CheckedRequests userCheckRequests = setupBuildData();
         Build build = generateBuild(userCheckRequests);
 
@@ -72,8 +68,6 @@ public class StartBuildTest extends BaseApiTest {
 
         Build buildResult = (Build) userCheckRequests.getRequest(BUILD_QUEUE).read("id:" + build.getId());
         checkBuildResults(buildResult);
-
-        localSoftAssert.assertAll();
     }
 
 
