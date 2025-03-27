@@ -26,6 +26,7 @@
         <maven-surefire-plugin>3.5.2</maven-surefire-plugin>
         <allure-maven>2.15.2</allure-maven>
         <aspectj.version>1.9.23</aspectj.version>
+
         <slf4j-simple.version>2.0.9</slf4j-simple.version>
     </properties>
 
