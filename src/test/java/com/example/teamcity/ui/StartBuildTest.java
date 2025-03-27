@@ -6,7 +6,7 @@ import com.example.teamcity.api.spec.Specifications;
 import com.example.teamcity.ui.pages.ProjectsBuildsPage;
 import org.testng.annotations.Test;
 
-import static com.example.teamcity.api.custom.AsyncConditions.waitUntilBuildFinished;
+import static com.example.teamcity.api.custom.AsyncConditions.waitUntilBuildFinishedByType;
 
 @Test(groups = {"Regression"})
 public class StartBuildTest extends BaseUiTest {
@@ -22,7 +22,7 @@ public class StartBuildTest extends BaseUiTest {
         ProjectsBuildsPage projectsBuildsPage = ProjectsBuildsPage.open(testData.getProject().getId());
         projectsBuildsPage.runBuild(testData.getBuildType().getName());
 
-        waitUntilBuildFinished(userCheckRequests, testData.getBuildType());
+        waitUntilBuildFinishedByType(userCheckRequests, testData.getBuildType());
 
         var buildResult = projectsBuildsPage.getBuildDetailsElement(1);
         softy.assertEquals(buildResult.getBuild_number().getText(), "#1");

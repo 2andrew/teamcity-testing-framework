@@ -8,9 +8,7 @@ import com.example.teamcity.api.spec.Specifications;
 import com.example.teamcity.common.WireMockInstance;
 import io.qameta.allure.Feature;
 import org.apache.http.HttpStatus;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 import static com.example.teamcity.api.custom.AsyncConditions.waitUntilBuildFinished;
 import static com.example.teamcity.api.enums.Endpoint.BUILD_QUEUE;
@@ -20,7 +18,7 @@ import static com.github.tomakehurst.wiremock.client.WireMock.*;
 @Feature("Start build")
 public class StartBuildTest extends BaseApiTest {
 
-    @BeforeMethod(alwaysRun = true)
+    @BeforeClass(alwaysRun = true)
     public void setupMockServer() {
         var fakeBuild = Build.builder()
                 .state("finished")
@@ -81,7 +79,7 @@ public class StartBuildTest extends BaseApiTest {
         checkBuildResults(buildResult);
     }
 
-    @AfterMethod(alwaysRun = true)
+    @AfterClass(alwaysRun = true)
     public void stopWireMockServer() {
         WireMockInstance.stopServer();
     }

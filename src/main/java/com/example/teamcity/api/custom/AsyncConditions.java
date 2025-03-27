@@ -1,4 +1,6 @@
 package com.example.teamcity.api.custom;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.example.teamcity.api.models.Build;
 import com.example.teamcity.api.models.BuildType;
@@ -12,19 +14,21 @@ import static com.example.teamcity.api.enums.Endpoint.BUILDS;
 import static com.example.teamcity.api.enums.Endpoint.BUILD_QUEUE;
 
 public final class AsyncConditions {
+    private static final Logger logger = LoggerFactory.getLogger(AsyncConditions.class);
     private static final String ATTR_NAME = "build";
 
     public static void waitUntilBuildFinished(CheckedRequests req, String buildId) {
         Awaitility.await()
                 .atMost(3, TimeUnit.MINUTES)
-                .pollInterval(1, TimeUnit.SECONDS)
+                .pollInterval(5, TimeUnit.SECONDS)
                 .until(() -> {
                     Build build = (Build) req.getRequest(BUILD_QUEUE).read("id:" + buildId);
-                    return build.getState().equals("finished");
+                    logger.info("Build state: " + build.getState() + ", status: " + build.getStatus());
+                    return "finished".equals(build.getState());
                 });
     }
 
-    public static void waitUntilBuildFinished(CheckedRequests req, BuildType buildType) {
+    public static void waitUntilBuildFinishedByType(CheckedRequests req, BuildType buildType) {
         Awaitility.await()
                 .atMost(3, TimeUnit.MINUTES)
                 .pollInterval(1, TimeUnit.SECONDS)
@@ -35,7 +39,8 @@ public final class AsyncConditions {
                             .findFirst();
                     if (createdBuildRun.isPresent()){
                         Build build = (Build) req.getRequest(BUILD_QUEUE).read("id:" + createdBuildRun.get().getId());
-                        return build.getState().equals("finished");
+                        logger.info("Build state: " + build.getState() + ", status: " + build.getStatus());
+                        return "finished".equals(build.getState());
                     } else {
                         return false;
                     }
