@@ -9,7 +9,10 @@ import com.example.teamcity.common.MyRetry;
 import com.example.teamcity.common.WireMockInstance;
 import io.qameta.allure.Feature;
 import org.apache.http.HttpStatus;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import static com.example.teamcity.api.custom.AsyncConditions.waitUntilBuildFinished;
 import static com.example.teamcity.api.enums.Endpoint.BUILD_QUEUE;
@@ -56,8 +59,12 @@ public class StartBuildTest extends BaseApiTest {
     }
 
     @Test(description = "User should be able to start build (without MockServer) and run echo 'Hello, world!'",
-            groups = {"Regression"}, retryAnalyzer =  MyRetry.class)
+            groups = {"Regression"}, retryAnalyzer = MyRetry.class)
     public void userStartsBuildWithHelloWorldTest() {
+        // specific logic only for this test, because it requires retry mechanism
+        // teamcity sometimes cancel build with "Agent runs unknown build we're not aware of" error
+        SoftAssert localSoftAssert = new SoftAssert();
+
         CheckedRequests userCheckRequests = setupBuildData();
         Build build = generateBuild(userCheckRequests);
 
@@ -65,6 +72,8 @@ public class StartBuildTest extends BaseApiTest {
 
         Build buildResult = (Build) userCheckRequests.getRequest(BUILD_QUEUE).read("id:" + build.getId());
         checkBuildResults(buildResult);
+
+        localSoftAssert.assertAll();
     }
 
 
