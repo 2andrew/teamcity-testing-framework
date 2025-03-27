@@ -17,7 +17,7 @@ public class UncheckedBase extends Request implements CrudInterface, SearchInter
     }
 
     @Override
-    @Step("Creating entity on {endpoint.getUrl()}")
+    @Step("Creating entity")
     public Response create(BaseModel model) {
         return RestAssured
                 .given()
@@ -27,7 +27,7 @@ public class UncheckedBase extends Request implements CrudInterface, SearchInter
     }
 
     @Override
-    @Step("Performing findAll operation on {endpoint.getUrl()}")
+    @Step("Performing findAll operation with attribute={attribute}")
     public Response findAll(String attribute) {
         return RestAssured
                 .given()
@@ -36,7 +36,7 @@ public class UncheckedBase extends Request implements CrudInterface, SearchInter
     }
 
     @Override
-    @Step("Performing read operation on {endpoint.getUrl()/{locator}")
+    @Step("Performing read operation with locator={locator}")
     public Response read(String locator) {
         return RestAssured
                 .given()
@@ -45,7 +45,7 @@ public class UncheckedBase extends Request implements CrudInterface, SearchInter
     }
 
     @Override
-    @Step("Updating entity on {endpoint.getUrl()/{locator}}")
+    @Step("Updating entity with locator={locator}")
     public Response update(String locator, BaseModel model) {
         return RestAssured
                 .given()
@@ -55,7 +55,7 @@ public class UncheckedBase extends Request implements CrudInterface, SearchInter
     }
 
     @Override
-    @Step("Deleting entity on {endpoint.getUrl()/{locator}}")
+    @Step("Deleting entity with locator={locator}")
     public Response delete(String locator) {
         return RestAssured
                 .given()
@@ -64,7 +64,7 @@ public class UncheckedBase extends Request implements CrudInterface, SearchInter
     }
 
     @Override
-    @Step("Performing search on {endpoint.getUrl()} with searchParameter = {searchParameter}")
+    @Step("Performing search with searchParameter={searchParameter}")
     public Response search(String searchParameter) {
         var params = searchParameter.split(":");
         return RestAssured
