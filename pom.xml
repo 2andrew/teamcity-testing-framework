@@ -15,7 +15,6 @@
         <testng.version>7.11.0</testng.version>
 
         <rest-assured.version>5.5.1</rest-assured.version>
-
         <lombok.version>1.18.36</lombok.version>
         <allure.version>2.29.1</allure.version>
         <jackson.version>2.18.2</jackson.version>
