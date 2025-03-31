@@ -1,12 +1,13 @@
 package com.example.teamcity.api.custom;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import com.example.teamcity.api.models.Build;
 import com.example.teamcity.api.models.BuildType;
 import com.example.teamcity.api.requests.CheckedRequests;
 import org.awaitility.Awaitility;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+import java.util.Objects;
 import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 
@@ -17,19 +18,8 @@ public final class AsyncConditions {
     private static final Logger logger = LoggerFactory.getLogger(AsyncConditions.class);
     private static final String ATTR_NAME = "build";
 
-    public static void waitUntilBuildFinished(CheckedRequests req, String buildId) {
-        Awaitility.await()
-                .atMost(3, TimeUnit.MINUTES)
-                .pollInterval(5, TimeUnit.SECONDS)
-                .until(() -> {
-                    Build build = (Build) req.getRequest(BUILD_QUEUE).read("id:" + buildId);
-                    logger.info("Build state: " + build.getState() + ", status: " + build.getStatus());
-                    return "finished".equals(build.getState());
-                });
-    }
-
-    public static void waitUntilBuildFinishedByType(CheckedRequests req, BuildType buildType) {
-        Awaitility.await()
+    public static String waitUntilBuildFinishedByType(CheckedRequests req, BuildType buildType) {
+        return Awaitility.await()
                 .atMost(3, TimeUnit.MINUTES)
                 .pollInterval(1, TimeUnit.SECONDS)
                 .until(() -> {
@@ -37,13 +27,15 @@ public final class AsyncConditions {
                             .stream()
                             .filter(item -> item.getBuildTypeId().equals(buildType.getId()))
                             .findFirst();
-                    if (createdBuildRun.isPresent()){
+
+                    if (createdBuildRun.isPresent()) {
                         Build build = (Build) req.getRequest(BUILD_QUEUE).read("id:" + createdBuildRun.get().getId());
                         logger.info("Build state: " + build.getState() + ", status: " + build.getStatus());
-                        return "finished".equals(build.getState());
-                    } else {
-                        return false;
+                        if ("finished".equals(build.getState())) {
+                            return createdBuildRun.get().getId();
+                        }
                     }
-                });
+                    return null;
+                }, Objects::nonNull);
     }
 }

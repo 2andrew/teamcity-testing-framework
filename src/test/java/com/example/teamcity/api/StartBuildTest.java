@@ -16,11 +16,11 @@ public class StartBuildTest extends BaseApiTest {
             groups = {"Regression"})
     public void userStartsBuildWithHelloWorldTest() {
         CheckedRequests userCheckRequests = setupBuildData();
-        Build build = generateBuild(userCheckRequests);
+        generateBuild(userCheckRequests);
 
-        waitUntilBuildFinishedByType(userCheckRequests, testData.getBuildType());
+        String buildId = waitUntilBuildFinishedByType(userCheckRequests, testData.getBuildType());
 
-        Build buildResult = (Build) userCheckRequests.getRequest(BUILD_QUEUE).read("id:" + build.getId());
+        Build buildResult = (Build) userCheckRequests.getRequest(BUILD_QUEUE).read("id:" + buildId);
         checkBuildResults(buildResult);
     }
 }
