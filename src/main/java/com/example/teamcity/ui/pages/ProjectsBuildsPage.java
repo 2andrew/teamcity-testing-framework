@@ -19,6 +19,7 @@ public class ProjectsBuildsPage extends BasePage {
     private ElementsCollection buildsConfigElements = $$("div[class*='BuildTypes__item']");
     private ElementsCollection buildsDetailsElements = $$("div[class*='BuildDetails__container']");
     private SelenideElement header = $("[data-test='overview-header']");
+    private SelenideElement buildsContainer = $("div[class*='BuildTypes__item--UX']");
 
     public ProjectsBuildsPage() {
         header.shouldBe(Condition.visible, BASE_WAITING);
@@ -29,6 +30,7 @@ public class ProjectsBuildsPage extends BasePage {
     }
 
     public List<BuildConfigElement> getBuildConfigElements() {
+        buildsContainer.shouldBe(Condition.visible, BASE_WAITING);
         return generatePageElements(buildsConfigElements, BuildConfigElement::new);
     }
 
