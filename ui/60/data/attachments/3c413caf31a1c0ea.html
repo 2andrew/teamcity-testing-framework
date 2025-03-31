@@ -1,0 +1,3094 @@
+<html lang="en" class="ua-js ring-variables-light js-focus-visible" data-js-focus-visible=""><head>
+        <title>Create Build Configuration From URL — TeamCity</title>
+
+        
+
+        
+
+
+
+
+
+
+
+
+        
+
+
+
+<link rel="Shortcut Icon" href="/img/icons/favicon.ico?v10" type="image/x-icon" sizes="16x16 32x32">
+<meta charset="UTF-8">
+
+<meta name="format-detection" content="telephone=no">
+
+<meta name="application-name" content="TeamCity (Create Build Configuration From URL)">
+<meta name="description" content="Powerful Continuous Integration and Build Server">
+<meta name="viewport" content="width=1000">
+
+<link rel="apple-touch-icon" sizes="57x57" href="/img/icons/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/img/icons/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/img/icons/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/img/icons/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/img/icons/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/img/icons/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/img/icons/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/img/icons/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/img/icons/apple-touch-icon-180x180.png">
+
+<meta name="msapplication-TileColor" content="#000000">
+
+<meta name="msapplication-TileImage" content="/img/icons/mstile-144x144.png">
+<meta name="msapplication-square70x70logo" content="/img/icons/mstile-70x70.png">
+<meta name="msapplication-square150x150logo" content="/img/icons/mstile-150x150.png">
+<meta name="msapplication-wide310x150logo" content="/img/icons/mstile-310x150.png">
+<meta name="msapplication-square310x310logo" content="/img/icons/mstile-310x310.png">
+<meta name="tc-csrf-token" content="570e7b2d-46cb-40ca-9748-38aeebf96613">
+<meta name="robots" content="noindex">
+
+
+        
+
+
+
+<script type="text/javascript" src="/res/-6060474511570324796.js?v=1743455262418"></script>
+
+
+
+        
+
+
+
+
+<style id="195ee089042" type="text/css">
+    @import "/res/459560978433157637.css?v=1743455262418";
+  
+</style>
+
+
+
+
+
+<script type="text/javascript" src="/res/5833290380196265600.js?v=1743455262418"></script>
+
+
+<script type="text/javascript">
+  window.$j = jQuery.noConflict();
+</script>
+
+
+
+
+<script type="text/javascript" src="/res/-5410233700357870077.js?v=1743455262418"></script>
+
+
+        
+
+
+<style id="195ee089043" type="text/css">
+    @import "/res/-5770894604672683989.css?v=1743455262418";
+  
+</style>
+
+
+        
+
+
+<script type="text/javascript" src="/res/-3603535750726916660.js?v=1743455262418"></script>
+
+
+        <script type="text/javascript">
+  var base_uri=window.location.protocol+"//"+window.location.host+"";
+</script>
+
+        
+
+        
+
+
+
+<script type="text/javascript" src="/res/-4735258447288317237.js?v=1743455262418"></script>
+
+        
+
+
+
+<script type="text/javascript" src="/res/-4985008087834695917.js?v=1743455262418"></script>
+
+
+
+        
+<script type="text/javascript">
+  var internalProps = [];
+
+  internalProps['teamcity.ui.experimental'] = 'enableDefault';
+  internalProps['teamcity.ui.useServiceWorkers'] =  true;
+
+  internalProps['teamcity.ui.websocket.connectTimeout'] =  3000;
+  internalProps['teamcity.ui.webSocket.logToConsole'] =  false;
+
+  internalProps['teamcity.ui.pollInterval'] = 6;
+  internalProps['teamcity.ui.serverAvailability.pollInterval'] = 3;
+
+  internalProps['teamcity.ui.events.pollInterval'] = 6;
+  internalProps['teamcity.ui.systemProblems.pollInterval'] = 40;
+  internalProps['teamcity.ui.problemsSummary.pollInterval'] = 8;
+  internalProps['teamcity.ui.buildQueueEstimates.pollInterval'] = 10;
+  internalProps['teamcity.ui.subscriptions.debounceInterval'] = 3000;
+
+  // Doesn't use BS.SubscriptionManager and standard subscription mechanism
+  internalProps['teamcity.ui.cleanupNotificatorProgress.pollInterval'] = 6;
+
+  internalProps['teamcity.ui.serverRestart.warningDelay'] = 120;
+  internalProps['teamcity.ui.serverUpdate.warningDelay'] = 120;
+
+  internalProps['teamcity.ui.editSettings.showResolveValueIcon'] = false;
+
+  internalProps['teamcity.internal.buildChangesPopupLimit'] = '100';
+
+  internalProps['teamcity.internal.agent.distribution.jdk.bundle.enabled'] = true; // disabled in cloud
+
+  internalProps['teamcity.development.mode'] = false;
+
+  internalProps['teamcity.ui.showObligatoryHints'] = false;
+
+  internalProps['teamcity.ui.showLicenseAgreementToAllUsers'] = true;
+
+  internalProps['teamcity.ui.showDownloadAllArtifactsLink'] = true; // disabled in cloud
+
+  internalProps['teamcity.ui.newInvestigationsPage'] = false;
+
+  internalProps['teamcity.ui.customWelcomeTitle'] = ''; // overridden in cloud
+
+  internalProps['teamcity.ui.sakuraInvestigationsTab'] = false;
+
+  internalProps['teamcity.ui.sakuraProblemsTab'] = true;
+
+  internalProps['teamcity.ui.requestPoolSize'] = 5;
+
+  internalProps['teamcity.ui.newAgentCompatibleConfigurationsTab'] = false;
+
+  internalProps['teamcity.ui.newAgentPoolManagement'] = true;
+
+  internalProps['teamcity.ui.newAgentParametersTab'] = true;
+  internalProps['teamcity.ui.newCloudImageParametersTab'] = true;
+  internalProps['teamcity.ui.agentPoolsFavoriteLimit'] = 30;
+
+  internalProps['teamcity.overviewPage.buildTypes.limit'] = 200;
+
+  internalProps['teamcity.ui.agentPreviewsUpdateTimeout'] = 8000;
+
+  internalProps['teamcity.ui.agentDataUpdateTimeout'] = 8000;
+
+  internalProps['teamcity.ui.statuses.throttleInterval'] = -1;
+  internalProps['teamcity.ui.statuses.useToRenderQueuedBuildsBar'] = true;
+
+  internalProps['teamcity.ui.supportLink.enabled'] = true;
+
+  try {
+    internalProps['teamcity.ui.tabs.linkToMainUI.build'] = '';
+    internalProps['teamcity.ui.tabs.linkToMainUI.buildType'] = '';
+    internalProps['teamcity.ui.tabs.linkToMainUI.project'] = '';
+  } catch (error) {
+    console.log('Iframe Adapter blacklist properties have not been correctly specified');
+  }
+  internalProps['teamcity.ui.tabs.buildType.chain'] = true;
+
+  internalProps['teamcity.ui.sidebar.skipWSEventsSubscription'] = true;
+
+  internalProps['teamcity.cloudProfiles.hiddenCloudTypes'] = '';
+
+  internalProps['teamcity.pipelines.enabled'] = false;
+  internalProps['teamcity.pipelines.projects.enabled'] = true;
+  internalProps['teamcity.pipelines.jobCountSoftLimit'] = 20;
+  internalProps['teamcity.pipelines.jobCountHardLimit'] = 30;
+  internalProps['teamcity.pipelines.spaceConnection.enabled'] = false;
+  internalProps['teamcity.pipelines.gitHubConnectionId'] = 'tc-cloud-github-connection';
+  internalProps['teamcity.pipelines.spaceConnectionId'] = 'tc-cloud-space-connection';
+  internalProps['teamcity.pipelines.featuresWaitingForBackend'] = false;
+  internalProps['teamcity.pipelines.dockerfile.support'] = false;
+  internalProps['teamcity.pipelines.unity.enabled'] = false;
+  internalProps['teamcity.pipelines.parallelTests.enabled'] = false;
+  internalProps['teamcity.pipelines.dependencyCache.enabled'] = false;
+  internalProps['teamcity.pipelines.newTimeBadge.enabled'] = false;
+  internalProps['teamcity.pipelines.filePickers.enabled'] = false;
+  internalProps['teamcity.pipelines.newArtifactField.enabled'] = false;
+  internalProps['teamcity.pipelines.customAgentsNames'] = '';
+  internalProps['teamcity.pipelines.lineEditor.enabled'] = true;
+  internalProps['teamcity.pipelines.feature.jobReuseCustomization.enabled'] = false;
+  internalProps['teamcity.pipelines.feature.storeYAMLinVCS'] = false;
+  internalProps['teamcity.pipelines.feature.cloneButton.enabled'] = false;
+  internalProps['teamcity.pipelines.feature.smoothParameterReplacement.enabled'] = false;
+  internalProps['teamcity.pipelines.agentPage.enabled'] = false;
+  internalProps['teamcity.pipelines.agentPage.newFeaturePopup.enabled'] = false;
+  internalProps['teamcity.pipelines.selfHostedAgents.enabled'] = false;
+  internalProps['teamcity.pipelines.selfHostedAgents.newFeaturePopup.enabled'] = false;
+  internalProps['teamcity.pipelines.muteInvestigateButton.enabled'] = false;
+  internalProps['teamcity.pipelines.newCreatePipelinePage.enabled'] = false;
+  internalProps['teamcity.pipelines.earlyAccessBanner.enabled'] = true;
+  internalProps['teamcity.pipelines.promoBanner.enabled'] = true;
+  internalProps['teamcity.pipelines.feature.jobIncompatibilityAgent.enabled'] = false;
+  internalProps['teamcity.pipelines.showLoginAlertOnErrors.enabled'] = false;
+
+  internalProps['teamcity.docker.dockerhub.autocomplete'] = false;
+
+  internalProps['teamcity.ui.sakura.releaseBanner.enabled'] = true;
+
+  internalProps['teamcity.hidden.artifacts.use.extended.names'] = true;
+
+  internalProps['teamcity.ui.darkTheme.allowed'] = true;
+  internalProps['teamcity.ui.darkTheme.adapter.enabled'] = true;
+  internalProps['teamcity.ui.compositeBuildsOnTimeline.enabled'] = false; // TW-87696
+
+  internalProps['teamcity.ui.buildStepSelector.enabled'] = true;
+  internalProps['teamcity.ui.buildStepSelector.privateRecipeList.pageSize'] = 8;
+  internalProps['teamcity.ui.buildStepSelector.publicRecipeList.pageSize'] = 20;
+  internalProps['teamcity.recipes.public.enabled'] = false;  // TODO make true by default
+  internalProps['teamcity.recipes.public.marketplace.url'] = 'https://plugins.jetbrains.com';
+</script>
+
+
+        
+
+
+<script type="text/javascript" src="/res/5349962729000901236.js?v=1743455262418"></script>
+
+
+        <script>
+          BS.helpUrlPrefix = 'https://www.jetbrains.com/help/teamcity/2024.12/?';
+          BS.feedbackUrl = 'https://www.jetbrains.com/help/teamcity/2024.12/?Feedback';
+        </script>
+
+        
+
+        
+
+
+
+<style id="195ee089044" type="text/css">
+    @import "/res/-3342039278521329535.css?v=1743455262418";
+  
+</style>
+<link data-ignore-dark-theme-adapter="" href="/js/ring/styles.d36eecb34d2270aa8273.css" rel="stylesheet">
+<script src="/js/ring/vendors-node_modules_atlaskit_logo_dist_esm_bitbucket-logo_icon_js-node_modules_hypnosphi_rec-cfbf9e.4752167db48991439be2.js"></script>
+<script src="/js/ring/bundle.4a827aadbf0abb353ef4.js"></script><style type="text/css">
+.tc-icon_bitbucket {
+  background: url('data:image/svg+xml;utf8,%3Csvg%20color%3D%22%23000%22%20fill%3D%22none%22%20height%3D%2232%22%20viewBox%3D%220%200%2032%2032%22%20focusable%3D%22false%22%20aria-hidden%3D%22true%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%20%20%20%20%20%20%3Cpath%20fill%3D%22%23000%22%20d%3D%22m25.586%2015.819-1.618%209.885c-.106.598-.528.95-1.126.95H9.122c-.598%200-1.02-.352-1.126-.95L5.146%208.08c-.105-.598.212-.985.775-.985h20.123c.562%200%20.88.387.773.985l-.773%204.644c-.106.668-.493.95-1.126.95H12.816c-.176%200-.282.105-.246.316l.95%205.84c.035.14.14.246.281.246h4.362c.141%200%20.246-.105.282-.246l.668-4.222c.07-.527.422-.738.915-.738h4.75c.703%200%20.914.351.808.95%22%2F%3E%20%20%20%20%3C%2Fsvg%3E');
+  background-size: 140% 140%;
+  background-position: 50% 55%;
+}</style><style type="text/css">
+.tc-icon_bitbucket_disabled {
+  background: url('data:image/svg+xml;utf8,%3Csvg%20color%3D%22%23e5e5e5%22%20fill%3D%22none%22%20height%3D%2232%22%20viewBox%3D%220%200%2032%2032%22%20focusable%3D%22false%22%20aria-hidden%3D%22true%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%20%20%20%20%20%20%3Cpath%20fill%3D%22%23e5e5e5%22%20d%3D%22m25.586%2015.819-1.618%209.885c-.106.598-.528.95-1.126.95H9.122c-.598%200-1.02-.352-1.126-.95L5.146%208.08c-.105-.598.212-.985.775-.985h20.123c.562%200%20.88.387.773.985l-.773%204.644c-.106.668-.493.95-1.126.95H12.816c-.176%200-.282.105-.246.316l.95%205.84c.035.14.14.246.281.246h4.362c.141%200%20.246-.105.282-.246l.668-4.222c.07-.527.422-.738.915-.738h4.75c.703%200%20.914.351.808.95%22%2F%3E%20%20%20%20%3C%2Fsvg%3E');
+  background-size: 140% 140%;
+  background-position: 50% 55%;
+}</style><style type="text/css">
+.tc-icon_gitlab,
+  .tc-icon_gitlab_disabled,
+  .tc-icon_gitlab-enterprise,
+  .tc-icon_gitlab-enterprise_disabled {
+  background: url('data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22none%22%20viewBox%3D%220%200%2016%2016%22%20role%3D%22presentation%22%3E%3Cpath%20fill%3D%22%23FC6D26%22%20d%3D%22m14.974%209.005-.784-2.616-1.552-5.19a.3.3%200%200%200-.098-.144.254.254%200%200%200-.314%200%20.3.3%200%200%200-.097.144l-1.552%205.186H5.421L3.869%201.2a.3.3%200%200%200-.098-.144A.25.25%200%200%200%203.615%201a.25.25%200%200%200-.157.055.3.3%200%200%200-.098.144L1.81%206.385l-.783%202.62a.63.63%200%200%200%200%20.358.6.6%200%200%200%20.193.29L8%2015l6.778-5.347a.6.6%200%200%200%20.195-.29.63.63%200%200%200%20.001-.358%22%3E%3C%2Fpath%3E%3Cpath%20fill%3D%22%23E24329%22%20d%3D%22m8%2014.998%202.578-8.611H5.423z%22%3E%3C%2Fpath%3E%3Cpath%20fill%3D%22%23FC6D26%22%20d%3D%22M8%2014.998%205.42%206.387H1.813z%22%3E%3C%2Fpath%3E%3Cpath%20fill%3D%22%23FCA326%22%20d%3D%22m1.81%206.387-.784%202.616a.63.63%200%200%200%200%20.358.6.6%200%200%200%20.193.29L8%2014.999z%22%3E%3C%2Fpath%3E%3Cpath%20fill%3D%22%23E24329%22%20d%3D%22M1.812%206.389h3.612L3.87%201.203a.3.3%200%200%200-.097-.144.254.254%200%200%200-.314%200%20.3.3%200%200%200-.097.144L1.81%206.389Z%22%3E%3C%2Fpath%3E%3Cpath%20fill%3D%22%23FC6D26%22%20d%3D%22m8%2014.998%202.578-8.611h3.614z%22%3E%3C%2Fpath%3E%3Cpath%20fill%3D%22%23FCA326%22%20d%3D%22m14.19%206.387.784%202.616a.63.63%200%200%201%200%20.358.6.6%200%200%201-.194.29L8%2014.995l6.188-8.608h.001Z%22%3E%3C%2Fpath%3E%3Cpath%20fill%3D%22%23E24329%22%20d%3D%22M14.19%206.389h-3.61l1.551-5.186a.3.3%200%200%201%20.098-.144.254.254%200%200%201%20.313%200q.07.056.098.144l1.552%205.186Z%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E');
+  background-size: 110%;
+  background-position: 50% 55%;
+}</style><link rel="prefetch" as="script" href="http://172.17.0.1:8111/js/ring/Statistics.0b81326768315c60dcf8.js"><link rel="prefetch" as="script" href="http://172.17.0.1:8111/js/ring/vendors-node_modules_react-virtualized_dist_es_AutoSizer_index_js-node_modules_react-virtuali-e968da.cd4df5ba5518cd277dbf.js"><link rel="prefetch" as="script" href="http://172.17.0.1:8111/js/ring/vendors-node_modules_lodash__baseRest_js-node_modules_lodash__isIterateeCall_js-node_modules_-5d4f37.87da6b97b9500dfc80ca.js"><link rel="prefetch" as="script" href="http://172.17.0.1:8111/js/ring/vendors-node_modules_jetbrains_ring-ui_components_grid_grid_js-node_modules_jetbrains_ring-ui-58aede.78e6cba82b77d66ee788.js"><link rel="prefetch" as="script" href="http://172.17.0.1:8111/js/ring/components_App_SidebarPanel_SidebarPanelContent_SidebarHeader_SidebarHeader_tsx-components_Ap-353d49.6477f111721e21e3ee7c.js"><link rel="prefetch" as="script" href="http://172.17.0.1:8111/js/ring/App.14df72b6f27b6fbf2844.js">
+
+
+        <script>
+          ReactUI.setGlobalTheme("auto")
+        </script>
+        
+
+
+
+
+<script>
+  ReactUI.extendServerInfo({
+    licenseModeName: 'Professional',
+    licenseModeDetails: '',
+    licenseIsCloud: false,
+    licenseIsEnterpise: false,
+    version: '2024.12.3',
+    buildNumber: '174541',
+  });
+</script>
+
+
+        
+
+
+
+<script type="text/javascript" src="/res/2083999511917917652.js?v=1743455262418"></script>
+
+
+        
+
+
+
+
+<style id="195ee089045" type="text/css">
+    @import "/res/7284922245609817807.css?v=1743455262418";
+  
+</style>
+
+
+
+
+<script type="text/javascript" src="/res/-3288442913299261328.js?v=1743455262418"></script>
+
+
+        <script type="text/javascript">
+          BS.WebSocketProperties.webSocketEnabled = true;
+          BS.WebSocketProperties.heartbeatIntervalMillis = 15000;
+
+          ReactUI.setAdminSpaceAvailable(true);
+
+          (function() {
+            function initPage() {
+            
+
+              if (typeof BS == "undefined") return;
+              BS.initReloadBlocker();
+            }
+
+            $j(document).ready(initPage);
+          })();
+
+          BS.SubscriptionManager.start();
+          $j(document).ready(function() {
+            if (typeof BS == "undefined") return;
+            BS.EventTracker.startTracking("/eventTracker.html");
+            BS.ServerCommands.startWatching();
+            BS.Clipboard.installGlobalHandler();
+        });
+
+          Event.observe(window, "unload", function() {
+            rememberScrolling();
+            if (typeof BS == "undefined") return;
+            BS.blockRefreshPermanently();
+            BS.SubscriptionManager.dispose();
+          });
+
+        </script>
+      
+
+
+<style id="195ee089046" type="text/css">
+    @import "/res/5505494586927701304.css?v=1743455262418";
+  
+</style>
+
+    
+
+
+<script type="text/javascript" src="/res/7398314626894508815.js?v=1743455262418"></script>
+
+    <script type="text/javascript">
+      BS.Navigation.items = [];
+
+
+BS.Navigation.items.push({
+title: "&lt;Root project&gt;",
+url: '/admin/editProject.html?init=1&projectId=_Root',
+selected: false,
+itemClass: "project",
+projectId: "_Root",
+siblingsTree: {
+parentId: "",
+projectUrlFormat: '/admin/editProject.html?init=1&projectId={id}'
+}
+});
+
+BS.Navigation.items.push({
+title: "test_KbQsAamYSQ",
+url: '/admin/editProject.html?init=1&projectId=test_DPrEKlqVjV',
+selected: false,
+itemClass: "project",
+projectId: "test_DPrEKlqVjV",
+siblingsTree: {
+parentId: "_Root",
+projectUrlFormat: '/admin/editProject.html?init=1&projectId={id}'
+}
+});
+
+
+BS.Navigation.items.push({
+title: "",
+url: '',
+selected: true
+});
+
+BS.Navigation.items.push({
+title: "Create Build Configuration From URL",
+url: '/admin/createObjectFromUrl.html?parentId=test_DPrEKlqVjV&objectType=BUILD_TYPE',
+selected: true
+});
+    </script>
+
+      
+        
+  <!-- START EXTENSION CSS jetbrains.buildServer.serverSide.search.controller.SearchController$1 name:searchBuildByNumber -->
+  
+
+
+<style id="195ee089047" type="text/css">
+    @import "/res/-3944113586479971926.css?v=1743455262418";
+  
+</style>
+
+  <!-- END EXTENSION CSS jetbrains.buildServer.serverSide.search.controller.SearchController$1 -->
+
+
+
+
+    <!-- START EXTENSION CONTENT jetbrains.buildServer.serverSide.search.controller.SearchController$1: name:searchBuildByNumber: /plugins/searchBuildByNumber/empty.jsp -->
+      
+  <!-- END EXTENSION CONTENT jetbrains.buildServer.serverSide.search.controller.SearchController$1 -->
+  
+
+    <!-- START EXTENSION CONTENT jetbrains.buildServer.compare.web.BuildsComparatorExtension: name:builds-diff: /plugins/teamcity-compare-builds/builds-diff-extension.jsp -->
+      
+
+<script type="text/javascript">
+    if (ReactUI && ReactUI.storeUrlExtensions) {
+        ReactUI.storeUrlExtensions({kind: 'builds-diff',
+            name: 'builds-diff',
+            endpoint: 'app/rest/compare-builds'
+        });
+    }
+</script>
+  <!-- END EXTENSION CONTENT jetbrains.buildServer.compare.web.BuildsComparatorExtension -->
+  
+
+
+
+      
+      <style>:root{--qd-header-height: 54px;--qd-popup-box-shadow: 0px 10px 20px rgba(0, 0, 0, .06);--qd-modal-padding: 24px 28px 28px;--qd-dropdown-shadow: 0px 2px 8px rgba(0, 28, 54, .1), 0px 1px 2px rgba(0, 28, 54, .04);--qd-dialog-shadow: 0px 4px 24px rgba(0, 28, 54, .1), 0px 2px 6px rgba(0, 28, 54, .04);--qd-border-radius: 4px;--qd-code-font-family-regular: "JetBrains Mono Regular", system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Cantarell, Droid Sans, Helvetica Neue, Arial, sans-serif;--qd-outline: 4px solid var(--qd-color-blue-40);--qd-transition-delay: .2s;--qd-color-black: #1e2021;--qd-color-white-rgb: 255, 255, 255;--qd-color-white: rgb(var(--qd-color-white-rgb));--qd-color-grey: #737577;--qd-color-light-grey: #999999;--qd-color-lighter-grey: #dfe5eb;--qd-color-light-grey-5: rgba(146, 146, 146, .05);--qd-color-light-grey-ring: #f5f5f5;--qd-color-palegrey: #f6f6f9;--qd-color-blue: #0080e5;--qd-color-blue-15: rgba(25, 138, 243, .15);--qd-color-blue-20: rgba(25, 138, 243, .2);--qd-color-blue-40: #80c6ff;--qd-color-sea-blue: #1f7abe;--qd-color-dark-sea-blue: #032a58;--qd-color-dark-blue: #0070cc;--qd-color-darkest-blue: #175aae;--qd-color-dark-green: #4daa61;--qd-color-darkest-green: #2d7a27;--qd-color-palegray: #f6f6f9;--qd-color-ruby: #c22731;--qd-color-1-layer-rgb: var(--qd-color-white-rgb);--qd-color-1-layer: rgb(var(--qd-color-1-layer-rgb));--qd-color-1-layer-dark: rgb(36, 39, 43);--qd-color-2-layer: var(--qd-color-white);--qd-color-3-layer: var(--qd-color-white);--qd-color-rose: #ffebec;--qd-color-red-100: #ff5862;--qd-color-red-80: rgba(255, 88, 98, .8);--qd-color-red-50: rgba(255, 88, 98, .5);--qd-color-red-12: rgba(255, 88, 98, .12);--qd-color-red-6: rgba(255, 88, 98, .06);--qd-color-bronze: #b25c00;--qd-color-orange-100: #fda332;--qd-color-orange-80: rgba(253, 163, 50, .8);--qd-color-orange-50: rgba(253, 163, 50, .5);--qd-color-orange-12: rgba(253, 163, 50, .12);--qd-color-yellow-100: #ffd121;--qd-color-yellow-80: rgba(255, 209, 33, .8);--qd-color-yellow-50: rgba(255, 209, 33, .5);--qd-color-yellow-12: rgba(255, 209, 33, .12);--qd-color-yellow-6: rgba(255, 209, 33, .06);--qd-color-warmgray-100: #b8b3ca;--qd-color-warmgray-80: rgba(184, 179, 202, .8);--qd-color-warmgray-50: rgba(184, 179, 202, .5);--qd-color-warmgray-12: rgba(184, 179, 202, .12);--qd-color-azure: #e8f4fd;--qd-color-skyblue-100: #45a5f4;--qd-color-skyblue-80: rgba(69, 165, 244, .8);--qd-color-skyblue-50: rgba(69, 165, 244, .5);--qd-color-skyblue-12: rgba(69, 165, 244, .12);--qd-color-skyblue-6: rgba(69, 165, 244, .06);--qd-color-palegreen: #eff8e6;--qd-color-lawngreen-100: #7dc634;--qd-color-lawngreen-80: rgba(125, 198, 52, .8);--qd-color-lawngreen-50: rgba(125, 198, 52, .5);--qd-color-lawngreen-12: rgba(125, 198, 52, .12);--qd-color-lawngreen-6: rgba(125, 198, 52, .06);--qd-color-lavender-6: rgba(134, 146, 251, .06);--qd-color-severity-critical: var(--qd-color-red-100);--qd-color-severity-high: var(--qd-color-orange-100);--qd-color-severity-moderate: var(--qd-color-yellow-100);--qd-color-severity-low: var(--qd-color-warmgray-100);--qd-color-severity-info: var(--qd-color-skyblue-100);--qd-color-severity-success: var(--qd-color-lawngreen-100);--qd-color-alert-line-severity-critical: var(--qd-color-red-12);--qd-color-alert-line-severity-high: var(--qd-color-orange-12);--qd-color-alert-line-severity-moderate: var(--qd-color-yellow-12);--qd-color-alert-line-severity-low: var(--qd-color-warmgray-12);--qd-color-alert-line-severity-info: var(--qd-color-skyblue-12);--qd-color-alert-line-severity-add: var(--qd-color-lawngreen-12);--qd-color-text-1: var(--qd-color-black);--qd-color-text-2: var(--qd-color-grey);--qd-color-text-3: var(--qd-color-grey);--qd-color-text-4: var(--qd-color-grey);--qd-color-text-5: var(--qd-color-light-grey);--qd-color-text-6: var(--qd-color-black);--qd-color-text-7: var(--qd-color-white);--qd-color-focus-ring: var(--qd-color-blue);--qd-focus-box-shadow: inset 0 0 0 1px var(--qd-color-focus-ring), 0 0 0 1px var(--qd-color-focus-ring);--qd-color-hover-list-item: var(--qd-color-skyblue-12);--qd-color-skeleton-1: #e8e8e8;--qd-color-skeleton-2: #f3f3f3;--qd-color-main-bg-rgb: var(--qd-color-white-rgb);--qd-color-main-bg: rgb(var(--qd-color-main-bg-rgb));--qd-color-dropdown-bg: var(--qd-color-white);--qd-color-sourcetabs-bg: rgba(146, 146, 146, .05);--qd-color-danger-entity: var(--qd-color-ruby);--qd-color-summary-tabs-border: var(--qd-color-lighter-grey);--qd-color-summary-tabs-bg: var(--qd-color-light-grey-5);--qd-color-summary-tabs-bg-active: var(--qd-color-white);--qd-color-summary-tabs-main-numbers: var(--qd-color-grey);--qd-color-summary-tabs-main-numbers-active: var(--qd-color-black);--qd-color-summary-tabs-text: var(--qd-color-grey);--qd-color-summary-tabs-text-active: var(--qd-color-grey);--qd-color-summary-tabs-text-disabled: var(--qd-color-lighter-grey);--qd-color-summary-tabs-positive: var(--qd-color-darkest-green);--qd-color-summary-tabs-positive-active: var(--qd-color-dark-green);--qd-color-summary-tabs-negative: var(--qd-color-red-80);--qd-color-summary-tabs-negative-active: var(--qd-color-red-100);--qd-color-summary-tabs-failed: var(--qd-color-orange-80);--qd-color-summary-tabs-failed-active: var(--qd-color-orange-100);--qd-color-select-button-disabled-text: var(--qd-color-light-grey);--qd-color-select-button-border: var(--qd-color-lighter-grey);--qd-color-input-bg: var(--qd-color-main-bg);--qd-color-input-border: var(--ring-borders-color);--qd-color-input-border-active: var(--qd-color-blue);--qd-color-input-border-hover: var(--ring-border-hover-color);--qd-color-input-placeholder: var(--qd-color-light-grey);--qd-color-input-search-icon: var(--qd-color-light-grey);--qd-color-input-disabled-bg: var(--ring-disabled-background-color);--qd-color-input-disabled-text: var(--qd-color-light-grey);--qd-color-input-disabled-border: var(--ring-border-disabled-color);--qd-color-input-error-border: var(--qd-color-ruby);--qd-color-input-label: var(--qd-color-grey);--qd-color-code-snippet-border: var(--qd-color-lighter-grey);--qd-color-border: var(--qd-color-lighter-grey);--qd-color-badge-blue-bg: rgba(75, 155, 230, .1);--qd-color-toggle-handle-on: var(--qd-color-white);--qd-color-toggle-handle-off: var(--qd-color-white);--qd-color-toggle-handle-disabled: var(--qd-color-white);--qd-color-toggle-bg-on: var(--qd-color-blue);--qd-color-toggle-bg-off: var(--qd-color-light-grey);--qd-color-toggle-bg-disabled: var(--qd-color-lighter-grey);--qd-color-toggle-label-disabled: var(--qd-color-light-grey);--qd-color-blurred-bg: rgba(255, 255, 255, .9);--qd-color-popup-gradient-start-bg: rgba(242, 245, 249, 0);--qd-color-popup-gradient-end-bg: var(--qd-color-white);--qd-color-tooltip-bg: var(--qd-color-white);--qd-color-circle-message: var(--qd-color-light-grey);--qd-color-empty-rect-btn-border: var(--qd-color-lighter-grey);--qd-color-disabled-primary-rect-btn-bg: var(--qd-color-lighter-grey);--qd-color-disabled-primary-rect-btn-border: var(--qd-color-lighter-grey);--qd-color-disabled-primary-rect-btn: var(--qd-color-light-grey);--qd-color-button-bg: var(--qd-color-azure);--qd-color-button-border: var(--qd-color-lighter-grey);--qd-color-button-border-hover: var(--qd-color-blue-40);--qd-color-button-disabled-text: var(--qd-color-light-grey);--qd-color-button-disabled-border: var(--qd-color-lighter-grey);--qd-color-button-disabled-bg: var(--qd-color-light-grey-5);--qd-color-button-pressed-border: var(--qd-color-darkest-blue);--qd-color-button-clear: var(--qd-color-blue);--qd-color-button-clear-hover: var(--qd-color-dark-blue);--qd-color-button-clear-pressed: var(--qd-color-darkest-blue);--qd-color-button-icon-disabled: var(--qd-color-light-grey);--qd-color-button-danger-hover: var(--qd-color-red-100);--qd-color-button-clear-disabled: var(--qd-color-light-grey);--qd-color-checkbox-checkmark: var(--qd-color-black);--qd-color-checkbox-bg-checked: #d4edff;--qd-color-checkbox-bg: var(--qd-color-white);--qd-color-checkbox-border-checked: #80c6ff;--qd-color-checkbox-border: #bcd1e3;--qd-color-tree-select-chevron: var(--qd-color-light-grey);--qd-color-select-item-hover: var(--qd-color-skyblue-12);--qd-color-select-item-description: var(--qd-color-light-grey);--qd-color-select-search-icon: var(--qd-color-light-grey);--qd-color-select-search-text: var(--qd-color-grey);--qd-color-select-icon: var(--qd-color-light-grey);--qd-color-separator: var(--qd-color-lighter-grey);--qd-color-project-audit-header-line: var(--qd-color-lighter-grey);--qd-color-saved-filters-select-icon: var(--qd-color-light-grey);--qd-color-help-select-trigger-icon: var(--qd-color-light-grey);--qd-color-help-select-additional: var(--qd-color-light-grey);--qd-color-onboarding-tip-bg: var(--qd-color-black);--qd-color-onboarding-tip-content: var(--qd-color-lighter-grey);--qd-color-onboarding-tip-hide: var(--qd-color-grey);--qd-color-onboarding-tip-hide-hover: var(--qd-color-light-grey);--qd-color-onboarding-tip-next: var(--qd-color-blue);--qd-color-onboarding-tip-next-hover: var(--qd-color-dark-blue);--qd-color-project-setup-progressbar-bg: var(--qd-color-lighter-grey);--qd-color-project-setup-progressbar-bg-active: var(--qd-color-lawngreen-100);--qd-color-hover-checks-item: #ebf6ff;--qd-color-check-sign-color: var(--qd-color-light-grey);--qd-color-tags-bg: var(--qd-color-skyblue-6);--qd-color-tags-bg-hover: var(--qd-color-blue-20);--qd-color-tags-bg-disabled: var(--qd-color-light-grey-5);--qd-color-tags-text: var(--qd-color-sea-blue);--qd-color-tags-text-hover: var(--qd-color-dark-sea-blue);--qd-color-tags-text-disabled: var(--qd-color-light-grey);--qd-color-tags-action-button: var(--qd-color-light-grey);--qd-color-tree-icon: rgba(154, 167, 176, .8);--qd-color-summary-hover: var(--qd-color-light-grey-5);--qd-color-green-label-bg: var(--qd-color-lawngreen-6);--qd-color-green-label-text: var(--qd-color-dark-green);--qd-color-blue-label-bg: var(--qd-color-skyblue-50);--qd-color-blue-label-bg-text: var(--qd-color-darkest-blue);--qd-color-code-inline-bg: var(--qd-color-light-grey-5);--qd-color-code-inline-border: var(--qd-color-lighter-grey);--qd-color-code-block-bg: var(--qd-color-light-grey-5);--qd-color-code-block-border: var(--qd-color-lighter-grey);--qd-icon-default-color: var(--qd-color-light-grey);--qd-icon-hover-color: var(--qd-color-blue);--qd-icon-active-color: var(--qd-color-blue);--qd-editor-icon-hover-color: var(--qd-color-blue-40);--qd-editor-icon-active-color: var(--qd-color-blue);--qd-code-deletion-row-bg: var(--qd-color-rose);--qd-code-addition-row-bg: var(--qd-color-palegreen);--qd-color-radio-button-bg: var(--qd-color-white-rgb);--qd-color-user-evaluation-bg: var(--qd-color-lighter-grey);--qd-color-user-evaluation-bg-hover: var(--qd-color-light-grey-5);--qd-color-feedback-button-bg: var(--qd-color-azure);--qd-color-feedback-button-bg-hover: var(--qd-color-blue-20);--qd-color-feedback-button-icon: var(--qd-color-skyblue-80);--qd-color-feedback-button-icon-hover: var(--qd-color-skyblue-100);--qd-hljs-color: #000;--qd-hljs-addition-color-bg: #bee6be;--qd-hljs-attribute-color: #0000ff;--qd-hljs-bullet-color: inherit;--qd-hljs-comment-color: #8c8c8c;--qd-hljs-comment-font-s: italic;--qd-hljs-deletion-color-bg: #d6d6d6;--qd-hljs-deletion-color: inherit;--qd-hljs-doctag-text-dec: underline;--qd-hljs-emphasis-font-s: italic;--qd-hljs-formula-color: #000;--qd-hljs-keyword-color: #0033b3;--qd-hljs-link-color: #006dcc;--qd-hljs-literal-color: #0033b3;--qd-hljs-meta-color: #9e880d;--qd-hljs-name-color: #0033b3;--qd-hljs-number-color: #1750eb;--qd-hljs-quote-color: #8c8c8c;--qd-hljs-quote-font-s: italic;--qd-hljs-regexp-color: #264eff;--qd-hljs-section-color: #0033b3;--qd-hljs-selector-class-color: #0033b3;--qd-hljs-selector-id-color: #0033b3;--qd-hljs-selector-tag-color: #0033b3;--qd-hljs-string-color: #067d17;--qd-hljs-strong-font-w: bold;--qd-hljs-subst-color: #000;--qd-hljs-symbol-color: #0033b3;--qd-hljs-symbol-font-s: italic;--qd-hljs-template-variable-color: #248f8f;--qd-hljs-title-color: #000;--qd-hljs-type-color: #0033b3;--qd-hljs-variable-color: inherit}@media (min-width: 2540px){:root{--scale-factor: 1.5}.bodyQodanaBlocks{--ring-unit: calc(8px * var(--scale-factor));--ring-font-size-smaller: calc(12px * var(--scale-factor));--ring-font-size: calc(14px * var(--scale-factor));--ring-font-size-larger: calc(16px * var(--scale-factor));--ring-line-height-taller: calc(24px * var(--scale-factor));--ring-line-height: calc(20px * var(--scale-factor));--ring-line-height-lower: calc(18px * var(--scale-factor));--ring-line-height-lowest: calc(16px * var(--scale-factor));--ring-border-radius: calc(4px * var(--scale-factor));--qd-header-height: calc(54px * var(--scale-factor));--qd-summary-tabs-padding: calc(12px * var(--scale-factor)) calc(16px * var(--scale-factor))}.bodyQodanaBlocks h1,.bodyQodanaBlocks:is(h1){font-size:calc(24px * var(--scale-factor));line-height:calc(28px * var(--scale-factor))}.bodyQodanaBlocks h2,.bodyQodanaBlocks:is(h2){font-size:calc(20px * var(--scale-factor));line-height:calc(24px * var(--scale-factor))}.bodyQodanaBlocks h3,.bodyQodanaBlocks:is(h3){font-size:calc(16px * var(--scale-factor));line-height:calc(22px * var(--scale-factor))}.bodyQodanaBlocks h4,.bodyQodanaBlocks:is(h4){font-size:calc(12px * var(--scale-factor));line-height:calc(18px * var(--scale-factor))}.scalableIcon svg[width="10"]{vertical-align:-2px;width:calc(10px * var(--scale-factor))!important;height:calc(10px * var(--scale-factor))!important}.scalableIcon svg[width="12"]{vertical-align:-2px;width:calc(12px * var(--scale-factor))!important;height:calc(12px * var(--scale-factor))!important}.scalableIcon svg[width="13"]{vertical-align:-2px;width:calc(13px * var(--scale-factor))!important;height:calc(13px * var(--scale-factor))!important}.scalableIcon svg[width="14"]{vertical-align:-4px;width:calc(14px * var(--scale-factor))!important;height:calc(14px * var(--scale-factor))!important}.scalableIcon svg[width="16"]{vertical-align:-6px;width:calc(16px * var(--scale-factor))!important;height:calc(16px * var(--scale-factor))!important}.scalableIcon svg[width="18"]{vertical-align:-6px;width:calc(18px * var(--scale-factor))!important;height:calc(18px * var(--scale-factor))!important}.scalableIcon svg[width="20"]{vertical-align:-4px;width:calc(20px * var(--scale-factor))!important;height:calc(20px * var(--scale-factor))!important}.scalableIcon svg[width="28"]{width:calc(28px * var(--scale-factor))!important;height:calc(28px * var(--scale-factor))!important}.scalableIcon svg[width="32"]{width:calc(32px * var(--scale-factor))!important;height:calc(32px * var(--scale-factor))!important}.scalableIcon svg[width="48"]{width:calc(48px * var(--scale-factor))!important;height:calc(48px * var(--scale-factor))!important}.scalableIcon svg[width="72"]{width:calc(72px * var(--scale-factor))!important;height:calc(72px * var(--scale-factor))!important}.scalableSunburst>*{scale:var(--scale-factor);transform-origin:top left}.scalableCheckbox.scalableCheckbox{width:calc(14px * var(--scale-factor));height:calc(14px * var(--scale-factor))}.scalableCheckbox.scalableCheckbox span{scale:var(--scale-factor);transform-origin:top left;left:1px;top:1px}.scalableTagWrapper button[data-test=ring-tag],.scalableTagWithCrossWrapper button[data-test=ring-tag]{font-size:var(--ring-font-size-smaller);height:calc(20px * var(--scale-factor))}.scalableTagWrapper button[data-test=ring-tag-remove],.scalableTagWithCrossWrapper button[data-test=ring-tag-remove]{top:calc(4px * var(--scale-factor));right:calc(1px * var(--scale-factor))}.scalableTagWrapper button[data-test=ring-tag-remove] svg,.scalableTagWithCrossWrapper button[data-test=ring-tag-remove] svg{width:calc(12px * var(--scale-factor));height:calc(12px * var(--scale-factor))}.scalableTagWithCrossWrapper button[data-test=ring-tag]{padding-right:calc(20px * var(--scale-factor))}.scalableCloseDialogButton [data-test=ring-dialog-close-button]{scale:var(--scale-factor);transform-origin:center}.scalableRadioButton input[type=radio]+span:after{left:5px}}.bodyQodanaBlocks_dark{--qd-color-azure: #283643;--qd-color-rose: #3f2d32;--qd-color-cream: #3e3b2a;--qd-color-palegreen: #2f3a2c;--qd-color-palegrey-dark: #36383e;--qd-color-1-layer-rgb: 36, 39, 43;--qd-color-1-layer: rgb(var(--qd-color-1-layer-rgb));--qd-color-2-layer: #2a2d32;--qd-color-3-layer: #303337;--qd-color-dt-light-grey40: rgba(95, 95, 95, .4);--qd-color-dt-sea-blue: #70b1e6;--qd-color-dt-darkest-blue: #529fff;--qd-color-main-bg-rgb: var(--qd-color-1-layer-rgb);--qd-color-main-bg: rgb(var(--qd-color-main-bg-rgb));--qd-color-text-1: var(--qd-color-lighter-grey);--qd-color-text-2: var(--qd-color-grey);--qd-color-text-3: var(--qd-color-light-grey);--qd-color-text-4: var(--qd-color-light-grey);--qd-color-text-5: var(--qd-color-light-grey);--qd-color-text-6: var(--qd-color-light-grey);--qd-color-text-7: var(--qd-color-light-grey-ring);--qd-color-dropdown-bg: var(--qd-color-2-layer);--qd-color-skeleton-1: #2f3238;--qd-color-skeleton-2: #3b3c3f;--qd-color-hover-checks-item: var(--qd-color-3-layer);--qd-color-summary-tabs-border: var(--qd-color-dt-light-grey40);--qd-color-summary-tabs-bg-active: var(--qd-color-main-bg);--qd-color-summary-tabs-main-numbers: var(--qd-color-light-grey);--qd-color-summary-tabs-main-numbers-active: var(--qd-color-lighter-grey);--qd-color-summary-tabs-text: var(--qd-color-light-grey);--qd-color-summary-tabs-text-active: var(--qd-color-lighter-grey);--qd-color-summary-tabs-text-disabled: var(--qd-color-grey);--qd-color-summary-tabs-positive: var(--qd-color-lawngreen-80);--qd-color-summary-tabs-positive-active: var(--qd-color-lawngreen-100);--qd-color-summary-tabs-failed: var(--qd-color-yellow-80);--qd-color-summary-tabs-failed-active: var(--qd-color-yellow-100);--qd-color-select-button-disabled-text: var(--qd-color-light-grey);--qd-color-select-button-border: var(--qd-color-dt-light-grey40);--qd-color-separator: var(--qd-color-2-layer);--qd-color-project-audit-header-line: var(--qd-color-dt-light-grey40);--qd-color-input-bg: var(--qd-color-main-bg);--qd-color-input-border: var(--ring-borders-color);--qd-color-input-border-hover: var(--ring-border-hover-color);--qd-color-input-disabled-bg: var(--ring-disabled-background-color);--qd-color-input-disabled-text: var(--qd-color-grey);--qd-color-input-disabled-border: var(--ring-border-disabled-color);--qd-color-input-error-border: var(--qd-color-red-100);--qd-color-input-placeholder: var(--qd-color-light-grey);--qd-color-input-search-icon: var(--ring-icon-color);--qd-color-sourcetabs-bg: var(--qd-color-3-layer);--qd-color-code-snippet-border: var(--qd-color-dt-light-grey40);--qd-color-border: var(--qd-color-dt-light-grey40);--qd-color-danger-entity: var(--qd-color-red-100);--qd-color-toggle-handle-on: var(--qd-color-white);--qd-color-toggle-handle-off: var(--qd-color-light-grey);--qd-color-toggle-handle-disabled: var(--qd-color-dt-light-grey40);--qd-color-toggle-bg-on: var(--qd-color-blue);--qd-color-toggle-bg-off: var(--qd-color-dt-light-grey40);--qd-color-toggle-bg-disabled: var(--qd-color-lighter-grey);--qd-color-toggle-label-disabled: var(--qd-color-light-grey);--qd-color-blurred-bg: rgba(95, 95, 95, .9);--qd-color-popup-gradient-start-bg: rgba(34, 36, 37, .24);--qd-color-popup-gradient-end-bg: var(--qd-color-2-layer);--qd-color-tooltip-bg: var(--qd-color-3-layer);--qd-color-circle-message: var(--qd-color-grey);--qd-color-empty-rect-btn-border: var(--qd-color-light-grey);--qd-color-disabled-primary-rect-btn-bg: var(--qd-color-light-grey);--qd-color-disabled-primary-rect-btn: var(--qd-color-grey);--qd-color-check-sign-color: var(--qd-color-light-grey);--qd-color-tags-bg: var(--qd-color-skyblue-6);--qd-color-tags-bg-hover: var(--qd-color-blue-20);--qd-color-tags-bg-disabled: var(--qd-color-dt-light-grey40);--qd-color-tags-text: var(--qd-color-dt-sea-blue);--qd-color-tags-text-hover: var(--qd-color-dt-darkest-blue);--qd-color-tags-text-disabled: var(--qd-color-grey);--qd-color-tags-action-button: var(--qd-color-grey);--qd-color-summary-hover: var(--qd-color-2-layer);--qd-color-checkbox-checkmark: var(--qd-color-blue);--qd-color-checkbox-bg-checked: transparent;--qd-color-checkbox-bg: var(--qd-color-3-layer);--qd-color-checkbox-border-checked: var(--qd-color-grey);--qd-color-checkbox-border: var(--qd-color-grey);--qd-color-tree-select-chevron: var(--qd-color-grey);--qd-color-select-item-hover: var(--qd-color-azure);--qd-color-select-search-icon: var(--qd-color-light-grey);--qd-color-select-search-text: var(--qd-color-grey);--qd-color-select-icon: var(--qd-color-grey);--qd-color-onboarding-tip-bg: var(--qd-color-blue);--qd-color-onboarding-tip-content: var(--qd-color-white);--qd-color-onboarding-tip-hide: var(--qd-color-darkest-blue);--qd-color-onboarding-tip-hide-hover: var(--qd-color-dark-sea-blue);--qd-color-onboarding-tip-next: var(--qd-color-dark-sea-blue);--qd-color-onboarding-tip-next-hover: var(--qd-color-black);--qd-color-project-setup-progressbar-bg: var(--qd-color-grey);--qd-color-radio-button-bg: var(--qd-color-1-layer-dark);--qd-color-user-evaluation-bg: var(--qd-color-dt-light-grey40);--qd-color-user-evaluation-bg-hover: var(--qd-color-3-layer);--qd-color-feedback-button-bg: var(--qd-color-blue-20);--qd-color-feedback-button-bg-hover: var(--qd-color-blue);--qd-color-feedback-button-icon: var(--qd-color-blue);--qd-color-feedback-button-icon-hover: var(--qd-color-white);--qd-color-green-label-text: var(--qd-color-lawngreen-100);--qd-color-blue-label-bg: var(--qd-color-skyblue-12);--qd-color-blue-label-text: var(--qd-color-dt-darkest-blue);--qd-color-button-bg: var(--qd-color-3-layer);--qd-color-button-border: var(--qd-color-dt-light-grey40);--qd-color-button-disabled-text: var(--qd-color-grey);--qd-color-button-disabled-border: var(--qd-color-light-grey-5);--qd-color-button-clear-pressed: var(--qd-color-dt-darkest-blue);--qd-color-button-icon-disabled: var(--qd-color-grey);--qd-color-button-danger-hover: var(--qd-color-red-80);--qd-icon-hover-color: var(--qd-color-dt-darkest-blue);--qd-icon-active-color: var(--qd-color-dt-darkest-blue);--qd-editor-icon-hover-color: var(--qd-color-dark-blue);--qd-editor-icon-active-color: var(--qd-color-dt-darkest-blue);--qd-hljs-color: #a9b7c6;--qd-hljs-addition-color-bg: #6a8759;--qd-hljs-attribute-color: #6a8759;--qd-hljs-bullet-color: inherit;--qd-hljs-comment-font-s: normal;--qd-hljs-deletion-color-bg: var(--qd-color-2-layer);--qd-hljs-deletion-color: #cc7832;--qd-hljs-doctag-text-dec: none solid currentcolor;--qd-hljs-formula-color: inherit;--qd-hljs-keyword-color: #cc7832;--qd-hljs-link-color: #629755;--qd-hljs-literal-color: #6897bb;--qd-hljs-meta-color: #bbb529;--qd-hljs-name-color: #e8bf6a;--qd-hljs-number-color: #6897bb;--qd-hljs-quote-font-s: inherit;--qd-hljs-regexp-color: inherit;--qd-hljs-section-color: #ffc66d;--qd-hljs-selector-class-color: #e8bf6a;--qd-hljs-selector-id-color: #e8bf6a;--qd-hljs-selector-tag-color: #cc7832;--qd-hljs-string-color: #6a8759;--qd-hljs-subst-color: var(--qd-color-text-1);--qd-hljs-symbol-color: #6897bb;--qd-hljs-symbol-font-s: inherit;--qd-hljs-template-variable-color: #629755;--qd-hljs-title-color: #ffc66d;--qd-hljs-type-color: #ffc66d;--qd-hljs-variable-color: #629755;--qd-color-code-inline-bg: var(--qd-color-dt-light-grey40);--qd-color-code-inline-border: var(--qd-color-grey);--qd-color-code-block-bg: var(--qd-color-light-grey-5);--qd-color-code-block-border: var(--qd-color-grey);--qd-code-deletion-row-bg: var(--qd-color-rose);--qd-code-addition-row-bg: var(--qd-color-palegreen)}.hljs.hljs.hljs{display:block;overflow-x:auto;color:var(--qd-hljs-color)!important;transition:color .2s,background .2s}.hljs-addition.hljs-addition.hljs-addition{font-weight:400;background:var(--qd-hljs-addition-color-bg);transition:color .2s,background .2s}.hljs-attribute.hljs-attribute.hljs-attribute{font-weight:400;color:var(--qd-hljs-attribute-color);transition:color .2s,background .2s}.hljs-bullet.hljs-bullet.hljs-bullet{font-weight:400;color:var(--qd-hljs-bullet-color);transition:color .2s,background .2s}.hljs-comment.hljs-comment.hljs-comment{font-weight:400;color:var(--qd-hljs-comment-color);font-style:var(--qd-hljs-comment-font-s);transition:color .2s,background .2s}.hljs-deletion.hljs-deletion.hljs-deletion{font-weight:400;background:var(--qd-hljs-deletion-color-bg);color:var(--qd-hljs-deletion-color);transition:color .2s,background .2s}.hljs-doctag.hljs-doctag.hljs-doctag{font-weight:400;text-decoration:var(--qd-hljs-doctag-text-dec);transition:color .2s,background .2s}.hljs-emphasis.hljs-emphasis.hljs-emphasis{font-weight:400;font-style:var(--qd-hljs-emphasis-font-s);transition:color .2s,background .2s}.hljs-formula.hljs-formula.hljs-formula{font-weight:400;color:var(--qd-hljs-formula-color);transition:color .2s,background .2s}.hljs-keyword.hljs-keyword.hljs-keyword{font-weight:400;color:var(--qd-hljs-keyword-color);transition:color .2s,background .2s}.hljs-link.hljs-link.hljs-link{font-weight:400;color:var(--qd-hljs-link-color);transition:color .2s,background .2s}.hljs-literal.hljs-literal.hljs-literal{font-weight:400;color:var(--qd-hljs-literal-color);transition:color .2s,background .2s}.hljs-meta.hljs-meta.hljs-meta{font-weight:400;color:var(--qd-hljs-meta-color);transition:color .2s,background .2s}.hljs-name.hljs-name.hljs-name{font-weight:400;color:var(--qd-hljs-name-color);transition:color .2s,background .2s}.hljs-number.hljs-number.hljs-number{font-weight:400;color:var(--qd-hljs-number-color);transition:color .2s,background .2s}.hljs-quote.hljs-quote.hljs-quote{font-weight:400;color:var(--qd-hljs-quote-color);font-style:var(--qd-hljs-quote-font-s);transition:color .2s,background .2s}.hljs-regexp.hljs-regexp.hljs-regexp{font-weight:400;color:var(--qd-hljs-regexp-color);transition:color .2s,background .2s}.hljs-section.hljs-section.hljs-section{font-weight:400;color:var(--qd-hljs-section-color);transition:color .2s,background .2s}.hljs-selector-class.hljs-selector-class.hljs-selector-class{font-weight:400;color:var(--qd-hljs-selector-class-color);transition:color .2s,background .2s}.hljs-selector-id.hljs-selector-id.hljs-selector-id{font-weight:400;color:var(--qd-hljs-selector-id-color);transition:color .2s,background .2s}.hljs-selector-tag.hljs-selector-tag.hljs-selector-tag{font-weight:400;color:var(--qd-hljs-selector-tag-color);transition:color .2s,background .2s}.hljs-string.hljs-string.hljs-string{font-weight:400;color:var(--qd-hljs-string-color);transition:color .2s,background .2s}.hljs-strong.hljs-strong.hljs-strong{font-weight:var(--qd-hljs-strong-font-w);-webkit-font-smoothing:antialiased;transition:color .2s,background .2s}.hljs-subst.hljs-subst.hljs-subst{font-weight:400;color:var(--qd-hljs-subst-color);transition:color .2s,background .2s}.hljs-symbol.hljs-symbol.hljs-symbol{font-weight:400;color:var(--qd-hljs-symbol-color);font-style:var(--qd-hljs-symbol-font-s);transition:color .2s,background .2s}.hljs-tag.hljs-tag.hljs-tag{font-weight:400;transition:color .2s,background .2s}.hljs-template-variable.hljs-template-variable.hljs-template-variable{font-weight:400;color:var(--qd-hljs-template-variable-color);transition:color .2s,background .2s}.hljs-title.hljs-title.hljs-title{font-weight:400;color:var(--qd-hljs-title-color);transition:color .2s,background .2s}.hljs-type.hljs-type.hljs-type{font-weight:400;color:var(--qd-hljs-type-color);transition:color .2s,background .2s}.hljs-variable.hljs-variable.hljs-variable{font-weight:400;color:var(--qd-hljs-variable-color);transition:color .2s,background .2s}._heading1_8rcd2_1{font-size:calc(var(--ring-unit) * 2.5);line-height:var(--ring-line-height-taller)}._heading1Fixed_8rcd2_6{font-size:20px;line-height:24px}._heading1_8rcd2_1,._heading1Fixed_8rcd2_6{font-family:var(--ring-font-family);font-weight:600;color:var(--qd-color-text-1);margin:0;transition:color var(--qd-transition-delay)}._heading2_8rcd2_20{font-family:var(--ring-font-family);font-size:var(--ring-font-size-larger);font-weight:600;line-height:calc(var(--ring-unit) * 2.75);color:var(--qd-color-text-1);margin:0;transition:color var(--qd-transition-delay)}._heading3_8rcd2_30{font-family:var(--ring-font-family);font-size:var(--ring-font-size-smaller)!important;font-weight:400;line-height:var(--ring-line-height-lowest);text-transform:uppercase;color:var(--qd-color-text-3);letter-spacing:calc(var(--ring-unit) / 4);margin:0;transition:color var(--qd-transition-delay)}._accentText_8rcd2_42{font-size:calc(var(--ring-unit) * 3);line-height:calc(var(--ring-unit) * 3.5)}._accentTextFixed_8rcd2_47{font-size:24px;line-height:28px}._accentText_8rcd2_42,._accentTextFixed_8rcd2_47{font-family:var(--ring-font-family);font-weight:600;transition:color var(--qd-transition-delay)}._smallText_8rcd2_59{font-family:var(--ring-font-family);font-size:var(--ring-font-size-smaller);font-weight:400;line-height:var(--ring-line-height-lowest)}._smallText_semibold_8rcd2_66,._semibold_8rcd2_71._semibold_8rcd2_71{font-weight:600}._smallText_upper_8rcd2_75{font-size:calc(var(--ring-unit) * 1.5);text-transform:uppercase}._subtitle_8rcd2_80{font-family:var(--ring-font-family);font-size:var(--ring-font-size);font-weight:600;line-height:var(--ring-line-height)}._text_8rcd2_87{font-family:var(--ring-font-family);font-size:var(--ring-font-size);font-weight:400;line-height:var(--ring-line-height)}._text_italic_8rcd2_94{font-style:italic}._monoText_8rcd2_98{font-family:var(--qd-code-font-family-regular);font-size:var(--ring-font-size-smaller);font-style:normal;font-weight:400;line-height:var(--ring-line-height-lower);letter-spacing:0}._monoText_bold_8rcd2_107{font-family:JetBrains Mono Bold;font-weight:700}._secondaryText_8rcd2_112{color:var(--ring-secondary-color);line-height:var(--ring-line-height)}._banner_1jeba_1{display:flex;flex-direction:row;padding:10px 12px 10px 32px;position:relative}._text_1jeba_10{display:flex;flex-grow:1;align-items:center;justify-content:center;text-align:center;padding-right:32px}._btnContainer_1jeba_22{display:flex;flex-direction:row;column-gap:8px;align-items:center;justify-content:center}._closeIcon_1jeba_31._closeIcon_1jeba_31{display:flex;line-height:10px}._actionButton_1jeba_36{white-space:nowrap}._closeButton_1jeba_40 ._criticalCloseButton_1jeba_40._criticalCloseButton_1jeba_40{color:var(--ring-icon-error-color)}._closeButton_1jeba_40:hover ._criticalCloseButton_1jeba_40._criticalCloseButton_1jeba_40{color:var(--ring-error-color)}._closeButton_1jeba_40 ._moderateCloseButton_1jeba_48._moderateCloseButton_1jeba_48{color:var(--ring-icon-warning-color)}._closeButton_1jeba_40:hover ._moderateCloseButton_1jeba_48._moderateCloseButton_1jeba_48{color:var(--ring-warning-color)}._closeButton_1jeba_40 ._infoCloseButton_1jeba_56._infoCloseButton_1jeba_56{color:var(--ring-main-color)}._closeButton_1jeba_40:hover ._infoCloseButton_1jeba_56._infoCloseButton_1jeba_56{color:var(--ring-link-color)}._critical_1jeba_40{background-color:var(--ring-removed-background-color)}._moderate_1jeba_48{background-color:var(--ring-warning-background-color)}._info_1jeba_56{background-color:var(--ring-selected-background-color)}@media only screen and (max-width: 640px){._banner_1jeba_1{flex-direction:column}._withAction_1jeba_81{margin-top:10px}._text_1jeba_10{padding-right:20px}._closeButton_1jeba_40._closeButton_1jeba_40{position:absolute;top:10px;right:12px}}:root{--qd-button-size-small: 24px;--qd-button-size-large: 28px;--qd-button-vertical-padding: 2px;--qd-button-horizontal-padding: 12px}._qdButton_x4lpu_8{padding:calc(2 * var(--qd-button-vertical-padding)) var(--qd-button-horizontal-padding);box-sizing:border-box;display:inline-block;font-family:var(--ring-font-family);color:var(--qd-color-text-1);margin:0;border:1px solid var(--qd-color-button-border);border-radius:var(--qd-border-radius);background:var(--qd-color-main-bg);outline:transparent;transition:background-color .2s,border-color .2s,color .2s,outline-color .2s!important;cursor:pointer}._qdButton_small_x4lpu_25{height:var(--qd-button-size-small);padding:var(--qd-button-vertical-padding) var(--qd-button-horizontal-padding);line-height:var(--ring-line-height-lowest);font-size:var(--ring-font-size-smaller)}._qdButton_large_x4lpu_32{height:var(--qd-button-size-large);padding:var(--qd-button-vertical-padding) var(--qd-button-horizontal-padding);line-height:var(--ring-line-height);font-size:var(--ring-font-size)}._qdButton_x4lpu_8:hover,._qdButton_x4lpu_8:focus{border:1px solid var(--qd-color-button-border-hover)}._qdButton_x4lpu_8:active{background-color:var(--qd-color-button-bg)}._qdButton_x4lpu_8:focus-visible{outline:var(--qd-outline)}._primary_x4lpu_52{color:var(--qd-color-white);border-color:var(--qd-color-blue);background-color:var(--qd-color-blue)}._primary_x4lpu_52:hover,._primary_x4lpu_52:focus{border-color:transparent;background-color:var(--qd-color-dark-blue)}._primary_x4lpu_52:active{border-color:var(--qd-color-button-pressed-border)}._qdButton_x4lpu_8[disabled],._primary_x4lpu_52[disabled]{color:var(--qd-color-button-disabled-text);border-color:var(--qd-color-button-disabled-border);background-color:var(--qd-color-button-disabled-bg);cursor:default}._clear_x4lpu_76{color:var(--qd-color-button-clear);border-color:transparent!important;background:none}._clear_x4lpu_76:hover{color:var(--qd-color-button-clear-hover)}._clear_x4lpu_76:active,._clear_x4lpu_76:focus{color:var(--qd-color-button-clear-pressed);background:none}._clear_x4lpu_76[disabled]{color:var(--qd-color-button-clear-disabled)}._danger_x4lpu_96{border:1px solid var(--qd-color-danger-entity);color:var(--qd-color-danger-entity)}._danger_x4lpu_96:hover{border-color:var(--qd-color-button-danger-hover);color:var(--qd-color-button-danger-hover)}._danger_x4lpu_96:active{border-color:var(--qd-color-danger-entity);color:var(--qd-color-danger-entity);background-color:var(--qd-color-rose)}._icon_x4lpu_112{margin-right:calc(var(--ring-unit) * .75)}._qdButton_x4lpu_8 ._icon_x4lpu_112 svg path{fill:var(--qd-color-light-grey);transition:fill .2s}._primary_x4lpu_52 ._icon_x4lpu_112 svg path{fill:var(--qd-color-white)}._qdButton_x4lpu_8[disabled] ._icon_x4lpu_112 svg path{fill:var(--qd-color-button-icon-disabled)}._qdButton_x4lpu_8[disabled]{pointer-events:none}@media (min-width: 2540px){:root{--qd-button-size-small: calc(24px * var(--scale-factor));--qd-button-size-large: calc(28px * var(--scale-factor));--qd-button-vertical-padding: calc(2px * var(--scale-factor));--qd-button-horizontal-padding: calc(12px * var(--scale-factor))}}._button_4lixn_1{--ring-button-text-color: var(--ring-secondary-color)}._container_sdj86_1{position:relative}._inlineContainer_sdj86_5{display:inline-block}._buttonGroups_sdj86_9{display:flex;gap:8px;position:absolute;top:var(--ring-unit);right:calc(var(--ring-unit) * 1.5)}._code_sdj86_18._code_sdj86_18{margin:0}._noScroll_sdj86_22{white-space:pre-wrap}._code_sdj86_18 code{word-break:break-all}._code_sdj86_18._code_sdj86_18 code{padding-right:calc(var(--ring-unit) * 9);font-size:var(--ring-font-size);line-height:var(--ring-line-height);font-family:var(--qd-code-font-family-regular)}._inlineCode_sdj86_37._inlineCode_sdj86_37 code{padding:0 calc(var(--ring-unit) / 2);line-height:var(--ring-line-height)}._popupItem_17t1m_1{display:flex;align-items:center;background:none;color:inherit;border:none;cursor:pointer;outline:inherit;white-space:nowrap;width:100%;text-align:left;font-size:var(--ring-font-size);line-height:var(--ring-line-height);padding:var(--ring-unit) calc(var(--ring-unit) * 2)}._popupItem_17t1m_1:hover,._popupItem_17t1m_1:focus{background-color:var(--qd-color-select-item-hover);text-decoration:none}._popupItem_17t1m_1:disabled{color:var(--qd-color-button-clear-disabled);background:none;cursor:default}._errorDescriptionContainer_17t1m_30{display:flex;align-items:center;margin-left:var(--ring-unit);white-space:nowrap}._errorDescription_17t1m_30{color:var(--ring-warning-color)}._errorDescriptionIcon_17t1m_41{margin-right:calc(var(--ring-unit) / 2);line-height:calc(var(--ring-unit) / 2);color:var(--ring-icon-warning-color)}._footer_mhe4a_1{height:100px;box-sizing:border-box;display:flex;justify-content:space-between;align-items:flex-end;padding-bottom:30px;color:var(--qd-color-grey)}._rightBlock_mhe4a_13{display:flex}._links_mhe4a_17{list-style:none;padding:0;margin:0;display:flex}._links_mhe4a_17 li{margin-left:30px}._header_xwj99_1{display:flex;align-items:center;justify-content:space-between;height:var(--qd-header-height);font-size:var(--ring-font-size);border-bottom:1px solid var(--qd-color-border);transition:border-bottom-color .2s}._menuItems_xwj99_13{flex:1;padding:0 calc(var(--ring-unit) * 5)}._menuItem_xwj99_13{display:inline-block;background:none;border:none;cursor:pointer;color:var(--qd-color-text-2);height:100%}._rootMenuItem_xwj99_27:first-child{margin-left:0}._rootMenuItem_xwj99_27{margin:0 0 0 calc(var(--ring-unit) * 4)}._menuItem_xwj99_13:hover{color:var(--qd-color-text-1)}._controls_xwj99_39{display:flex;align-items:center}._controls_xwj99_39>span{align-self:center;margin-left:var(--ring-unit)}._submenuPopup_1mpdc_1._submenuPopup_1mpdc_1{padding:6px 0 14px}._submenuItem_1mpdc_5{background:none;border:none;padding:6px 20px;line-height:32px;cursor:pointer;text-decoration:none;color:var(--qd-color-text-1);display:block}._submenuItemList_1mpdc_16>li:hover{cursor:pointer;background:var(--qd-color-azure)}._container_1mpdc_21{display:inline-block}._submenuItemList_1mpdc_16,._submenuItemList_1mpdc_16>li{margin:0;padding:0;text-indent:0;list-style-type:none}:root{--qd-theme-toggle-handle-border: 1px solid var(--qd-color-light-grey-5);--qd-color-theme-toggle-bg: var(--qd-color-palegrey);--qd-color-theme-toggle-border: var(--qd-color-light-grey-5);--qd-color-theme-toggle-handle-bg: var(--qd-color-white);--qd-color-theme-toggle-sun: var(--qd-color-dark-blue);--qd-color-theme-toggle-crescent: var(--qd-color-light-grey)}.bodyQodanaBlocks_dark{--qd-theme-toggle-handle-border: 2px solid transparent;--qd-color-theme-toggle-bg: var(--qd-color-1-layer);--qd-color-theme-toggle-border: var(--qd-color-dt-light-grey40);--qd-color-theme-toggle-handle-bg: var(--qd-color-dt-light-grey40);--qd-color-theme-toggle-sun: var(--qd-color-lighter-grey);--qd-color-theme-toggle-crescent: var(--qd-color-white)}._checkbox_mxlab_21,._helper_mxlab_22{outline:none}._checkbox_mxlab_21:focus ._helper_mxlab_22{outline:var(--qd-outline)}._helper_mxlab_22{position:relative;display:inline-block;cursor:pointer;width:52px;height:28px;z-index:1;border-radius:28px;background-color:var(--qd-color-theme-toggle-bg);border:1px solid var(--qd-color-theme-toggle-border);transition:color .2s,background-color .2s,border .2s}._switch_mxlab_44{position:absolute;z-index:1;width:28px;height:28px;margin:-1px;border:var(--qd-theme-toggle-handle-border);border-radius:24px;background:var(--qd-color-theme-toggle-handle-bg);transition:color .2s,background-color .2s,transform .2s}.bodyQodanaBlocks_dark ._switch_mxlab_44{box-sizing:border-box;width:26px;height:26px;margin:1px}._switch_mxlab_44._on_mxlab_64{transform:translate(24px)}._iconContainer_mxlab_68{display:flex;justify-content:space-between;padding:7px}._sunIcon_mxlab_74,._crescentIcon_mxlab_75{z-index:2}._sunIcon_mxlab_74 path{fill:var(--qd-color-theme-toggle-sun);transition:fill .2s}._crescentIcon_mxlab_75 path{fill:var(--qd-color-theme-toggle-crescent);transition:fill .2s}._mark_hv0yo_1{color:var(--qd-color-text-1);background-color:#4b9be633}input._qdInput_1umfc_1{display:block;line-height:var(--ring-line-height-lower);height:calc(var(--ring-unit) * 3.5);width:100%;font-family:var(--ring-font-family);color:var(--qd-color-text-1);box-sizing:border-box;border:1px solid var(--qd-color-input-border);border-radius:var(--qd-border-radius);padding:calc(var(--ring-unit) / 2) var(--ring-unit);background-color:var(--qd-color-input-bg);transition:color .2s,background-color .2s,border .2s;outline:none}.bodyQodanaBlocks_dark input._qdInput_1umfc_1{border-color:var(--qd-color-dt-light-grey40)}input._qdInput_1umfc_1:hover{border-color:var(--qd-color-input-border-hover)}input._qdInput_1umfc_1:read-only{background-color:var(--qd-color-light-grey-5)}.bodyQodanaBlocks_dark input._qdInput_1umfc_1:read-only{color:var(--qd-color-grey)}input._qdInput_1umfc_1:focus{border:1px solid var(--qd-color-input-border-active)}input._qdInput_1umfc_1::placeholder{color:var(--qd-color-input-placeholder);-webkit-text-fill-color:initial;transition:color .2s,-webkit-text-fill-color .2s,border .2s}input._qdInput_1umfc_1:disabled{border:1px solid var(--qd-color-input-disabled-border);background-color:var(--qd-color-input-disabled-bg);color:var(--qd-color-input-disabled-text)}input._qdInput_1umfc_1:disabled::placeholder{color:var(--qd-color-input-disabled-text)}input._qdInput_1umfc_1._invalid_1umfc_56{border-color:var(--qd-color-input-error-border)}._error_1umfc_60{color:var(--qd-color-input-error-border);height:calc(var(--ring-unit) * 2);font-size:var(--ring-font-size-smaller);line-height:var(--ring-line-height-lowest)}._horizontalPadding_ayt6h_1{padding-left:calc(var(--ring-unit) * 4);padding-right:calc(var(--ring-unit) * 4)}@media only screen and (min-width: 1200px){._horizontalPadding_ayt6h_1{padding-left:calc(var(--ring-unit) * 7.5);padding-right:calc(var(--ring-unit) * 7.5)}}@media only screen and (min-width: 1400px){._horizontalPadding_ayt6h_1{padding-left:calc(var(--ring-unit) * 15);padding-right:calc(var(--ring-unit) * 15)}}._gridCards_ayt6h_20{display:grid;column-gap:calc(var(--ring-unit) * 2.5);row-gap:calc(var(--ring-unit) * 2.5);grid-template-columns:repeat(auto-fill,minmax(var(--qd-card-min-width),1fr))}@media only screen and (max-width: 48em){._gridCards_ayt6h_20{grid-template-columns:none}}._title_mzxvi_1{display:flex;justify-content:space-between;line-height:24px}._title_mzxvi_1._title_mzxvi_1 h2{padding:0 4px}._titleText_mzxvi_11{color:var(--qd-color-text-1)}._closeButton_mzxvi_15._closeButton_mzxvi_15{height:17px;width:17px;line-height:17px}._container_h5r5p_1{display:block;color:var(--qd-color-text-1);padding:0;background-color:var(--qd-color-blurred-bg);position:fixed;z-index:var(--ring-overlay-z-index);top:0;right:0;bottom:0;left:0;cursor:default}._popup_h5r5p_15._popup_h5r5p_15{right:0;left:0;margin-left:auto;margin-right:auto;margin-top:calc(var(--ring-unit) * 10);padding:calc(var(--ring-unit) * 4) calc(var(--ring-unit) * 3.5) calc(var(--ring-unit) * 3.5) calc(var(--ring-unit) * 3.5)}._focusLock_h5r5p_26{height:100%;display:flex;flex-direction:column}._popupContent_h5r5p_32{flex-grow:1;padding:0 calc(var(--ring-unit) / 2) calc(var(--ring-unit) / 2) calc(var(--ring-unit) / 2);overflow:auto}._opened_h5r5p_38{animation:_show_h5r5p_1 .2s 1}._closed_h5r5p_42{opacity:0;transition:.2s}@keyframes _show_h5r5p_1{0%{opacity:0}to{opacity:1}}._wrapper_1awvc_1{padding:var(--ring-unit) calc(var(--ring-unit) * 2) calc(var(--ring-unit) * 1.5) calc(var(--ring-unit) * 1.5);border-left:4px solid;border-radius:var(--qd-border-radius)}._inline_1awvc_8{padding:var(--ring-unit) calc(var(--ring-unit) * 2) var(--ring-unit) calc(var(--ring-unit) * 1.5)}._container_1awvc_12{position:relative}._critical_1awvc_16{border-color:var(--qd-color-red-100);background-color:var(--qd-color-red-6)}._moderate_1awvc_21{border-color:var(--qd-color-yellow-100);background-color:var(--qd-color-yellow-6)}._info_1awvc_26{border-color:var(--qd-color-skyblue-100);background-color:var(--qd-color-lavender-6)}._success_1awvc_31{border-color:var(--qd-color-lawngreen-100);background-color:var(--qd-color-lawngreen-6)}._header_1awvc_36{margin-bottom:calc(var(--ring-unit) / 2);font-weight:600}._inline_1awvc_8 ._header_1awvc_36,._header_1awvc_36._isCollapsed_1awvc_45{margin-bottom:0}._titleContainer_1awvc_49{display:flex;justify-content:space-between}._chevronIcon_1awvc_54{transform:rotate(180deg);display:block}._isCollapsed_1awvc_45 ._chevronIcon_1awvc_54{transform:rotate(0)}._actions_1awvc_63{margin-top:var(--ring-unit);display:flex;column-gap:var(--ring-unit)}._blockContainer_lqj4c_1{overflow-x:auto}._list_lqj4c_6{display:inline-flex;flex-direction:column;margin:0;padding:0;list-style:none;box-shadow:1px 0 0 0 var(--qd-color-empty-rect-btn-border) inset}._list_lqj4c_6._horizontal_lqj4c_16{flex-direction:row;box-shadow:0 -1px 0 0 var(--qd-color-empty-rect-btn-border) inset}._list_lqj4c_6._horizontal_lqj4c_16 li:not(:last-child){margin-right:calc(var(--ring-unit) * 2.5)}._button_lqj4c_25{margin:0;padding:var(--ring-unit);cursor:pointer;border:none;outline:none;background:transparent;color:var(--qd-color-text-6);transition:color .2s,border-left-color .2s}._content_lqj4c_37{white-space:nowrap;font-size:var(--ring-font-size);line-height:var(--ring-line-height)}._content_lqj4c_37:focus{outline:none}._button_lqj4c_25:focus{border-radius:var(--qd-border-radius);box-shadow:inset 0 0 0 1px var(--ring-border-hover-color),0 0 0 1px var(--ring-border-hover-color)}._button_lqj4c_25:focus:not(:focus-visible){box-shadow:unset;border-radius:unset}._button_lqj4c_25:focus-visible{border-radius:var(--qd-border-radius);box-shadow:inset 0 0 0 1px var(--ring-border-hover-color),0 0 0 1px var(--ring-border-hover-color)}._selected_lqj4c_72{display:inline-block;text-shadow:-.02ex 0 var(--qd-color-text-1),.02ex 0 var(--qd-color-text-1);padding:var(--ring-unit) var(--ring-unit) var(--ring-unit) calc(var(--ring-unit) / 2);pointer-events:none;border-left:2px solid var(--qd-color-text-1);color:var(--qd-color-text-1);font-weight:500}._button_lqj4c_25:before{display:block;content:attr(title);font-weight:700;height:0;overflow:hidden;visibility:hidden}._horizontal_lqj4c_16 ._button_lqj4c_25{height:calc(var(--ring-unit) * 4);box-sizing:border-box;padding:var(--ring-unit) calc(var(--ring-unit) / 2);border-left:unset;transition:border-color .2s}._horizontal_lqj4c_16 ._selected_lqj4c_72{border-bottom:3px solid var(--qd-color-text-1)}._single_lqj4c_103 ._button_lqj4c_25{padding-left:0;border-left:unset}._small_lqj4c_108 ._button_lqj4c_25{font-size:var(--ring-font-size-smaller);line-height:var(--ring-line-height-lowest);padding:calc(var(--ring-unit) / 2) calc(var(--ring-unit) / 2) calc(var(--ring-unit) / 2) calc(var(--ring-unit) * 1.5)}._small_lqj4c_108 ._selected_lqj4c_72{border-left:1px solid var(--qd-color-text-1);padding:calc(var(--ring-unit) / 2) calc(var(--ring-unit) / 2) calc(var(--ring-unit) / 2) calc(var(--ring-unit) * 1.5)}._count_lqj4c_121{font-size:var(--ring-font-size);font-style:italic;font-weight:400;transition:opacity .2s}._warning_lqj4c_128 ._count_lqj4c_121{color:var(--qd-color-orange-100)}._icon_lqj4c_132{color:var(--qd-color-orange-100);margin-left:calc(var(--ring-unit) / 4)}._container_pdtfq_1{display:flex;align-items:center;--qd-select-line-height: calc(var(--ring-unit) * 2.5)}._labelContainer_pdtfq_7{display:flex;align-items:center}._label_pdtfq_7._label_pdtfq_7{font-family:var(--ring-font-family);line-height:var(--qd-select-line-height);font-size:var(--ring-font-size);height:var(--qd-select-line-height);padding:0;color:var(--qd-color-text-1);transition:color .2s!important}._icon_pdtfq_23._icon_pdtfq_23:hover,._label_pdtfq_7._label_pdtfq_7._active_pdtfq_24,._label_pdtfq_7._label_pdtfq_7._active_pdtfq_24 ._chevronDown_pdtfq_25,._label_pdtfq_7._label_pdtfq_7:hover ._chevronDown_pdtfq_25,._label_pdtfq_7._label_pdtfq_7:hover{color:var(--qd-color-blue);transition:color .2s!important}._label_pdtfq_7._label_pdtfq_7[disabled],._label_pdtfq_7._disabled_pdtfq_33{color:var(--qd-color-light-grey)}._mainIcon_pdtfq_37{margin-right:calc(var(--ring-unit) / 2)}._mainIcon_pdtfq_37 path{fill:var(--qd-color-select-icon);transition:fill .2s!important}._mainIcon_pdtfq_37._disabled_pdtfq_33 path{fill:var(--qd-color-light-grey)}._label_pdtfq_7._active_pdtfq_24 ._mainIcon_pdtfq_37 path,._label_pdtfq_7:hover ._mainIcon_pdtfq_37 path{fill:var(--qd-color-blue)}._popup_pdtfq_55._popup_pdtfq_55{margin-top:calc(var(--ring-unit) / 2);min-width:calc(var(--ring-unit) * 18.75);max-width:calc(var(--ring-unit) * 43.75)}._searchWrapper_pdtfq_61{border-bottom:1px solid var(--qd-color-border);height:calc(var(--ring-unit) * 4.25)}._searchIcon_pdtfq_66{margin:0 calc(var(--ring-unit) * 1.25) 0 calc(var(--ring-unit) * 2);color:var(--qd-color-select-search-icon)}._searchWrapper_pdtfq_61 input{font-family:var(--ring-font-family);font-size:var(--ring-font-size);font-weight:400;line-height:calc(var(--ring-unit) * 4.25);color:var(--qd-color-text-1);background-color:initial;border:none;margin:0;padding:0;outline:none}._searchWrapper_pdtfq_61 input::placeholder{font-size:var(--ring-font-size);font-weight:400;color:var(--qd-color-select-search-text)}._empty_pdtfq_94{text-align:center;color:var(--qd-color-grey);line-height:calc(var(--ring-unit) * 4);margin:calc(var(--ring-unit) / 2) calc(var(--ring-unit) * 2) var(--ring-unit)}._listContainer_pdtfq_101{position:relative}._list_pdtfq_101{list-style:none;padding:0;margin:0;max-height:calc(var(--ring-unit) * 43.75);overflow-y:auto}._listItem_pdtfq_113{width:100%}._listItem_pdtfq_113:first-child{margin-top:calc(var(--ring-unit) / 2)}._listItem_pdtfq_113:last-child{margin-bottom:var(--ring-unit)}._listItem_pdtfq_113:hover._listItem_pdtfq_113:hover{background-color:var(--qd-color-select-item-hover)}._itemLabel_pdtfq_129{font-size:var(--ring-font-size);line-height:calc(var(--ring-unit) * 4);cursor:pointer;width:100%;box-sizing:border-box;padding:0 calc(var(--ring-unit) * 2);display:flex}._itemLabel_pdtfq_129._disabled_pdtfq_33{cursor:default}._itemLabel_pdtfq_129._disabled_pdtfq_33 ._itemName_pdtfq_144,._itemLabel_pdtfq_129._disabled_pdtfq_33 ._itemDesc_pdtfq_145{color:var(--qd-color-light-grey)}._itemCheckbox_pdtfq_149{flex-shrink:0}._itemName_pdtfq_144{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--qd-color-text-1)}._itemDesc_pdtfq_145{padding-left:calc(var(--ring-unit) / 2);color:var(--qd-color-select-item-description);font-style:italic;white-space:nowrap}._itemBtn_pdtfq_167._itemBtn_pdtfq_167{font-family:var(--ring-font-family);font-size:var(--ring-font-size);line-height:calc(var(--ring-unit) * 4);text-align:start;height:calc(var(--ring-unit) * 4);width:100%;padding:0;border-radius:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--qd-color-text-1)!important;transition:none!important}._itemBtn_pdtfq_167._disabled_pdtfq_33{color:var(--qd-color-light-grey)!important}._itemTemplateContainer_pdtfq_189{display:inline-flex;align-items:center;color:var(--qd-color-text-1)}._itemTemplateContainer_pdtfq_189._disabled_pdtfq_33{color:var(--qd-color-light-grey)}._itemIcon_pdtfq_199{display:inline-flex;align-items:center;margin-right:calc(var(--ring-unit) / 2);transition:opacity .2s}._itemLabel_pdtfq_129 ._itemIcon_pdtfq_199{margin-right:var(--ring-unit)}._itemIconDisabled_pdtfq_210{opacity:60%}._itemIconMarginLeft_pdtfq_214{margin-left:calc(var(--ring-unit) / 2)}._fade_pdtfq_218{position:absolute;bottom:0;height:calc(var(--ring-unit) * 4.25);width:100%;pointer-events:none;background:transparent;transition:.2s background!important}._fadeActive_pdtfq_228{background:linear-gradient(to bottom,var(--qd-color-popup-gradient-start-bg),var(--qd-color-popup-gradient-end-bg))}._specialButton_pdtfq_236._specialButton_pdtfq_236{border-top:1px solid var(--qd-color-border);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;border-radius:0;pointer-events:auto;padding:calc(var(--ring-unit) * 1.5) calc(var(--ring-unit) * 2) calc(var(--ring-unit) * 2.5);height:unset;width:100%;text-align:start;color:var(--qd-color-blue);transition:color .2s!important}._specialButton_pdtfq_236._specialButton_pdtfq_236:hover{color:var(--qd-color-dark-blue);transition:color .2s!important}._specialButton_pdtfq_236._specialButton_pdtfq_236[disabled]{color:var(--qd-color-light-grey)}._icon_pdtfq_23._icon_pdtfq_23{display:flex;align-items:center;padding:0;margin:0 0 0 calc(var(--ring-unit) / 4);border:none;cursor:pointer;background:transparent;color:var(--qd-color-light-grey);transition:color var(--qd-transition-delay)}._chevronDown_pdtfq_25._chevronDown_pdtfq_25{color:inherit}._container_1anm0_1{position:relative;overflow:hidden;height:100%;border-radius:5px;z-index:1}._background_1anm0_10{height:100%;width:calc(100% + 200px);z-index:-1;background:repeating-linear-gradient(90deg,var(--qd-color-skeleton-1) 0px,var(--qd-color-skeleton-2) 100px,var(--qd-color-skeleton-1) 200px);animation:_pulse_1anm0_1 1.2s linear .2s infinite}._innerCircle_1anm0_23{z-index:1;position:absolute;border-radius:50%;background-color:var(--qd-color-main-bg);transition:background-color .2s}@keyframes _pulse_1anm0_1{0%{transform:translate(0)}to{transform:translate(-200px)}}._container_cr8l3_1{display:flex}._hint_cr8l3_5{font-size:var(--ring-font-size);line-height:var(--ring-line-height);padding:var(--ring-unit) calc(var(--ring-unit) * 2);box-shadow:0 -1px 0 0 var(--qd-color-code-snippet-border) inset;transition:box-shadow var(--qd-transition-delay);white-space:nowrap}._list_cr8l3_14{padding:0;margin:0;list-style:none;display:flex;overflow:hidden;overflow-x:auto}._option_cr8l3_24{background:var(--qd-color-sourcetabs-bg);transition:background-color var(--qd-transition-delay)}._list_cr8l3_14>._option_cr8l3_24:first-child{border-top-left-radius:var(--qd-border-radius)}._list_cr8l3_14>._option_cr8l3_24:last-child{border-top-right-radius:var(--qd-border-radius)}._button_cr8l3_37{margin:0;padding:0;cursor:pointer;border:none;box-shadow:0 -1px 0 0 var(--qd-color-code-snippet-border) inset;outline:none;background:transparent;color:var(--qd-color-text-3);transition:color var(--qd-transition-delay),box-shadow var(--qd-transition-delay),background-color var(--qd-transition-delay)}._button_cr8l3_37._selected_cr8l3_53{background-color:var(--qd-color-main-bg);color:var(--qd-color-text-1);box-shadow:-1px 0 0 0 var(--qd-color-code-snippet-border) inset,1px 0 0 0 var(--qd-color-code-snippet-border) inset,0 1px 0 0 var(--qd-color-code-snippet-border) inset;border-top-left-radius:var(--qd-border-radius);border-top-right-radius:var(--qd-border-radius)}._content_cr8l3_65{display:block;outline:none;padding:calc(var(--ring-unit)) calc(var(--ring-unit) * 2);font-size:var(--ring-font-size);line-height:var(--ring-line-height);border-bottom:none}._tail_cr8l3_75{flex-grow:1;box-shadow:0 -1px 0 0 var(--qd-color-code-snippet-border) inset;transition:box-shadow var(--qd-transition-delay)}._count_191jw_1{margin-left:4px}textarea._qdTextarea_17szz_1{display:block;line-height:var(--ring-line-height-lowest);min-height:calc(var(--ring-unit) * 4);width:100%;padding:var(--ring-unit);font-family:var(--ring-font-family);color:var(--qd-color-text-1);border-radius:var(--qd-border-radius);border:1px solid var(--qd-color-input-border);background-color:var(--qd-color-input-bg);transition:color .2s,background-color .2s,border .2s,outline-color .2s;resize:none;outline-color:transparent}textarea._qdTextarea_17szz_1:hover{border:1px solid var(--qd-color-input-border-hover)}textarea._qdTextarea_17szz_1:focus-within{border:1px solid var(--qd-color-input-border-active);outline:var(--qd-outline)}textarea._qdTextarea_17szz_1::placeholder{color:var(--qd-color-input-placeholder);-webkit-text-fill-color:initial;transition:color .2s,-webkit-text-fill-color .2s,border .2s}textarea._qdTextarea_17szz_1._resizable_17szz_33{resize:both}textarea._qdTextarea_17szz_1:disabled{border:1px solid var(--qd-color-input-disabled-border);background-color:var(--qd-color-input-disabled-bg);color:var(--qd-color-input-disabled-text)}textarea._qdTextarea_17szz_1:disabled::placeholder{color:var(--qd-color-input-disabled-text)}textarea._qdTextarea_17szz_1._invalid_17szz_47{border-color:var(--qd-color-input-error-border)}._error_17szz_51{color:var(--qd-color-input-error-border);height:calc(var(--ring-unit) * 2);font-size:var(--ring-font-size-smaller);line-height:var(--ring-line-height-lowest)}._themeContainer_b0dos_1{height:100%;transition:color .2s,background .2s;color:var(--qd-color-text-1);background:var(--qd-color-main-bg)}._checkbox_70wcn_1,._support_70wcn_2,._switch_70wcn_3{outline:none}._checkbox_70wcn_1:focus ._switch_70wcn_3{box-shadow:var(--qd-focus-box-shadow)}._checkbox_70wcn_1{cursor:pointer;position:relative;top:2px}._checkbox_70wcn_1._disabled_70wcn_17{cursor:default}._switch_70wcn_3{display:inline-block;width:24px;height:16px;border-radius:12px;z-index:0;padding:0;position:relative;background-color:var(--qd-color-toggle-bg-off);transition:color .2s,background-color .2s}._switch_70wcn_3._on_70wcn_34{background-color:var(--qd-color-toggle-bg-on)}._switch_70wcn_3:after{content:"";border-radius:50%;position:absolute;z-index:1;width:12px;height:12px;transform:translate(2px,2px);background:var(--qd-color-toggle-handle-off);transition:color .2s,background-color .2s,transform .2s}._switch_70wcn_3._on_70wcn_34:after{background-color:var(--qd-color-toggle-handle-on);transform:translate(10px,2px)}._checkbox_70wcn_1._disabled_70wcn_17 ._switch_70wcn_3{background-color:var(--qd-color-toggle-bg-disabled)}._checkbox_70wcn_1._disabled_70wcn_17 ._switch_70wcn_3:after{background-color:var(--qd-color-toggle-handle-disabled)}._textLabelRight_70wcn_64{margin-left:var(--ring-unit);vertical-align:2px;color:var(--ring-text-color);transition:color var(--qd-transition-delay);font-size:var(--ring-font-size)}._textLabelLeft_70wcn_72{margin-right:var(--ring-unit);vertical-align:2px;color:var(--qd-color-text-1);transition:color var(--qd-transition-delay);font-size:var(--ring-font-size)}._disabled_70wcn_17 ._textLabelRight_70wcn_64,._disabled_70wcn_17 ._textLabelLeft_70wcn_72{color:var(--qd-color-toggle-label-disabled)}._container_vfw8c_1{display:flex;height:100%;align-items:center;justify-content:center;width:100%}._container_12p4j_1{height:100vh}._content_12p4j_5{text-align:center}._subtitle_12p4j_9{max-width:440px;margin:auto}._tooltip_harbl_1{background-color:var(--qd-color-tooltip-bg);border-radius:var(--qd-border-radius);box-shadow:var(--qd-dialog-shadow);transition:opacity .2s;padding:8px 12px;max-width:450px;position:absolute;z-index:1000;pointer-events:none}._lowerMsg_harbl_14{margin:5px 0 0}._container_p25i3_3{--bar-label-font-size: 12px;--bar-label-padding-bottom: 8px;display:flex!important;font-family:var(--ring-font-family)!important}._icon_p25i3_11{line-height:16px!important;height:16px!important;vertical-align:bottom!important;padding-right:3px!important}._label_p25i3_18{font-size:var(--bar-label-font-size)!important;height:var(--bar-label-font-size)!important;line-height:var(--bar-label-font-size)!important;padding-bottom:var(--bar-label-padding-bottom)!important;text-align:right!important;text-overflow:ellipsis!important;overflow:hidden!important;white-space:nowrap!important;vertical-align:4px!important}._label_p25i3_18>a{color:var(--ring-link-color)!important}._container_1xnvs_3{--bar-label-font-size: 12px;font-family:var(--ring-font-family)!important}._icon_1xnvs_9{line-height:16px!important;height:16px!important;vertical-align:bottom!important;padding-right:3px!important}._foreignObj_1xnvs_16{height:var(--bar-label-font-size)!important}._label_1xnvs_20{font-size:var(--bar-label-font-size)!important;height:var(--bar-label-font-size)!important;line-height:var(--bar-label-font-size)!important;text-align:right!important;text-overflow:ellipsis!important;overflow:hidden!important;white-space:nowrap!important}._label_1xnvs_20>a{color:var(--ring-link-color)!important}._fadeContainer_cqd1k_1{position:absolute;pointer-events:none;width:100%}._top_cqd1k_7{top:0}._bottom_cqd1k_11{bottom:0}._scroll_cqd1k_15{position:relative;height:100%}._content_cqd1k_20{overflow-y:auto;height:100%}._fade_cqd1k_1{height:30px;background:transparent;transition:opacity .2s;opacity:0}._fadeActive_cqd1k_33{opacity:100%}._topFade_cqd1k_37{background:linear-gradient(to top,var(--qd-color-popup-gradient-start-bg),var(--qd-color-popup-gradient-end-bg))}._bottomFade_cqd1k_45{background:linear-gradient(to bottom,var(--qd-color-popup-gradient-start-bg),var(--qd-color-popup-gradient-end-bg))}._circle_pavxi_1{font-family:var(--ring-font-family);border-radius:50%;border-color:var(--qd-color-circle-message);box-sizing:border-box;position:relative;transition:border-color .2s}._textContainer_pavxi_11{text-align:center;position:absolute;left:50%;top:50%;transform:translate(-50%,-28%)}._primaryMessage_pavxi_20._primaryMessage_pavxi_20{font-size:20px;line-height:24px;white-space:nowrap;margin-bottom:calc(var(--ring-unit) / 2)}._secondaryMessage_pavxi_27{font-style:normal;font-weight:400;text-align:center;color:var(--qd-color-grey);margin:calc(var(--ring-unit) / 2) 0 0}._centerSpace_9rnli_1{position:absolute;overflow:hidden;cursor:default}._customMessage_9rnli_8{font-size:1.2em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}._description_9rnli_15{margin:0;pointer-events:auto}._filterValues_9rnli_20{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}._problemsNum_9rnli_26{pointer-events:auto;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}._zoomOut_9rnli_33{pointer-events:auto;cursor:pointer;margin:.3em 0 0;background:none;border:none;font-family:var(--ring-font-family);font-size:1em;color:var(--qd-color-blue);font-variant-numeric:normal;font-style:normal;box-sizing:content-box;transition:.2s color}._zoomOut_9rnli_33,._zoomOutText_9rnli_51{outline:none}._zoomOut_9rnli_33:hover{color:var(--qd-color-dark-blue)}._zoomOut_9rnli_33:focus>._zoomOutText_9rnli_51{border-radius:2px;box-shadow:var(--qd-focus-box-shadow)}._diagram_1updc_1{font-family:var(--ring-font-family);position:relative}._diagram_1updc_1 *{text-align:center}._notInteractive_1updc_10{pointer-events:none!important}._arc_1updc_14{fill-opacity:.9;transition:fill-opacity .5s;cursor:pointer}._shadowedArc_1updc_23{fill-opacity:.5}._hoveredArc_1updc_27{fill-opacity:1}._hiddenArc_1updc_31{transition:fill-opacity .75s;fill-opacity:0;pointer-events:none}._middleLineArc_1updc_37{visibility:hidden}._arcTextPath_1updc_41{pointer-events:none;dominant-baseline:middle;text-anchor:middle;fill:var(--qd-color-black)}
+</style><style>.container_e4f4 {
+	padding: 14px 0 14px 14px;
+}
+
+.title_a6b1 {
+	margin-bottom: 20px;
+}
+</style><style>.container_b156 {
+	font-family: var(--ring-font-family) !important;
+	line-height: 18px !important;
+	font-size: var(--ring-font-size) !important;
+	color: var(--qd-color-black) !important;
+}
+
+.title_c6a2 {
+	font-weight: 600 !important;
+	font-size: var(--ring-font-size) !important;
+
+	margin: 0 8px 2px 0 !important;
+	padding: 0 !important;
+	display: inline-block !important;
+}
+
+.linkFile_f0ea {
+	margin: 0 16px 2px 0 !important;
+	white-space: nowrap !important;
+	display: inline-block !important;
+
+	text-decoration: none !important;
+}
+
+.linkFile_f0ea svg {
+	vertical-align: -2px !important;
+}
+
+.fileIcon_b414 {
+	display: inline-block !important;
+	margin-right: 6px !important;
+}
+
+.fileQuestionIcon_a2b8 {
+	display: inline-block !important;
+	margin-right: 4px !important;
+}
+
+.fileName_f499 {
+	transition: all 0.2s !important;
+}
+
+@media (hover: hover), (-moz-touch-enabled: 0), (-ms-high-contrast: none), (-ms-high-contrast: active) {.linkFile_f0ea:hover .fileName_f499 {
+	color: var(--ring-link-hover-color) !important;
+	text-decoration: underline !important;
+}}
+
+.number_becd {
+	font-weight: 500 !important;
+	font-size: 12px !important;
+	color: var(--qd-color-ruby) !important;
+
+	margin-left: 5px !important;
+}
+
+.diff_f49e > span {
+	color: var(--qd-color-light-grey) !important;
+	white-space: nowrap !important;
+	display: inline-block !important;
+}
+</style><style>.linkContainer_a3e8 {
+	display: flex !important;
+	height: 18px !important;
+	width: -moz-fit-content !important;
+	width: fit-content !important;
+	align-items: center !important;
+
+	text-decoration: none !important;
+	line-height: 18px !important;
+}
+
+.icon_d846 {
+	width: 14px !important;
+	height: 14px !important;
+	display: inline-block !important;
+}
+
+.text_eecf {
+	font-family: var(--ring-font-family) !important;
+	font-weight: normal !important;
+}
+
+.name_ff1f {
+	font-size: var(--ring-font-size) !important;
+	margin: 0 4px !important;
+	transition: all 0.2s !important;
+}
+
+@media (hover: hover), (-moz-touch-enabled: 0), (-ms-high-contrast: none), (-ms-high-contrast: active) {.linkContainer_a3e8:hover .name_ff1f {
+	color: var(--ring-link-hover-color) !important;
+	text-decoration: underline !important;
+}}
+
+.problems_ddaf {
+	font-size: 12px !important;
+	font-weight: 500 !important;
+	color: var(--qd-color-ruby) !important;
+}
+
+.storybookWrapper_d2e5 {
+	padding: 0 !important;
+	margin: 5px !important;
+}
+
+.storybookWrapper_d2e5 li {
+	list-style: none !important;
+	margin: 5px !important;
+}
+</style><style>.container_e87a {
+	font-family: var(--ring-font-family) !important;
+	line-height: 18px !important;
+	font-size: var(--ring-font-size) !important;
+	color: var(--qd-color-black) !important;
+}
+
+.label_c3a1 {
+	font-weight: 600 !important;
+	font-size: var(--ring-font-size) !important;
+
+	margin: 0 4px 0 0 !important;
+	padding: 0 !important;
+	display: inline-block !important;
+}
+
+.linkTool_ed8f {
+	transition: all 0.2s !important;
+}
+
+@media (hover: hover), (-moz-touch-enabled: 0), (-ms-high-contrast: none), (-ms-high-contrast: active) {.linkTool_ed8f:hover {
+	color: var(--ring-link-hover-color) !important;
+}}
+</style><style>.container_f2b9 {
+	font-family: var(--ring-font-family) !important;
+	font-weight: normal !important;
+	font-size: var(--ring-font-size) !important;
+	line-height: normal; /*teamcity*/
+
+	width: 100% !important;
+	box-sizing: border-box !important;
+	display: flex !important;
+	margin: 5px 0 20px !important;
+	overflow: hidden !important;
+}
+
+.title_be5f {
+	margin-bottom: 20px;
+}
+
+.tabLink_ed62 {
+	font-size: var(--ring-font-size) !important;
+	line-height: 18px !important;
+
+	margin-top: 16px !important;
+	display: block !important;
+}
+
+@media (hover: hover), (-moz-touch-enabled: 0), (-ms-high-contrast: none), (-ms-high-contrast: active) {.tabLink_ed62:hover {
+	color: var(--ring-link-hover-color) !important;
+}}
+
+.sunburstContainer_b2ae {
+	flex-shrink: 0 !important;
+}
+
+.textContainer_fed4 {
+	margin-left: 40px !important;
+	margin-top: 49px !important;
+}
+
+.summaryActive_cc06 {
+	height: 42px !important;
+}
+
+.severityBox_ffa9 {
+	padding: 0 !important;
+	margin-bottom: 21px !important;
+	margin-top: 16px !important;
+}
+
+.severityItem_a3f9 {
+	list-style: none !important;
+}
+
+.severityItem_a3f9 ~ .severityItem_a3f9 {
+	margin-top: 9px !important;
+}
+
+.toolsBadge_b601 {
+	margin-bottom: 10px !important;
+}
+</style><style>@font-face {
+	font-family: JetBrains Mono Bold;
+	font-style: normal;
+	font-weight: normal;
+	src: local('JetBrains Mono Bold'),
+		url(http://172.17.0.1:8111/plugins/qodana/build-extension/e9558e0e299113096714.woff) format('woff');
+}
+
+@font-face {
+	font-family: JetBrains Mono Regular;
+	font-style: normal;
+	src: local('JetBrains Mono Regular'),
+		url(http://172.17.0.1:8111/plugins/qodana/build-extension/0530df0fcda49e6393d6.woff) format('woff');
+}
+</style><style>.xterm {
+    cursor: text;
+    position: relative;
+    -moz-user-select: none;
+         user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+
+    padding: calc(var(--ring-unit)*1.5) calc(var(--ring-unit)*4);
+    width: 100%;
+}
+
+.xterm.focus,
+.xterm:focus {
+    outline: none;
+}
+
+.xterm .xterm-helpers {
+    position: absolute;
+    top: 0;
+    /**
+     * The z-index of the helpers must be higher than the canvases in order for
+     * IMEs to appear on top.
+     */
+    z-index: 5;
+}
+
+.xterm .xterm-helper-textarea {
+    padding: 0;
+    border: 0;
+    margin: 0;
+    /* Move textarea out of the screen to the far left, so that the cursor is not visible */
+    position: absolute;
+    opacity: 0;
+    left: -9999em;
+    top: 0;
+    width: 0;
+    height: 0;
+    z-index: -5;
+    /** Prevent wrapping so the IME appears against the textarea at the correct position */
+    white-space: nowrap;
+    overflow: hidden;
+    resize: none;
+}
+
+.xterm .composition-view {
+    /* TODO: Composition position got messed up somewhere */
+    display: none;
+    position: absolute;
+    white-space: nowrap;
+    z-index: 1;
+}
+
+.xterm .composition-view.active {
+    display: block;
+}
+
+.xterm .xterm-viewport {
+    /* On OS X this is required in order for the scroll bar to appear fully opaque */
+    background-color: inherit !important;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    cursor: default;
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.xterm .xterm-screen {
+    position: relative;
+}
+
+.xterm .xterm-screen canvas {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.xterm .xterm-scroll-area {
+    visibility: hidden;
+}
+
+.xterm-char-measure-element {
+    display: inline-block;
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: -9999em;
+    line-height: normal;
+}
+
+.xterm.enable-mouse-events {
+    /* When mouse events are enabled (eg. tmux), revert to the standard pointer cursor */
+    cursor: default;
+}
+
+.xterm.xterm-cursor-pointer,
+.xterm .xterm-cursor-pointer {
+    cursor: pointer;
+}
+
+.xterm.column-select.focus {
+    /* Column selection mode */
+    cursor: crosshair;
+}
+
+.xterm .xterm-accessibility,
+.xterm .xterm-message {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 10;
+    color: transparent;
+    pointer-events: none;
+}
+
+.xterm .live-region {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+.xterm-dim {
+    opacity: 1 !important;
+}
+
+.xterm-underline-1 { text-decoration: underline; }
+.xterm-underline-2 { -webkit-text-decoration: double underline; text-decoration: double underline; }
+.xterm-underline-3 { -webkit-text-decoration: wavy underline; text-decoration: wavy underline; }
+.xterm-underline-4 { -webkit-text-decoration: dotted underline; text-decoration: dotted underline; }
+.xterm-underline-5 { -webkit-text-decoration: dashed underline; text-decoration: dashed underline; }
+
+.xterm-overline {
+    text-decoration: overline;
+}
+
+.xterm-overline.xterm-underline-1 { text-decoration: overline underline; }
+.xterm-overline.xterm-underline-2 { -webkit-text-decoration: overline double underline; text-decoration: overline double underline; }
+.xterm-overline.xterm-underline-3 { -webkit-text-decoration: overline wavy underline; text-decoration: overline wavy underline; }
+.xterm-overline.xterm-underline-4 { -webkit-text-decoration: overline dotted underline; text-decoration: overline dotted underline; }
+.xterm-overline.xterm-underline-5 { -webkit-text-decoration: overline dashed underline; text-decoration: overline dashed underline; }
+
+.xterm-strikethrough {
+    text-decoration: line-through;
+}
+
+.xterm-screen .xterm-decoration-container .xterm-decoration {
+    z-index: 6;
+    position: absolute;
+}
+
+.xterm-screen .xterm-decoration-container .xterm-decoration.xterm-decoration-top-layer {
+    z-index: 7;
+}
+
+.xterm-decoration-overview-ruler {
+    z-index: 8;
+    position: absolute;
+    top: 0;
+    right: 0;
+    pointer-events: none;
+}
+
+.xterm-decoration-top {
+    z-index: 2;
+    position: relative;
+}
+
+.xterm-selection div {
+    background-color: var(--ring-selected-background-color) !important;
+}</style><style>.pluginContainer_Bayy {
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+
+.wrapper_v_8Z {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.header_ETnR {
+    display: flex;
+    align-items: center;
+
+    font-size: var(--ring-font-size-smaller);
+    line-height: var(--ring-line-height-lowest);
+
+    border-bottom: 1px solid var(--ring-line-color);
+
+    padding: 0 calc(var(--ring-unit)*2 + var(--ring-unit)/2) 0 calc(var(--ring-unit)*4);
+}
+
+.heading_TQX2 {
+    font-weight: bold;
+    padding: var(--ring-unit) 0;
+    margin-right: calc(var(--ring-unit)*1.5);
+
+    height: calc(var(--ring-unit)*4);
+    box-sizing: border-box;
+
+    white-space: nowrap;
+}
+
+.tabs_fftR {
+    flex: 1 1;
+}
+
+.actions_vg2K {
+    white-space: nowrap;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.terminalIcon_l67J {
+    margin-right: calc(var(--ring-unit)/2);
+}
+
+.actionButton_Zl3z {
+    padding: 0;
+    height: auto;
+    height: initial;
+    line-height: var(--ring-line-height-lowest);
+}
+
+.closeAllIcon_AvIs {
+    padding: 0;
+    height: calc(var(--ring-unit)*1.5);
+    line-height: var(--ring-line-height-lowest);
+    margin-left: calc(var(--ring-unit)*1.5);
+}
+
+.content_hdce {
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+.terminal_Pa4Z {
+    z-index: -1;
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.terminal_Pa4Z.selected_w8tg {
+        z-index: 1;
+        visibility: visible;
+    }</style><style>.terminalWrapper_FED4 {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+.terminal_LuCI {
+    display: flex;
+    flex: 1 1;
+    opacity: 0;
+    overflow: hidden;
+}
+
+.terminal_LuCI.ready_KEuD {
+        opacity: 1;
+    }
+
+.terminal_LuCI > * {
+    display: none;
+}
+
+.selected_w8tg .terminal_LuCI > * {
+    display: block;
+}
+
+.loading_Ekw6 {
+    position: absolute;
+
+    top: var(--ring-unit);
+    right: calc(var(--ring-unit)*2 + var(--ring-unit)/2);
+    bottom: calc(var(--ring-unit) - 1px);
+    left: calc(var(--ring-unit)*4);
+
+    color: var(--ring-secondary-color);
+    font-size: var(--ring-font-size-smaller);
+    font-family: var(--ring-font-family-monospace);
+}
+</style><style>.tab_VPZF {
+    min-height: 32px;
+    display: inline-flex;
+    align-items: center;
+    margin-right: calc(var(--ring-unit)*1.5);
+}
+
+.tab_VPZF.selected_fYhv {
+        box-shadow: inset 0 -1px 0 0 var(--ring-text-color);
+    }
+
+@media (hover: hover), (-moz-touch-enabled: 0), (-ms-high-contrast: none), (-ms-high-contrast: active) {.tab_VPZF:hover {
+        box-shadow: inset 0 -1px 0 0 var(--ring-link-hover-color);
+    }}
+
+@media (hover: hover), (-moz-touch-enabled: 0), (-ms-high-contrast: none), (-ms-high-contrast: active) {.tab_VPZF:hover .tabTitle_ScU1 {
+        color: var(--ring-link-hover-color);
+    }}
+
+.tabTitleSkeleton_NAzy {
+    width: 128px;
+    height: var(--ring-line-height-lowest);
+    border-radius: 2px;
+    background: var(--ring-secondary-background-color);
+    margin-right: calc(var(--ring-unit)/2);
+}
+
+.tabTitle_ScU1 {
+    padding: var(--ring-unit) 0;
+    height: auto;
+    height: initial;
+    line-height: var(--ring-line-height-lowest);
+    border-radius: 0;
+    color: var(--ring-text-color);
+
+    margin-right: calc(var(--ring-unit)/2);
+
+
+}
+
+.selected_fYhv .tabTitle_ScU1 {
+    cursor: default;
+}
+
+.closeIcon_GuLw {
+    padding: 0;
+    height: calc(var(--ring-unit)*1.5);
+    line-height: var(--ring-line-height-lowest);
+}
+</style><style>/* stylelint-disable color-no-hex */
+
+:root {
+  --ring-unit: 8px;
+
+  /* Element */
+  --ring-line-color: #dfe5eb;
+  --ring-dark-line-color: #475159;
+  --ring-borders-color: #b8d1e5;
+  --ring-dark-borders-color: #406380;
+  --ring-icon-color: var(--ring-borders-color);
+  --ring-icon-secondary-color: #999;
+  --ring-border-disabled-color: #dbdbdb;
+  --ring-icon-disabled-color: #bbb;
+  --ring-border-hover-color: #80c6ff;
+  --ring-dark-border-hover-color: #70b1e6;
+  --ring-icon-hover-color: var(--ring-link-hover-color);
+  --ring-main-color: #008eff;
+  --ring-main-hover-color: #007ee5;
+  --ring-icon-error-color: #db5860;
+  --ring-icon-warning-color: #eda200;
+  --ring-icon-success-color: #59a869;
+  --ring-pale-control-color: #cfdbe5;
+  --ring-popup-border-components: 0, 42, 76;
+  --ring-popup-border-color: rgba(var(--ring-popup-border-components), 0.1);
+  --ring-popup-shadow-color: rgba(var(--ring-popup-border-components), 0.15);
+  --ring-message-shadow-color: rgba(var(--ring-popup-border-components), 0.3);
+  --ring-pinned-shadow-color: #737577;
+
+  /* Text */
+  --ring-search-color: #669ecc;
+  --ring-hint-color: #406380;
+  --ring-link-color: #0f5b99;
+  --ring-link-hover-color: #ff008c;
+  --ring-error-color: #c22731;
+  --ring-warning-color: #cc8b00;
+  --ring-success-color: #1b8833;
+  --ring-text-color: #1f2326;
+  --ring-dark-text-color: #fff;
+  --ring-heading-color: var(--ring-text-color);
+  --ring-secondary-color: #737577;
+  --ring-dark-secondary-color: #888;
+  --ring-disabled-color: #999;
+  --ring-dark-disabled-color: #444;
+  --ring-dark-active-color: #ccc;
+
+  /* Background */
+  --ring-content-background-color: #fff;
+  --ring-popup-background-color: #fff;
+  --ring-sidebar-background-color: #f7f9fa;
+  --ring-selected-background-color: #d4edff;
+  --ring-hover-background-color: #ebf6ff;
+  --ring-dark-selected-background-color: #002a4d;
+  --ring-message-background-color: #111314;
+  --ring-navigation-background-color: #000;
+  --ring-tag-background-color: #e6ecf2;
+  --ring-removed-background-color: #ffd5cb;
+  --ring-warning-background-color: #faeccd;
+  --ring-added-background-color: #bce8bb;
+
+  /* Code */
+  --ring-code-background-color: var(--ring-content-background-color);
+  --ring-code-color: #000;
+  --ring-code-comment-color: #707070;
+  --ring-code-meta-color: #707070;
+  --ring-code-keyword-color: #000080;
+  --ring-code-tag-background-color: #efefef;
+  --ring-code-tag-color: var(--ring-code-keyword-color);
+  --ring-code-tag-font-weight: bold;
+  --ring-code-field-color: #660e7a;
+  --ring-code-attribute-color: #00f;
+  --ring-code-number-color: var(--ring-code-attribute-color);
+  --ring-code-string-color: #007a00;
+  --ring-code-addition-color: #aadeaa;
+  --ring-code-deletion-color: #c8c8c8;
+
+  /* Metrics */
+  --ring-border-radius: 3px;
+  --ring-border-radius-small: 2px;
+  --ring-font-size-larger: 14px;
+  --ring-font-size: 13px;
+  --ring-font-size-smaller: 12px;
+  --ring-line-height-taller: 21px;
+  --ring-line-height: 20px;
+  --ring-line-height-lower: 18px;
+  --ring-line-height-lowest: 16px;
+  --ring-ease: 0.3s ease-out;
+  --ring-fast-ease: 0.15s ease-out;
+  --ring-font-family: system-ui, -apple-system, Segoe UI, Roboto, Noto Sans, Ubuntu, Cantarell, Helvetica Neue, Arial, sans-serif;
+  --ring-font-family-monospace: Menlo, "Bitstream Vera Sans Mono", "Ubuntu Mono", Consolas, "Courier New", Courier, monospace;
+
+  /* Common z-index-values */
+
+  /* Invisible element is an absolutely positioned element which should be below */
+  /* all other elements on the page */
+  --ring-invisible-element-z-index: -1;
+
+  /* z-index for position: fixed elements */
+  --ring-fixed-z-index: 1;
+
+  /* Elements that should overlay all other elements on the page */
+  --ring-overlay-z-index: 5;
+
+  /* Alerts should de displayed above overlays */
+  --ring-alert-z-index: 6;
+}
+</style><style>/* https://readymag.com/artemtiunov/RingUILanguage/colours/ */
+
+/*
+Unit shouldn't be CSS custom property because it is not intended to change
+Also it won't form in FF47 https://bugzilla.mozilla.org/show_bug.cgi?id=594933
+*/
+
+.clearfix_cfb::after {
+    display: block;
+    clear: both;
+
+    content: '';
+  }
+
+.font_03d {
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Noto Sans, Ubuntu, Cantarell, Helvetica Neue, Arial, sans-serif;
+  font-family: var(--ring-font-family);
+  font-size: 13px;
+  font-size: var(--ring-font-size);
+  line-height: 20px;
+  line-height: var(--ring-line-height);
+}
+
+.font-lower_b7d {
+
+  line-height: 18px;
+
+  line-height: var(--ring-line-height-lower);
+}
+
+.font-smaller_a66 {
+
+  font-size: 12px;
+
+  font-size: var(--ring-font-size-smaller);
+}
+
+.font-smaller-lower_70b {
+
+  line-height: 16px;
+
+  line-height: var(--ring-line-height-lowest);
+}
+
+.font-larger-lower_4f8 {
+
+  font-size: 14px;
+
+  font-size: var(--ring-font-size-larger);
+}
+
+.font-larger_832 {
+
+  line-height: 21px;
+
+  line-height: var(--ring-line-height-taller);
+}
+
+/* To be used at large sizes */
+/* As close as possible to Helvetica Neue Thin (to replace Gotham) */
+.thin-font_aa8 {
+  font-family: "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  font-size: var(--ring-font-size);
+  font-weight: 100; /* Renders Helvetica Neue UltraLight on OS X  */
+}
+
+.monospace-font_288 {
+  font-family: Menlo, "Bitstream Vera Sans Mono", "Ubuntu Mono", Consolas, "Courier New", Courier, monospace;
+  font-family: var(--ring-font-family-monospace);
+  font-size: 12px;
+  font-size: var(--ring-font-size-smaller);
+}
+
+.ellipsis_ae7 {
+  overflow: hidden;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.resetButton_c50 {
+  overflow: visible;
+
+  padding: 0;
+
+  text-align: left;
+
+  color: inherit;
+  border: 0;
+
+  background: transparent;
+
+  font: inherit
+}
+
+.resetButton_c50::-moz-focus-inner {
+    padding: 0;
+
+    border: 0;
+  }
+
+/* Note: footer also has top margin which isn't taken into account here */
+
+/* Media breakpoints (minimal values) */
+
+/* Media queries */
+</style><style>@media (hover: hover), (-moz-touch-enabled: 0), (-ms-high-contrast: none), (-ms-high-contrast: active) {.close_d96:hover {
+    color: #ff008c;
+    color: var(--ring-link-hover-color);
+  }}
+
+.alert_b59 {
+  position: relative;
+
+  display: flex;
+  align-items: baseline;
+
+  box-sizing: border-box;
+  min-height: 40px;
+  margin: 8px auto;
+  padding: 0 16px;
+
+  transition:
+    transform 300ms ease-out,
+    margin-bottom 300ms ease-out,
+    opacity 300ms ease-out;
+  white-space: nowrap;
+  pointer-events: auto;
+
+  border-radius: 3px;
+
+  border-radius: var(--ring-border-radius);
+  background-color: #111314;
+  background-color: var(--ring-message-background-color);
+  box-shadow: 0 2px 16px rgba(0, 42, 76, 0.15);
+  box-shadow: 0 2px 16px var(--ring-popup-shadow-color);
+
+  font-size: 13px;
+
+  font-size: var(--ring-font-size);
+  line-height: 40px;
+}
+
+.alertInline_6c4 {
+  margin: 8px;
+}
+
+.error_285 {
+  word-wrap: break-word;
+
+  color: #c22731;
+
+  color: var(--ring-error-color);
+}
+
+.icon_ed6 {
+  margin-right: 8px;
+}
+
+.caption_7cc {
+  overflow: hidden;
+
+  max-width: calc(100% - 40px);
+
+  margin: 12px 0;
+
+  white-space: normal;
+
+  color: #fff;
+
+  color: var(--ring-dark-text-color);
+
+  line-height: 20px
+}
+
+.caption_7cc .ring-link,
+  
+  .caption_7cc .link_450 {
+    color: #008eff;
+    color: var(--ring-main-color);
+  }
+
+.caption_7cc.withCloseButton_9ac {
+    margin-right: 40px;
+  }
+
+.badge_81e {
+  margin-left: 8px;
+
+  vertical-align: baseline;
+}
+
+.loader_615 {
+  top: 2px;
+
+  margin-right: 8px;
+}
+
+.close_d96 {
+  position: absolute;
+  top: 2px;
+  right: 0;
+
+  margin: 4px;
+  padding: 8px;
+
+  cursor: pointer;
+
+  color: #888;
+
+  color: var(--ring-dark-secondary-color);
+  border: none;
+  background: transparent;
+
+  font-size: 0;
+  line-height: 0
+}
+
+.close_d96:focus {
+    color: #ff008c;
+    color: var(--ring-link-hover-color);
+  }
+
+@-webkit-keyframes show_846 {
+  from {
+    transform: translateY(100%);
+
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+
+    opacity: 1;
+  }
+}
+
+@keyframes show_846 {
+  from {
+    transform: translateY(100%);
+
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes shaking_a6d {
+  10%,
+  90% {
+    transform: translateX(-1px);
+  }
+
+  20%,
+  80% {
+    transform: translateX(2px);
+  }
+
+  30%,
+  50%,
+  70% {
+    transform: translateX(-4px);
+  }
+
+  40%,
+  60% {
+    transform: translateX(4px);
+  }
+}
+
+@keyframes shaking_a6d {
+  10%,
+  90% {
+    transform: translateX(-1px);
+  }
+
+  20%,
+  80% {
+    transform: translateX(2px);
+  }
+
+  30%,
+  50%,
+  70% {
+    transform: translateX(-4px);
+  }
+
+  40%,
+  60% {
+    transform: translateX(4px);
+  }
+}
+
+.animationOpen_073 {
+  -webkit-animation-name: show_846;
+          animation-name: show_846;
+  -webkit-animation-duration: 300ms;
+          animation-duration: 300ms;
+}
+
+.animationClosing_27a {
+  z-index: -1;
+  z-index: var(--ring-invisible-element-z-index);
+
+  opacity: 0;
+}
+
+.animationShaking_bb5 {
+  -webkit-animation-name: shaking_a6d;
+          animation-name: shaking_a6d;
+  -webkit-animation-duration: 500ms;
+          animation-duration: 500ms;
+}
+</style><style>@media (hover: hover), (-moz-touch-enabled: 0), (-ms-high-contrast: none), (-ms-high-contrast: active) {.link_17c:hover {
+    transition: none;
+
+    color: #ff008c;
+
+    color: var(--ring-link-hover-color);
+  }}
+
+@media (hover: hover), (-moz-touch-enabled: 0), (-ms-high-contrast: none), (-ms-high-contrast: active) {.link_17c:hover {
+    text-decoration: none;
+  }}
+
+.link_17c { /* To override link stiles inside alert */
+
+  cursor: pointer;
+  transition: color 0.15s ease-out;
+  transition: color var(--ring-fast-ease);
+
+  color: #0f5b99;
+
+  color: var(--ring-link-color)
+}
+
+.link_17c {
+    text-decoration: none;
+  }
+
+.link_17c.hover_d9b {
+    transition: none;
+
+    color: #ff008c;
+
+    color: var(--ring-link-hover-color);
+  }
+
+@media (hover: hover), (-moz-touch-enabled: 0), (-ms-high-contrast: none), (-ms-high-contrast: active) {.link_17c:hover .inner_61b {
+    border-width: 0;
+    border-bottom: 2px solid;
+    border-image-source: linear-gradient(currentcolor 50%, transparent 50%);
+    border-image-slice: 0 0 100% 0;
+  }}
+
+.link_17c.active_615 {
+    color: inherit;
+  }
+
+@media (hover: hover), (-moz-touch-enabled: 0), (-ms-high-contrast: none), (-ms-high-contrast: active) {.link_17c.compatibilityUnderlineMode_717:hover {
+    text-decoration: underline
+
+    /* stylelint-disable-next-line selector-max-specificity */
+  }}
+
+@media (hover: hover), (-moz-touch-enabled: 0), (-ms-high-contrast: none), (-ms-high-contrast: active) {.link_17c.compatibilityUnderlineMode_717:hover .inner_61b {
+      border: none;
+    }}
+
+@media (hover: hover), (-moz-touch-enabled: 0), (-ms-high-contrast: none), (-ms-high-contrast: active) {.link_17c.pseudo_130:hover {
+    text-decoration: none
+
+    /* stylelint-disable-next-line selector-max-specificity */
+  }}
+
+@media (hover: hover), (-moz-touch-enabled: 0), (-ms-high-contrast: none), (-ms-high-contrast: active) {.link_17c.pseudo_130:hover .inner_61b {
+      border: none;
+    }}
+
+.link_17c {
+
+  outline: none
+}
+
+.link_17c.focus-visible {
+    box-shadow: 0 0 0 2px #80c6ff;
+    box-shadow: 0 0 0 2px var(--ring-border-hover-color);
+  }
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) {@media (hover: hover), (-moz-touch-enabled: 0), (-ms-high-contrast: none), (-ms-high-contrast: active) {.link_17c:hover .inner_61b {
+    border-bottom-width: 1px;
+  }}
+}
+
+.text_b24 {
+  border-radius: 3px;
+  border-radius: var(--ring-border-radius);
+}
+
+@media (hover: hover), (-moz-touch-enabled: 0), (-ms-high-contrast: none), (-ms-high-contrast: active) {.inherit_296:not(:hover) {
+  color: inherit;
+}}
+
+.pseudo_130 {
+  margin: 0;
+  padding: 0;
+
+  text-align: left;
+
+  border: 0;
+
+  background: transparent;
+
+  font: inherit
+}
+
+.pseudo_130::-moz-focus-inner {
+    padding: 0;
+
+    border: 0;
+  }
+</style><style>.wrapper_7c8 {
+  flex: 1;
+}
+
+.label_114 {
+  display: inline-flex
+}
+
+.label_114 .type_fe8 {
+    overflow: hidden;
+    flex: 1;
+
+    text-overflow: ellipsis;
+  }
+
+.diff_4f6 {
+  font-size: 12px;
+  color: #737577;
+  margin-left: 8px
+}
+
+.diff_4f6 .positive_7e2 {
+    color: #0c7523;
+  }
+
+.diff_4f6 .negative_da6 {
+    color: #a90f1a;
+  }
+
+.progressWrapper_8ba {
+  margin: -6px 0 -8px;
+  padding: 8px 0;
+}
+
+.progress_b52 {
+  width: 100%;
+  height: 3px;
+
+  background-color: var(--ring-line-color);
+}
+
+.bar_dbe {
+  height: 100%
+}
+
+.bar_dbe.green_c0a {
+    background-color: #7acc8b;
+  }
+
+.bar_dbe.yellow_130 {
+    background-color: #eda200;
+  }
+
+.bar_dbe.red_e2f {
+    background-color: #a90f1a;
+  }
+</style><style>.row_522 {
+  margin: 0 -8px;
+  padding: 8px 0;
+}
+
+.data_e52 {
+  display: flex;
+  align-items: baseline
+}
+
+.data_e52 > * {
+    flex: 1;
+    padding: 0 8px;
+  }
+
+.path_bf4 {
+  display: flex;
+  align-items: baseline;
+  flex: 1 1 auto;
+  flex-wrap: nowrap;
+
+  padding: 2px 8px;
+}
+
+.number_93e {
+  font-size: inherit;
+}
+
+.link_f4f {
+  color: var(--ring-link-color);
+}
+
+.reportButton_4eb {
+  width: 102px;
+  align-self: flex-end;
+}
+
+.reportButtonCell_54e {
+  text-align: right;
+}
+</style><style>.wrapper_d5f {
+  margin: -8px 0;
+}
+</style><style>.placeholder_b52 {
+  margin-bottom: 32px;
+}
+
+.error_a3f {
+  color: #a90f1a;
+}
+</style><style>@-webkit-keyframes spin_c0f {
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin_c0f {
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes pulse_221 {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(1.41667);
+  }
+}
+
+@keyframes pulse_221 {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(1.41667);
+  }
+}
+
+.loader_200,
+.ring-loader-inline {
+  /* needed for better backward-compatibility */
+
+  position: relative;
+
+  display: inline-block;
+
+  overflow: hidden;
+
+  transform: rotate(0);
+  -webkit-animation: spin_c0f 1s linear infinite;
+          animation: spin_c0f 1s linear infinite;
+  vertical-align: -3px;
+
+  border-radius: 8px
+}
+
+.loader_200,
+  .loader_200::after,
+  .ring-loader-inline,
+  .ring-loader-inline::after {
+    transform-origin: 50% 50%;
+  }
+
+.loader_200::after, .ring-loader-inline::after {
+    display: block;
+
+    width: 16px;
+    height: 16px;
+
+    content: '';
+    -webkit-animation: pulse_221 0.85s cubic-bezier(0.68, 0, 0.74, 0.74) infinite alternate;
+            animation: pulse_221 0.85s cubic-bezier(0.68, 0, 0.74, 0.74) infinite alternate;
+  }
+
+.children_882 {
+  margin-left: 4px;
+}
+</style><div></div><style>.container_e23 {
+  display: block;
+}
+</style></head>
+
+      <body class="body gt800 gt1000 gt1200">
+      
+
+
+<script type="text/javascript" src="/res/-7907080250028288473.js?v=1743455262418"></script>
+
+      <script>
+        if (window.parent != null) {
+          window.parent.postMessage('BODY_START')
+        }
+      </script>
+      
+
+<div id="skip-to-main" data-react-refreshable-root="true"><a href="#main-content-tag" data-reach-skip-link="" data-reach-skip-nav-link="">Skip to content</a></div>
+<script>
+  ReactUI.createAndRender('skip-to-main', ReactUI.SkipNav);
+</script>
+
+      <!-- Preload disk font for imitated password fields -->
+      <input hidden="" data-imitate-password="">
+      
+
+
+
+
+
+
+
+
+      
+        
+
+
+<script type="text/javascript" src="/res/-8514815108837196770.js?v=1743455262418"></script>
+
+        
+
+
+<style id="195ee089048" type="text/css">
+    @import "/res/773290249420299593.css?v=1743455262418";
+  
+</style>
+
+        <script>
+          BS.RestProjectsPopup.register();
+        </script>
+      
+      <div id="bodyWrapper">
+        <div class="ring-header"></div> <!-- Ring placeholder, do not remove -->
+          <div id="loadingWarning" style="display: none;">
+            <i id="inProgress" style="" class="ring-loader-inline progressRing loadingWarningProgress" title="Please wait..."></i>
+            <span class="text">Loading...</span>
+          </div>
+          <script type="text/javascript">
+            (function() {
+              function getLoadingDiv() {
+                return document.getElementById('loadingWarning');
+              }
+              var loadingTimeout = setTimeout(function(){
+                var div = getLoadingDiv();
+                if (div != null) {
+                  div.style.display = 'block';
+                }
+              }, 500);
+
+              $j(document).ready(function() {
+                if (loadingTimeout) clearTimeout(loadingTimeout);
+                var div = getLoadingDiv();
+                if (div != null) {
+                  BS.Util.hide(div);
+                }
+              });
+            })();
+          </script>
+
+        <div id="topWrapper" class=" ">
+          <div id="sakura-release-banner-portal"></div>
+          <script>
+            (function() {
+              const href = ReactUI.sakuraReleaseBannerHref;
+              if (typeof href === 'string' && href.length > 0) {
+                ReactUI.renderSakuraReleaseBanner('sakura-release-banner-portal', {href})
+              }
+            })()
+          </script>
+          <div id="pipelines-beta-banner-portal" data-react-refreshable-root="true"></div>
+          <script>
+            (function() {
+              ReactUI.renderPipelinesBetaBanner('pipelines-beta-banner-portal', {isAdmin: ''})
+            })()
+          </script>
+          <div id="pipelines-promo-banner-portal" data-react-refreshable-root="true"><div class="PipelinesPromoBanner__banner--Ea"><div class="PipelinesPromoBanner__message--ZT">Pipelines are coming to TeamCity, with a planned availability in 2025</div><div><button type="button" tabindex="0" class="ring-button-button PipelinesPromoBanner__learnMoreButton--L2 ring-button-heightS ring-button-text"><span class="ring-button-content"><span>Learn more</span></span></button><button type="button" tabindex="0" class="ring-button-button PipelinesPromoBanner__dismissButton--ni ring-button-heightS ring-button-text"><span class="ring-button-content"><span>Dismiss</span></span></button></div></div><div></div></div>
+          <script>
+            (function() {
+              ReactUI.renderPipelinesPromoBanner('pipelines-promo-banner-portal')
+            })()
+          </script>
+
+          
+          <div class="ring-ui-theme-dark" id="react-header-placeholder" hidden=""></div>
+          
+            <div id="react-header-container" data-react-refreshable-root="true"><div class="Header__container--Cv ring-variables_dark-dark ring-ui-theme-dark" style="left: 0px;"><div class="ring-variables_dark-dark ring-ui-theme-dark"><header data-test-main-nav="true" class="ring-header-headerVertical Header__header--my"><div class="HomeLink__container--Dq"><span aria-label="TeamCity" role="tooltip" id=":rm:" data-test="ring-tooltip" data-test-title="TeamCity"><a href="/favorite/projects" aria-labelledby=":rm:" class="ring-link-link LinkHost__link--wa LinkHost__withCaption--p3 Link__link--ZK" data-test="ring-link"><span><div class="ring-header-logo HomeLink__logo--ku"><span data-ignore-dark-theme-adapter="true" class="ring-icon-icon"><svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="none" viewBox="0 0 64 64" role="presentation" class="ring-icon-glyph" style="width: 40px; height: 40px;"><defs><linearGradient id="i7" x1="7.671" x2="61.126" y1="64.393" y2="39.609" gradientUnits="userSpaceOnUse"><stop offset="0.1" stop-color="#3BEA62"></stop><stop offset="0.59" stop-color="#6B57FF"></stop></linearGradient><linearGradient id="i6" x1="59.933" x2="1.337" y1="59.676" y2="1.08" gradientUnits="userSpaceOnUse"><stop offset="0.26" stop-color="#6B57FF"></stop><stop offset="0.65" stop-color="#07C3F2"></stop></linearGradient></defs><path fill="#3BEA62" d="M6 47.55v12.259a4.125 4.125 0 0 0 4.19 4.124l11.044-.176a4.13 4.13 0 0 0 3.066-1.44l32.707-38.158c.64-.748.993-1.7.993-2.685V10.125A4.125 4.125 0 0 0 53.875 6H42.872c-1.19 0-2.321.514-3.105 1.409L7.021 44.834A4.12 4.12 0 0 0 6 47.55"></path><path fill="url(#i7)" d="M6 49.015v10.862a4.125 4.125 0 0 0 4.125 4.125h12.566q.3 0 .598-.044l37.185-5.448A4.125 4.125 0 0 0 64 54.429V39.03a4.125 4.125 0 0 0-4.127-4.125l-18.504.005c-.426 0-.849.066-1.254.195l-31.244 9.98A4.13 4.13 0 0 0 6 49.015"></path><path fill="url(#i6)" d="M0 4.125v34.127c0 1.659.993 3.155 2.52 3.8L39.943 57.85c.518.219 1.075.33 1.638.324l18.329-.15A4.125 4.125 0 0 0 64 53.9V36.234c0-.806-.236-1.593-.678-2.267L42.213 1.86A4.13 4.13 0 0 0 38.766 0H4.125A4.125 4.125 0 0 0 0 4.125"></path><path fill="#000" d="M52 12H12v40h40z"></path><path fill="#fff" d="M33 44H17v3h16zM16.003 16.992H28.04v2.637h-4.545V32h-2.927V19.63h-4.566v-2.637Zm16.787 14.25a7.3 7.3 0 0 1-2.744-2.786q-.997-1.774-.997-3.961c0-2.187.332-2.778.997-3.96s1.58-2.112 2.743-2.787q1.747-1.013 3.902-1.014 1.823 0 3.345.675a6.9 6.9 0 0 1 2.535 1.892 6.44 6.44 0 0 1 1.355 2.793h-3.065a4.04 4.04 0 0 0-2.326-2.38 4.9 4.9 0 0 0-1.822-.333q-1.33 0-2.402.665a4.6 4.6 0 0 0-1.677 1.827q-.606 1.164-.606 2.62 0 1.459.606 2.621a4.6 4.6 0 0 0 1.677 1.828q1.072.664 2.402.664a4.9 4.9 0 0 0 1.822-.332 4.01 4.01 0 0 0 2.326-2.38h3.065a6.44 6.44 0 0 1-1.355 2.792 6.86 6.86 0 0 1-2.535 1.892q-1.523.675-3.345.675-2.154 0-3.901-1.013v.003Z"></path></svg></span></div></span></a><span role="presentation"></span></span></div><div class="ring-scrollable-section-scrollableSection ring-header-links Links__links--j2"><span aria-label="Projects" role="tooltip" id=":rn:" data-test="ring-tooltip" data-test-title="Projects"><a href="/favorite/projects" aria-labelledby=":rn:" data-selected="false" class="ring-link-link LinkHost__link--wa LinkHost__withCaption--p3 Link__link--ZK" data-test="ring-link"><div class="LinkHost__iconWrapper--_t"><span class="ring-icon-icon SvgIcon__icon--wZ LinkHost__icon--_x"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 20 20" role="presentation" class="ring-icon-glyph" data-svg-icon="true" data-ignore-dark-theme-adapter="true"><path fill="none" d="M3.1 2C1.94 2 1 3.045 1 4.333v10.334C1 15.955 1.94 17 3.1 17h13.8c1.16 0 2.1-1.045 2.1-2.333V7a2.5 2.5 0 0 0-2.5-2.5h-5.9L8.5 2.372A1.25 1.25 0 0 0 7.61 2z" class="secondary"></path><path fill-rule="evenodd" d="M9.973 6 7.506 3.5H3.1a.5.5 0 0 0-.37.187.96.96 0 0 0-.23.646v10.334c0 .28.102.504.23.646.126.14.259.187.37.187h13.8a.5.5 0 0 0 .37-.187.96.96 0 0 0 .23-.646V7a1 1 0 0 0-1-1zm.627-1.5h5.9A2.5 2.5 0 0 1 19 7v7.667C19 15.955 18.06 17 16.9 17H3.1C1.94 17 1 15.955 1 14.667V4.333C1 3.045 1.94 2 3.1 2h4.51c.335 0 .656.134.89.372z" class="folder (Stroke)" clip-rule="evenodd"></path></svg></span></div><span>Projects</span></a><span role="presentation"></span></span><span aria-label="Changes" role="tooltip" id=":ro:" data-test="ring-tooltip" data-test-title="Changes"><a href="/changes" aria-labelledby=":ro:" data-selected="false" class="ring-link-link LinkHost__link--wa LinkHost__withCaption--p3 Link__link--ZK" data-test="ring-link"><div class="LinkHost__iconWrapper--_t"><span class="ring-icon-icon SvgIcon__icon--wZ LinkHost__icon--_x"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 20 20" role="presentation" class="ring-icon-glyph" data-svg-icon="true" data-ignore-dark-theme-adapter="true"><path d="M3 11.75a.75.75 0 0 1 .75-.75h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1-.75-.75"></path><path fill-rule="evenodd" d="M14.968 8.97a.75.75 0 0 1 1.06 1.06l-.97.97h4.19a.75.75 0 1 1 0 1.5h-4.19l.97.97a.75.75 0 1 1-1.06 1.06l-2.78-2.78zm-3.727 4.95a.75.75 0 0 0-1.06 1.06l.97.97H6.96a.75.75 0 0 0 0 1.5h4.19l-.97.97a.75.75 0 0 0 1.06 1.06l2.78-2.78z" clip-rule="evenodd"></path><path d="M3 7.75A.75.75 0 0 1 3.75 7h7.5a.75.75 0 0 1 0 1.5h-7.5A.75.75 0 0 1 3 7.75m0-4A.75.75 0 0 1 3.75 3h12.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 3.75"></path></svg></span></div><span>Changes</span></a><span role="presentation"></span></span><span id=":rp:" data-test="ring-tooltip"><a href="/agents" aria-labelledby=":rp:" data-selected="false" class="ring-link-link LinkHost__link--wa LinkHost__withCaption--p3 Link__link--ZK" data-test="ring-link"><div class="LinkHost__iconWrapper--_t"><span class="ring-icon-icon SvgIcon__icon--wZ LinkHost__icon--_x"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 20 20" role="presentation" class="ring-icon-glyph" data-svg-icon="true" data-ignore-dark-theme-adapter="true"><path fill-rule="evenodd" d="M1.252 10.61a2.6 2.6 0 0 1 .135-.828 4 4 0 0 1 .237-.53l.07-.139 1.895-3.791c.422-.843.632-1.264.947-1.572l1.05 1.072c-.092.09-.185.23-.655 1.17L3.302 9.25h13.396l-1.629-3.257c-.47-.94-.562-1.081-.654-1.171l1.05-1.072c.314.308.524.73.946 1.572l1.895 3.791.07.14c.12.241.187.383.237.53a2.6 2.6 0 0 1 .135.828c.002.103.002.226.002.38v1.81c0 1.47 0 2.204-.286 2.766a2.63 2.63 0 0 1-1.147 1.147C16.755 17 16.02 17 14.55 17h-9.1c-1.47 0-2.205 0-2.766-.286a2.63 2.63 0 0 1-1.148-1.147c-.286-.562-.286-1.297-.286-2.767v-1.808c0-.155 0-.278.002-.381Zm15.997.14v2.05c0 .76 0 1.24-.03 1.602-.028.345-.074.45-.092.484a1.12 1.12 0 0 1-.491.491c-.034.018-.14.064-.484.092-.363.03-.842.031-1.602.031h-9.1c-.76 0-1.24-.001-1.602-.03-.345-.029-.45-.075-.483-.093l-.658 1.291.658-1.29a1.13 1.13 0 0 1-.492-.492c-.017-.034-.064-.139-.092-.484-.03-.362-.03-.842-.03-1.602v-2.05zm-2.765-7.606c.367.127.702.334.98.606l-1.05 1.072a1.1 1.1 0 0 0-.42-.26zm0 0C14.068 3 13.597 3 12.654 3H7.346c-.942 0-1.413 0-1.83.144a2.6 2.6 0 0 0-.98.606l1.05 1.072c.118-.117.262-.206.42-.26.121-.042.289-.062 1.34-.062h5.308c1.051 0 1.219.02 1.34.062zM4 13.5a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 0 1.5h-3.5A.75.75 0 0 1 4 13.5" clip-rule="evenodd"></path></svg></span><span data-hint-container-id="header-agents-active" class="LinkHost__badge--NN">1</span><div class="ring-progress-bar-progress-bar AgentsLink__progressBar--PE ring-progress-bar-progressBar ring-progress-bar-staticLineColor"><div class="ring-progress-bar-line" role="progressbar" aria-label="Progress" aria-valuenow="0" aria-valuemin="0" aria-valuemax="1"></div></div></div><span>Agents</span></a><span role="presentation"></span></span><span aria-label="Queue: 0 builds" role="tooltip" id=":rq:" data-test="ring-tooltip" data-test-title="Queue: 0 builds"><a href="/queue" aria-labelledby=":rq:" data-selected="false" class="ring-link-link LinkHost__link--wa LinkHost__withCaption--p3 Link__link--ZK" data-test="ring-link"><div class="LinkHost__iconWrapper--_t"><span class="ring-icon-icon SvgIcon__icon--wZ LinkHost__icon--_x"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 20 20" role="presentation" class="ring-icon-glyph" data-svg-icon="true" data-ignore-dark-theme-adapter="true"><path fill-rule="evenodd" d="M5.906 1h8.188c.19 0 .375 0 .532.014.171.015.372.051.572.163.28.155.504.401.643.7.1.214.133.427.146.611.013.169.013.369.013.577v1.798c0 .337 0 .625-.061.904a2.5 2.5 0 0 1-.264.697c-.139.246-.327.451-.545.689l-.043.047-2.21 2.411a7 7 0 0 0-.303.344l-.03.04v.01l.03.04c.058.075.145.172.303.344l2.21 2.41.043.048c.218.238.406.443.544.69.122.215.211.45.265.696.061.279.061.567.061.904v1.798c0 .208 0 .408-.013.577a1.7 1.7 0 0 1-.146.61c-.14.3-.363.546-.643.701-.2.112-.4.148-.572.163-.157.014-.341.014-.532.014H5.906c-.19 0-.375 0-.531-.014a1.4 1.4 0 0 1-.573-.163 1.54 1.54 0 0 1-.644-.7 1.7 1.7 0 0 1-.145-.611C4 17.343 4 17.143 4 16.935v-1.798c0-.337 0-.625.061-.904q.082-.37.265-.697c.138-.246.326-.451.544-.689l.043-.047 2.21-2.411c.158-.172.245-.268.303-.344l.03-.04v-.01l-.03-.04a7 7 0 0 0-.303-.344l-2.21-2.41-.043-.048c-.218-.238-.406-.443-.544-.689a2.5 2.5 0 0 1-.265-.697C4 5.488 4 5.2 4 4.863V3.065c0-.208 0-.408.013-.577.013-.184.046-.397.145-.61.14-.3.364-.546.644-.701.2-.112.4-.148.573-.163C5.53 1 5.715 1 5.906 1m5.261 8.51c.068-.227.184-.404.294-.546.101-.13.231-.271.366-.419l2.226-2.429c.285-.31.342-.38.38-.45a1 1 0 0 0 .097-.254c.018-.081.023-.177.023-.615V3.09c0-.243 0-.379-.008-.478l-.005-.051a6 6 0 0 0-.47-.012H5.93a6 6 0 0 0-.47.012 7 7 0 0 0-.013.53v1.706c0 .438.005.534.023.615q.03.136.096.255c.04.07.096.139.38.45l2.227 2.428c.135.148.265.29.366.42.11.141.226.318.294.546.095.318.095.66 0 .978a1.7 1.7 0 0 1-.294.547c-.101.13-.231.271-.366.419l-2.226 2.429c-.285.31-.342.38-.38.45a1 1 0 0 0-.097.254c-.018.081-.023.177-.023.615v1.707a7 7 0 0 0 .013.53l.035.003c.088.008.211.009.435.009h8.14a6 6 0 0 0 .47-.013l.005-.05c.007-.1.008-.236.008-.48v-1.706c0-.438-.005-.534-.023-.615a1 1 0 0 0-.096-.254c-.04-.07-.096-.14-.38-.45l-2.227-2.43a7 7 0 0 1-.366-.418 1.7 1.7 0 0 1-.294-.547 1.7 1.7 0 0 1 0-.978ZM4.806 2.224l.636.34Zm2.21 13.124c0-.428.323-.774.723-.774h4.522c.4 0 .724.346.724.774 0 .427-.324.774-.724.774H7.74c-.4 0-.724-.347-.724-.774" clip-rule="evenodd"></path></svg></span></div><span>Queue</span></a><span role="presentation"></span></span><span aria-label="Administration" role="tooltip" id=":rr:" data-test="ring-tooltip" data-test-title="Administration"><a href="http://172.17.0.1:8111/admin/admin.html" aria-labelledby=":rr:" data-selected="true" data-hint-container-id="header-administration-link" class="ring-link-link LinkHost__link--wa LinkHost__active--QR LinkHost__withCaption--p3 Link__link--ZK ring-link-active" data-test="ring-link"><div class="LinkHost__iconWrapper--_t"><span class="ring-icon-icon SvgIcon__icon--wZ LinkHost__icon--_x"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 20 20" role="presentation" class="ring-icon-glyph" data-svg-icon="true" data-ignore-dark-theme-adapter="true"><path fill-rule="evenodd" d="M12.087 18.19a.98.98 0 0 1-.7.464 10 10 0 0 1-2.773 0 .98.98 0 0 1-.701-.465l-1.158-1.928a1.05 1.05 0 0 0-.914-.496l-2.358.025a1 1 0 0 1-.78-.336 8.6 8.6 0 0 1-1.39-2.253.87.87 0 0 1 .08-.8l1.203-1.906a.92.92 0 0 0 0-.99L1.393 7.599a.87.87 0 0 1-.08-.8 8.6 8.6 0 0 1 1.39-2.253 1.01 1.01 0 0 1 .78-.336l2.358.025c.378.004.729-.186.914-.496l1.115.67a2.35 2.35 0 0 1-2.043 1.126l-2.236-.023a7.3 7.3 0 0 0-.984 1.575L3.695 8.81c.46.73.46 1.649 0 2.378l-1.088 1.724c.258.562.59 1.091.984 1.575l2.236-.023a2.35 2.35 0 0 1 2.043 1.127l1.077 1.795a8.7 8.7 0 0 0 2.106 0l1.077-1.795a2.35 2.35 0 0 1 2.043-1.127l2.236.023a7.3 7.3 0 0 0 .984-1.574l-1.089-1.725a2.22 2.22 0 0 1 0-2.378l1.089-1.724a7.3 7.3 0 0 0-.984-1.575l-2.236.023a2.35 2.35 0 0 1-2.043-1.127l-1.078-1.795a8.7 8.7 0 0 0-2.105 0L7.87 4.408 6.755 3.74l1.158-1.928a.98.98 0 0 1 .7-.465 10 10 0 0 1 2.773 0 .98.98 0 0 1 .701.465l1.157 1.928c.186.31.537.5.915.496l2.358-.025c.302-.003.592.115.78.336a8.6 8.6 0 0 1 1.39 2.253.87.87 0 0 1-.08.8l-1.203 1.906a.92.92 0 0 0 0 .99l1.203 1.906c.153.243.19.538.08.8a8.6 8.6 0 0 1-1.39 2.253 1.01 1.01 0 0 1-.78.336l-2.358-.025a1.05 1.05 0 0 0-.915.496zm-9.594-5.096-.37-.232.37.233Z" clip-rule="evenodd"></path><path fill-rule="evenodd" d="M6.455 10a3.545 3.545 0 1 1 7.09 0 3.545 3.545 0 0 1-7.09 0M10 7.655a2.345 2.345 0 1 0 0 4.69 2.345 2.345 0 0 0 0-4.69" clip-rule="evenodd"></path></svg></span></div><span>Admin</span></a><span role="presentation"></span></span><div id="SAKURA_HEADER_NAVIGATION_AFTER" class="placeIdModule Plugin__inline--pl"></div></div><div class="ring-header-tray Header__tray--Hw"><div><div id="SAKURA_HEADER_USERNAME_BEFORE" class="placeIdModule"></div></div><div><span aria-label="My Investigations: 0" role="tooltip" id=":rs:" data-test="ring-tooltip" data-test-title="My Investigations: 0"><a href="http://172.17.0.1:8111/investigations.html?init=1" aria-labelledby=":rs:" class="ring-link-link LinkHost__link--wa Link__link--ZK" data-test="ring-link"><div class="LinkHost__iconWrapper--_t"><span class="ring-icon-icon SvgIcon__icon--wZ LinkHost__icon--_x"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 20 20" role="presentation" class="ring-icon-glyph" data-svg-icon="true" data-ignore-dark-theme-adapter="true"><path fill-rule="evenodd" d="M10.11 1.057a.77.77 0 0 0-.58 0L2.84 3.792a.767.767 0 0 0-.363 1.11l2.042 3.331h.494l-.006.046-.002.01a1 1 0 0 0-.007.08c0 2.252 1.546 4.128 3.631 4.665.782.2 1.73.173 2.404 0 2.085-.537 3.632-2.413 3.632-4.664a1 1 0 0 0-.008-.086l-.002-.01-.007-.051.483-.002 2.034-3.318a.767.767 0 0 0-.364-1.11zM6.484 8.648q.002-.08.044-.136a1729 1729 0 0 0 6.666-.012c.008.023 0-.03 0 .09 0 2.013-1.316 3.076-3.33 3.076s-3.38-1.004-3.38-3.018M9.752 2.66l-.033.014-5.166 1.988c-.274.11-.383.266-.228.517l1.228 1.809.621.003c.512.003 1.233.007 2.132.006 1.164-.001 2.415.003 3.53.008.81.003 1.548.005 2.13.005l1.328-1.8c.155-.252.032-.465-.242-.576l-4.983-2.018c-.106-.043-.212 0-.318.044ZM9.864 4a1 1 0 1 0 0 2 1 1 0 0 0 0-2m3.668 12.632c.28.27.487.57.64.868H5.828a3.3 3.3 0 0 1 .64-.868C7.042 16.076 8.07 15.5 10 15.5s2.958.576 3.532 1.132M10 14c-4.52 0-5.686 2.753-5.987 4.173-.096.454.35.827.91.827h10.153c.561 0 1.007-.373.91-.827C15.687 16.753 14.52 14 10 14" clip-rule="evenodd"></path></svg></span></div><span></span></a><span role="presentation"></span></span></div><div><div data-test="ring-dropdown help-dropdown" role="presentation" class="ring-dropdown-dropdown"><span aria-label="Help" role="tooltip" id=":rt:" data-test="ring-tooltip" data-test-title="Help"><button type="button" aria-labelledby=":rt:" data-selected="false" class="ring-link-link LinkHost__link--wa Link__link--ZK ring-link-pseudo" data-test="ring-link"><div class="LinkHost__iconWrapper--_t"><span class="ring-icon-icon SvgIcon__icon--wZ LinkHost__icon--_x"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 20 20" role="presentation" class="ring-icon-glyph" data-svg-icon="true" data-ignore-dark-theme-adapter="true"><path fill-rule="evenodd" d="M17.5 10a7.5 7.5 0 1 1-15 0 7.5 7.5 0 0 1 15 0M10 19a9 9 0 1 0 0-18 9 9 0 0 0 0 18m.086-12.686q.536 0 .932.343t.396.857q0 .471-.289.836a5.4 5.4 0 0 1-.653.686q-.493.428-.868.942-.375.515-.375 1.158 0 .3.225.503t.525.204a.76.76 0 0 0 .546-.215 1 1 0 0 0 .29-.535q.085-.45.385-.804.3-.353.643-.675.492-.471.847-1.028a2.3 2.3 0 0 0 .353-1.243q0-1.093-.89-1.79-.888-.696-2.067-.696a3.65 3.65 0 0 0-1.554.343 2.4 2.4 0 0 0-1.125 1.05.77.77 0 0 0-.096.546q.053.29.29.44.3.171.62.107a.85.85 0 0 0 .536-.365 1.66 1.66 0 0 1 1.329-.664m-.129 8.829q.45 0 .761-.311.31-.31.31-.76c0-.45-.103-.554-.31-.761a1.03 1.03 0 0 0-.76-.311q-.45 0-.761.31-.31.312-.311.761c-.001.449.104.554.31.761q.311.31.761.31Z" clip-rule="evenodd"></path></svg></span></div><span></span></button><span role="presentation"></span></span><span role="presentation"></span></div></div><div><div id="SAKURA_HEADER_RIGHT" class="placeIdModule"></div></div><div><div data-test="ring-dropdown" data-hint-container-id="header-user-menu" role="presentation" class="ring-dropdown-dropdown HeaderUser__user--zA"><span aria-label="test_hueqvufhic" role="tooltip" id=":ru:" data-test="ring-tooltip" data-test-title="test_hueqvufhic"><button type="button" class="HeaderUser__avatarWrapper--VW ring-global-resetButton" aria-labelledby=":ru:"><span class="Avatar__wrapper--ie HeaderUser__avatar--os Avatar__my--SO" data-ignore-dark-theme-adapter="true" style="height: 32px; width: 32px;"><span class="ring-avatar-avatar Avatar__avatar--VU" data-test="avatar" style="border-radius: 50%; height: 32px; width: 32px;"><svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="gradient-1-8wex" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#765AF8" offset="0"></stop><stop stop-color="#5A91F8" offset="1"></stop></linearGradient></defs><g><rect fill="url(#gradient-1-8wex)" x="0" y="0" width="32" height="32" rx="50%" ry="50%"></rect><text x="3" y="17" font-family="Arial, Helvetica, sans-serif" font-size="13px" letter-spacing="1" fill="#FFFFFF" cursor="default"><tspan>TH</tspan><tspan x="4" y="22">_</tspan></text><title>test_hueqvufhic</title></g></svg></span></span></button><span role="presentation"></span></span><span role="presentation"></span></div></div></div></header></div></div></div>
+            <script>
+              ReactUI.renderHeader("react-header-container");
+            </script>
+          
+
+          
+          
+
+
+<style id="195ee089049" type="text/css">
+    @import "/res/-2743990253259579858.css?v=1743455262418";
+  
+</style>
+
+
+          
+
+
+
+
+<div class="globalWarningsWrapper-sakura" id="globalWarningsWrapper">
+  
+
+
+    <!-- START EXTENSION CONTENT jetbrains.buildServer.web.openapi.SimplePageExtension: name:__tc_globalHealthReports: /globalHealthReports.jsp -->
+      
+
+
+
+
+
+
+<div id="globalHealthItems" class="refreshable" data-pageurl="/admin/objectSetup.html?init=1&amp;objectType=BUILD_TYPE&amp;cameFromUrl=%2Fadmin%2FcreateObjectMenu.html%3FprojectId%3Dtest_DPrEKlqVjV%26showMode%3DcreateBuildTypeMenu%23createFromUrl" data-passjsp="">
+  <!--##BEGIN:globalHealthItemsInner##--><div id="globalHealthItemsInner" class="refreshableInner">
+  <script>
+    BS.globalHealthItems = [];
+  </script>
+  <div data-health-report-react-container="" data-react-root="true" style="min-height: 40px;"><div class="HealthItem__outerContainer--z9 HealthItem__warning--Tw"><div class="HealthItem__container--bB"><span class="ring-icon-icon SvgIcon__icon--wZ HealthItem__icon--df HealthItem__icon--df"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" role="presentation" class="ring-icon-glyph"><path fill-rule="evenodd" d="M1.7 14.243q.434.257 1.024.257h10.473q.59 0 1.016-.257.435-.258.67-.691.238-.434.238-.962a1.9 1.9 0 0 0-.271-.983L9.606 2.47a1.8 1.8 0 0 0-.718-.725A1.9 1.9 0 0 0 7.96 1.5q-.487 0-.935.244a1.78 1.78 0 0 0-.71.725L1.07 11.607a2.02 2.02 0 0 0-.04 1.944q.235.434.67.692m6.267-4.43q-.59 0-.61-.597l-.094-3.292a.6.6 0 0 1 .182-.488.7.7 0 0 1 .509-.19.7.7 0 0 1 .514.197.59.59 0 0 1 .19.48L8.55 9.217q-.015.596-.583.596m0 2.248a.83.83 0 0 1-.569-.21.7.7 0 0 1-.23-.535q0-.318.23-.528a.81.81 0 0 1 .57-.217q.324 0 .555.21.237.21.237.535a.68.68 0 0 1-.237.535.8.8 0 0 1-.556.21" clip-rule="evenodd"></path></svg></span><div class="HealthItem__content--cW"><div class="TruncateHtml__content--VW ring-globals__lineClamp--IR" style="line-height: 16px; -webkit-line-clamp: 1; max-height: 16px; min-height: 16px;"><div><div data-health-report-identity="not_configured_root_url" class="attentionComment clearfix">
+
+      
+      
+      
+      
+      
+      <div class="global-health-item__content">
+
+
+
+
+
+    <!-- START EXTENSION CONTENT jetbrains.buildServer.serverSide.healthStatus.reports.NotConfiguredRootUrlHealthPageExtension: name:NotConfiguredRootUrlReport: /healthStatus/reports/notConfiguredRootUrlReport.jsp -->
+      
+This server is using the default URL http://localhost:8111 which will be utilized in the server notifications and integrations with other services. To change the URL, go to <a href="/admin/admin.html?item=serverConfigGeneral">server settings</a>.
+
+  <!-- END EXTENSION CONTENT jetbrains.buildServer.serverSide.healthStatus.reports.NotConfiguredRootUrlHealthPageExtension -->
+  
+
+
+
+</div>
+
+      <script>
+        (() => {
+          const identity = "not_configured_root_url";
+          const severity = "Warning";
+          const canHidePersonal = ("true" == "true");
+          const canHideGlobal = canHidePersonal && ("true" == "true");
+          BS.globalHealthItems.push({
+            identity,
+            category: {
+              id: "not_configured_root_url",
+              name: "The server is using the default URL."
+            },
+            extension: {
+              type: "NotConfiguredRootUrlReport"
+            },
+            severity,
+            canHidePersonal,
+            canHideGlobal,
+          });
+        })()
+      </script>
+    </div></div></div></div><div data-test="ring-dropdown" role="presentation" class="ring-dropdown-dropdown HealthItem__hideButtons--VZ HealthItem__hideButtonsSingle--Hz"><button type="button" tabindex="0" data-test-ring-dropdown-anchor="true" class="ring-button-button ring-dropdown-anchor ring-button-heightS ring-button-text"><span class="ring-button-content"><span>Hide<span class="ring-icon-icon ring-dropdown-chevron"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10" class="ring-icon-glyph"><g><polygon points="5 7.99 1.5 4.5 2.5 3.5 5 6.01 7.5 3.5 8.49 4.5 5 7.99"></polygon></g></svg></span></span></span></button><span role="presentation"></span></div></div></div></div>
+  
+
+    <div class="health-report-react-portal" data-health-report-popup-portal="not_configured_root_url"></div>
+    
+  
+  
+    <script>
+      const container = document.querySelector('[data-health-report-react-container]');
+      const existingGroups = ['Error', 'Warning', 'Info'].filter(severity => BS.globalHealthItems.some(item => item.severity === severity));
+      container.style.minHeight = existingGroups.length * 40 + 'px';
+      ReactUI.renderHealthItems(container, {items: BS.globalHealthItems});
+    </script>
+  
+</div><!--##END:globalHealthItemsInner##-->
+</div>
+
+
+<script type="text/javascript">
+  (function () {
+    var delay = 5;
+    var dispersion = 2;
+    var currentValue = null;
+    var updateIsScheduled = false;
+    BS.SubscriptionManager.subscribe('global-health-items', function(newValue) {
+      if (currentValue != newValue) {
+        if (currentValue != null && !updateIsScheduled) {
+          updateIsScheduled = true;
+          var timeout = delay * 1000 + Math.floor(Math.random() * dispersion * 1000);
+          setTimeout(function () {
+            var healthItems = document.getElementById('globalHealthItems');
+            if (healthItems != null) {
+              healthItems.refresh();
+            }
+            updateIsScheduled = false;
+          }, timeout);
+        }
+        currentValue = newValue;
+      }
+    });
+  })();
+</script>
+
+
+
+  <!-- END EXTENSION CONTENT jetbrains.buildServer.web.openapi.SimplePageExtension -->
+  
+
+
+
+</div>
+
+
+
+          
+
+
+
+
+
+
+  
+
+    
+
+  <div id="BEFORE_CONTENT_CONTAINER" class="placeIdContainer" data-react-root="true"><div id="BEFORE_CONTENT" class="placeIdModule"></div></div>
+  <script>
+    if (ReactUI) {
+      ReactUI.renderPluginPlace(document.getElementById("BEFORE_CONTENT_CONTAINER"), {
+        placeId: "BEFORE_CONTENT",
+        disableFetch: true,
+      })
+    }
+  </script>
+
+
+
+  <!-- end of include PlaceId.BEFORE_CONTENT -->
+
+
+
+          
+            
+<div class="fixedWidth clearfix" id="breadcrumbsWrapper">
+  <div hidden="" id="chevronIcon">
+    <span class="svg-icon "><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"><path fill-rule="evenodd" d="M11.942 5.808a.625.625 0 0 0-.884 0L8 8.866 4.942 5.808a.625.625 0 1 0-.884.884l3.5 3.5c.244.244.64.244.884 0l3.5-3.5a.625.625 0 0 0 0-.884Z" clip-rule="evenodd"></path></svg></span>
+  </div>
+  <div hidden="" id="settingsIcon">
+    <span class="svg-icon "><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"><path fill-rule="evenodd" d="M9.67 1.449a.781.781 0 0 0-.56-.372 8.014 8.014 0 0 0-2.22 0 .781.781 0 0 0-.56.372L5.404 2.99a.84.84 0 0 1-.731.397l-1.887-.02a.804.804 0 0 0-.623.269 6.901 6.901 0 0 0-1.112 1.802.693.693 0 0 0 .064.64l.962 1.525a.736.736 0 0 1 0 .792L1.115 9.92a.693.693 0 0 0-.064.64 6.9 6.9 0 0 0 1.112 1.802c.15.177.382.271.623.269l1.887-.02a.84.84 0 0 1 .731.396l.926 1.543a.781.781 0 0 0 .56.372 8.008 8.008 0 0 0 2.22 0 .782.782 0 0 0 .56-.372l.925-1.543a.845.845 0 0 1 .732-.396l1.887.02a.804.804 0 0 0 .623-.269 6.903 6.903 0 0 0 1.112-1.802.693.693 0 0 0-.064-.64l-.962-1.525a.736.736 0 0 1 0-.792l.962-1.525a.693.693 0 0 0 .064-.64 6.901 6.901 0 0 0-1.112-1.802.804.804 0 0 0-.623-.269l-1.887.02a.84.84 0 0 1-.732-.397L9.67 1.45Zm0 0-.002.001-.02.012.02-.012.002-.001Zm-.022.013-.002.001ZM5.445 3.016l1.031.619A2.09 2.09 0 0 1 4.66 4.638L2.973 4.62a5.66 5.66 0 0 0-.648 1.035l.809 1.281a1.986 1.986 0 0 1 0 2.128l-.81 1.281c.178.366.395.712.649 1.035l1.687-.018a2.09 2.09 0 0 1 1.816 1.003l-1.072.643 1.072-.643.809 1.347a6.797 6.797 0 0 0 1.43 0l.809-1.347a2.09 2.09 0 0 1 1.816-1.003l1.687.018a5.64 5.64 0 0 0 .648-1.035l-.809-1.281a1.986 1.986 0 0 1 0-2.128l.81-1.281a5.66 5.66 0 0 0-.649-1.035l-1.687.018a2.09 2.09 0 0 1-1.816-1.003l-.809-1.347a6.788 6.788 0 0 0-1.43 0l-.809 1.347-1.031-.62Z" clip-rule="evenodd"></path><path fill-rule="evenodd" d="M5.019 8a2.981 2.981 0 1 1 5.962 0 2.981 2.981 0 0 1-5.962 0ZM8 6.27a1.731 1.731 0 1 0 0 3.462A1.731 1.731 0 0 0 8 6.27Z" clip-rule="evenodd"></path></svg></span>
+  </div>
+  <div hidden="" id="buildTypeIcon">
+    <span class="svg-icon "><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"><path fill="none" class="secondary" stroke="currentColor" stroke-width="1.25" d="m1.912 7.306 5.394-5.394a.981.981 0 0 1 1.388 0l5.394 5.394a.981.981 0 0 1 0 1.388l-5.394 5.394a.981.981 0 0 1-1.388 0L1.912 8.694a.981.981 0 0 1 0-1.388Z"></path><path fill-rule="evenodd" d="M7.748 2.354 2.354 7.748a.356.356 0 0 0 0 .504l5.394 5.394c.14.139.365.139.504 0l5.394-5.394a.356.356 0 0 0 0-.504L8.252 2.354a.356.356 0 0 0-.504 0ZM1.47 6.864a1.606 1.606 0 0 0 0 2.272l5.394 5.394a1.606 1.606 0 0 0 2.272 0l5.394-5.394a1.606 1.606 0 0 0 0-2.272L9.136 1.47a1.606 1.606 0 0 0-2.272 0L1.47 6.864Z" clip-rule="evenodd"></path></svg></span>
+  </div>
+  <div hidden="" id="buildTypeCompositeIcon">
+    <span class="svg-icon "><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"><path fill="none" class="secondary" d="M3.735 8.994a1.452 1.452 0 0 1 0-2.056l4.89-4.882a1.457 1.457 0 0 1 2.059 0l4.89 4.882a1.452 1.452 0 0 1 0 2.056l-4.89 4.883a1.458 1.458 0 0 1-2.06 0l-4.89-4.883Z"></path><path fill-rule="evenodd" d="M9.508 13.026c.08.08.211.08.292 0l4.888-4.88.001-.002a.206.206 0 0 0 0-.289l-4.89-4.882a.206.206 0 0 0-.29 0L4.62 7.854l-.001.001a.206.206 0 0 0 0 .289l.001.001 4.888 4.881ZM7.706 1.76a1.459 1.459 0 0 0-2.06 0L.426 6.971a1.453 1.453 0 0 0 0 2.057l5.22 5.212a1.458 1.458 0 0 0 2.06 0l.625-.623.293.292.001.002a1.46 1.46 0 0 0 2.058 0l.001-.002 4.889-4.88a1.453 1.453 0 0 0 0-2.058L10.684 2.09l-.001-.001a1.458 1.458 0 0 0-2.06 0l-.292.294-.625-.624Zm-.319 10.916L3.736 9.028a1.448 1.448 0 0 1-.418-1.19c.035-.316.174-.624.418-.867l3.651-3.646-.624-.623a.123.123 0 0 0-.174 0L1.37 7.913a.122.122 0 0 0 0 .173l5.22 5.212a.123.123 0 0 0 .173 0l.624-.623Z" clip-rule="evenodd"></path></svg></span>
+  </div>
+  <div id="restBreadcrumbs" data-hint-container-id="breadcrumbs-hint" style="display: flex;">
+    <ul id="restNavigation" style="display: block;"><li class="project" data-projectid="_Root"><span class="nowrap"><span class="contentWrapper"><a href="/admin/editProject.html?init=1&amp;projectId=_Root">&lt;Root project&gt;</a><button type="button" class="iWrapper"><span class="svg-icon "><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"><path fill-rule="evenodd" d="M11.942 5.808a.625.625 0 0 0-.884 0L8 8.866 4.942 5.808a.625.625 0 1 0-.884.884l3.5 3.5c.244.244.64.244.884 0l3.5-3.5a.625.625 0 0 0 0-.884Z" clip-rule="evenodd"></path></svg></span></button></span><span class="tc-icon_breadcrumb_slash"></span></span></li><li class="project" data-projectid="test_DPrEKlqVjV" data-parentid="_Root"><span class="nowrap"><span class="contentWrapper"><a href="/admin/editProject.html?init=1&amp;projectId=test_DPrEKlqVjV">test_KbQsAamYSQ</a><button type="button" class="iWrapper"><span class="svg-icon "><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"><path fill-rule="evenodd" d="M11.942 5.808a.625.625 0 0 0-.884 0L8 8.866 4.942 5.808a.625.625 0 1 0-.884.884l3.5 3.5c.244.244.64.244.884 0l3.5-3.5a.625.625 0 0 0 0-.884Z" clip-rule="evenodd"></path></svg></span></button></span><span class="tc-icon_breadcrumb_slash"></span></span></li><li class="last selected"><span class="nowrap"><span class="contentWrapper"><span class="leftIcon"><span class="svg-icon "><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"><path fill-rule="evenodd" d="M9.67 1.449a.781.781 0 0 0-.56-.372 8.014 8.014 0 0 0-2.22 0 .781.781 0 0 0-.56.372L5.404 2.99a.84.84 0 0 1-.731.397l-1.887-.02a.804.804 0 0 0-.623.269 6.901 6.901 0 0 0-1.112 1.802.693.693 0 0 0 .064.64l.962 1.525a.736.736 0 0 1 0 .792L1.115 9.92a.693.693 0 0 0-.064.64 6.9 6.9 0 0 0 1.112 1.802c.15.177.382.271.623.269l1.887-.02a.84.84 0 0 1 .731.396l.926 1.543a.781.781 0 0 0 .56.372 8.008 8.008 0 0 0 2.22 0 .782.782 0 0 0 .56-.372l.925-1.543a.845.845 0 0 1 .732-.396l1.887.02a.804.804 0 0 0 .623-.269 6.903 6.903 0 0 0 1.112-1.802.693.693 0 0 0-.064-.64l-.962-1.525a.736.736 0 0 1 0-.792l.962-1.525a.693.693 0 0 0 .064-.64 6.901 6.901 0 0 0-1.112-1.802.804.804 0 0 0-.623-.269l-1.887.02a.84.84 0 0 1-.732-.397L9.67 1.45Zm0 0-.002.001-.02.012.02-.012.002-.001Zm-.022.013-.002.001ZM5.445 3.016l1.031.619A2.09 2.09 0 0 1 4.66 4.638L2.973 4.62a5.66 5.66 0 0 0-.648 1.035l.809 1.281a1.986 1.986 0 0 1 0 2.128l-.81 1.281c.178.366.395.712.649 1.035l1.687-.018a2.09 2.09 0 0 1 1.816 1.003l-1.072.643 1.072-.643.809 1.347a6.797 6.797 0 0 0 1.43 0l.809-1.347a2.09 2.09 0 0 1 1.816-1.003l1.687.018a5.64 5.64 0 0 0 .648-1.035l-.809-1.281a1.986 1.986 0 0 1 0-2.128l.81-1.281a5.66 5.66 0 0 0-.649-1.035l-1.687.018a2.09 2.09 0 0 1-1.816-1.003l-.809-1.347a6.788 6.788 0 0 0-1.43 0l-.809 1.347-1.031-.62Z" clip-rule="evenodd"></path><path fill-rule="evenodd" d="M5.019 8a2.981 2.981 0 1 1 5.962 0 2.981 2.981 0 0 1-5.962 0ZM8 6.27a1.731 1.731 0 1 0 0 3.462A1.731 1.731 0 0 0 8 6.27Z" clip-rule="evenodd"></path></svg></span></span><a href="/admin/createObjectFromUrl.html?parentId=test_DPrEKlqVjV&amp;objectType=BUILD_TYPE">Create Build Configuration From URL</a></span></span></li></ul>
+    
+
+  <div id="HEADER_RIGHT_CONTAINER" class="placeIdContainer" data-react-root="true"><div id="HEADER_RIGHT" class="placeIdModule"><div class="Plugin__container--t4" data-team-city-plugin-name="Search by Build Number"><div class="pluginContainer"><span class="search"><span class="svg-icon sakura-search-button-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"><path fill-rule="evenodd" d="M11.504 6.877a4.627 4.627 0 1 1-9.254 0 4.627 4.627 0 0 1 9.254 0Zm-.937 4.575a5.877 5.877 0 1 1 .884-.884l3.361 3.36a.625.625 0 1 1-.884.884l-3.361-3.36Z" clip-rule="evenodd"></path></svg></span><input class="quickSearchQuery" id="headerSearchField" value="" type="text" placeholder="Search by Build Number" autocomplete="off" title="Type build number to start a search"></span></div></div></div></div>
+  <script>
+    if (ReactUI) {
+      ReactUI.renderPluginPlace(document.getElementById("HEADER_RIGHT_CONTAINER"), {
+        placeId: "HEADER_RIGHT",
+        disableFetch: true,
+      })
+    }
+  </script>
+
+  </div>
+  <div class="quickLinks">
+    
+  </div>
+
+  
+
+  <div class="restPageTitleWrapper">
+    <div id="restPageTitle" style="display: block;"><div class="selected"><span class="contentWrapper"><a href="/admin/createObjectFromUrl.html?parentId=test_DPrEKlqVjV&amp;objectType=BUILD_TYPE">Create Build Configuration From URL</a></span></div><div class="breadcrumbHealthIndicators"></div></div>
+  </div>
+  <div id="restPageDescription"></div>
+  <script type="text/javascript">
+    $j(document).on('bs.navigationRendered', function(){
+      if (BS.RestProjectsPopup != undefined) {
+        BS.RestProjectsPopup.installRestBreadcrumbs();
+      }
+    });
+  </script>
+</div>
+<script type="text/javascript">
+  BS.Navigation.writeBreadcrumbs();
+  BS.Navigation.installHealthItems();
+</script>
+
+          
+
+          <div class="fixedWidth">
+            
+
+            
+
+          </div>
+
+          <div class="fixedWidth">
+            
+            <table class="tabsTable">
+              <tbody><tr>
+                <td>
+                  <div id="tabsContainer3" class="simpleTabs"></div>
+                </td>
+                <td class="besideContent">
+                  
+                </td>
+              </tr>
+            </tbody></table>
+          </div>
+
+        </div>
+
+        <div id="archivedProjectsContent" class="popupDiv" style="display:none;"></div>
+
+        
+<div id="buildResultsSummaryTemplate" style="display:none">
+  <div class="summaryContainer">
+    <div id="detailedSummary:##BUILD_ID##">
+      <table>
+      <tbody><tr>
+        <td>
+          <div class="header">Build shortcuts</div>
+          <ul class="bsLinks">
+            <li>
+              <a href="/viewLog.html?tab=buildLog&amp;buildTypeId=##BUILD_TYPE_ID##&amp;buildId=##BUILD_ID##" title="View log messages">Build log</a>
+              <span class="separator">|</span>
+              <a href="downloadBuildLog.html?buildId=##BUILD_ID##&amp;archived=true" target="_blank" rel="noreferrer" title="Download archived build log">.zip</a>
+            </li>
+            <li><span id="summaryProgress:##BUILD_ID##" style="font-weight: normal; color:#737577;"></span></li>
+          </ul>
+        </td>
+      </tr>
+      </tbody></table>
+    </div>
+  </div>
+</div>
+
+
+        <div id="mainContent" class="fixedWidth clearfix ">
+          <div id="content">
+            
+
+            
+            
+              
+              
+                <main id="main-content-tag">
+  
+                  <div id="container" class="clearfix" style="width:70%;">
+      
+
+
+    <!-- START EXTENSION CONTENT jetbrains.buildServer.controllers.admin.projects.setupFromUrl.SetupObjectFromVcsUrlExtension: name:VcsResourceDiscovery: /admin/setupFromUrl/vcsUrlObjectSetup.jsp -->
+      
+
+
+
+
+
+
+
+<style id="195ee08904a" type="text/css">
+    @import "/res/6398905183199290029.css?v=1743455262418";
+  
+</style>
+
+
+<div>
+
+
+<form id="createProjectForm" action="/admin/vcsUrlObjectSetup.html" method="post" onsubmit="return BS.VcsUrlObjectSetupForm.submit()">
+
+  <div class="connectionSuccessful">
+    <span class="checkmark">✓</span>
+    The connection to the VCS repository has been verified
+  </div>
+
+  
+  
+  
+    <table class="runnerFormTable" style="margin-top: 1em;" id="createNewProjectForm">
+      
+      <tbody><tr>
+        <th>Build configuration name:&nbsp;<span class="mandatoryAsterix" title="Mandatory field">*</span></th>
+        <td>
+          <input type="text" name="buildTypeName" id="buildTypeName" value="Build" class="longField">
+
+          <span class="error" id="error_buildTypeName"></span>
+          
+            <span class="error" id="error_persistFailed"></span>
+          
+        </td>
+      </tr>
+      <tr>
+        <th>VCS root:</th>
+        <td>
+          (Git) https://github.com/AlexPshe/spring-core-for-qa
+          <span class="error" id="error_vcsRoot"></span>
+        </td>
+      </tr>
+      
+
+
+    <!-- START EXTENSION CONTENT jetbrains.buildServer.buildTriggers.vcs.git.GitCustomizeVcsRootExtension: name:jetbrains.buildServer.buildTriggers.vcs.git.GitServerExtension: /plugins/jetbrains.git/gitCustomizeBranches.jsp -->
+      
+
+
+
+<tr>
+  <th><label for="branch">Default branch:&nbsp;<span class="mandatoryAsterix" title="Mandatory field">*</span></label></th>
+  <td>
+    <div class="posRel"><input type="text" name="prop:branch" id="branch" value="refs/heads/master" class="textProperty longField valueChanged __popupAttached">
+
+<span class="tc-icon icon16 tc-icon_params paramsPopupHandle" title="Parameter references are supported in this field, type % to see available parameters" style="visibility: visible;"></span></div>
+
+    <div class="smallNote" style="margin: 0">The main branch or tag to be monitored</div>
+    <span class="error" id="error_branch"></span>
+  </td>
+</tr>
+
+
+
+
+<tr>
+  <th><label>Branch specification:</label></th>
+  <td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="textarea" style="">
+
+  
+  <div>
+    <a id="teamcity:branchSpec_LinkContainer" href="#" onclick="BS.MultilineProperties.show('teamcity:branchSpec', true); return false" showdiscardchangesmessage="false" style="display: none;">Edit branch specification</a>
+    <span id="teamcity:branchSpec_NoteContainer" style="opacity: 1;">Edit branch specification:</span>
+  </div>
+  
+
+  <div id="teamcity:branchSpec_Container" style="position: relative;">
+    <div class="posRel ">
+      <textarea id="teamcity:branchSpec" wrap="off" name="prop:teamcity:branchSpec" rows="2" cols="60" class="expandable multilineProperty longField valueChanged __popupAttached">refs/heads/*</textarea>
+      
+        
+      
+      
+    <span class="tc-icon icon16 tc-icon_params paramsPopupHandle" title="Parameter references are supported in this field, type % to see available parameters" style="visibility: visible;"></span></div>
+  </div>
+
+  <div class="clr"></div>
+
+  <script type="text/javascript">
+    BS.MultilineProperties.init('teamcity:branchSpec', false, false, '');
+    
+      BS.MultilineProperties.setVisible('teamcity:branchSpec', true);
+      BS.MultilineProperties.updateVisible();
+    
+  </script>
+</div>
+
+<span id="error_teamcity:branchSpec" class="error expanded_true"></span>
+<span class="smallNote" id="note_teamcity:branchSpec">Branches to monitor besides the default one as a newline-delimited set of rules in the form of <b>+|-:branch name</b> with the optional <b>*</b> placeholder. Part matched by <b>*</b> (or part inside <b>parentheses</b>) will be shown as a build logical branch name.<span class="helpIconWrapper nowrap">&nbsp;<a id="" class="helpIcon actionIconWrapper" onclick="BS.Util.showHelp(event, 'https://www.jetbrains.com/help/teamcity/2024.12/?Working+with+Feature+Branches#WorkingwithFeatureBranches-branchSpec', {width: 0, height: 0, preservePlus: false}); return false" style="" href="https://www.jetbrains.com/help/teamcity/2024.12/?Working+with+Feature+Branches#WorkingwithFeatureBranches-branchSpec" title="View help" showdiscardchangesmessage="false"><span class="actionIconWrapper"><span class="svg-icon actionIcon actionIconHelp"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"><path fill-rule="evenodd" d="M13.75 8a5.75 5.75 0 1 1-11.5 0 5.75 5.75 0 0 1 11.5 0ZM8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14Zm.067-9.867c.277 0 .519.09.725.267.205.178.308.4.308.667 0 .244-.075.46-.225.65a4.17 4.17 0 0 1-.508.533 4.403 4.403 0 0 0-.675.733 1.49 1.49 0 0 0-.292.9c0 .156.058.286.175.392a.59.59 0 0 0 .408.158.594.594 0 0 0 .425-.166.768.768 0 0 0 .225-.417c.045-.233.145-.442.3-.625.156-.183.322-.358.5-.525.256-.245.475-.511.659-.8a1.77 1.77 0 0 0 .275-.967c0-.566-.231-1.03-.692-1.391A2.534 2.534 0 0 0 8.067 4c-.423 0-.825.089-1.209.267-.383.177-.675.45-.875.816a.601.601 0 0 0-.075.425c.028.15.103.264.225.342a.664.664 0 0 0 .9-.2 1.287 1.287 0 0 1 1.034-.517ZM7.967 12a.8.8 0 0 0 .591-.242.805.805 0 0 0 .242-.591.801.801 0 0 0-.242-.592.805.805 0 0 0-.591-.242.801.801 0 0 0-.592.242.805.805 0 0 0-.242.591c0 .234.08.431.242.592a.805.805 0 0 0 .592.242Z" clip-rule="evenodd"></path></svg></span></span></a></span><br></span>
+
+</td>
+</tr>
+
+
+  <!-- END EXTENSION CONTENT jetbrains.buildServer.buildTriggers.vcs.git.GitCustomizeVcsRootExtension -->
+  
+
+
+
+    </tbody></table>
+
+  
+
+
+<div class="saveButtonsBlock">
+  
+  
+  <input type="hidden" name="selectedVcsRootId" value="">
+  <input type="hidden" name="skipDuplicateVcsRootCheck" value="false">
+  <input type="hidden" name="cameFromUrl" value="/admin/createObjectMenu.html?projectId=test_DPrEKlqVjV&amp;showMode=createBuildTypeMenu#createFromUrl">
+  
+
+
+
+
+
+<input type="submit" value="Proceed" class="btn btn_primary submitButton " name="createProject">
+
+  <input type="hidden" name="tc-csrf-token" value="570e7b2d-46cb-40ca-9748-38aeebf96613" class="tc-csrf-token-input">
+
+
+  <a class="btn cancel" href="http://172.17.0.1:8111/admin/createObjectMenu.html?projectId=test_DPrEKlqVjV&amp;showMode=createBuildTypeMenu#createFromUrl">Cancel</a><script>BS.fixCancel();</script>
+
+  <i id="saving" style="display: none; " class="ring-loader-inline progressRing progressRingDefault" title="Please wait..."></i>
+</div>
+
+
+<input type="hidden" id="parentProjectId" name="parentProjectId" value="test_DPrEKlqVjV">
+</form>
+
+</div>
+
+<script type="text/javascript">
+  $j(document).ready(function() {
+    BS.AvailableParams.attachPopupsTo('projectId=test_DPrEKlqVjV', "[name^='prop:']");
+  });
+  BS.VcsUrlObjectSetupForm = OO.extend(BS.PluginPropertiesForm, {
+    formElement: function() {
+      return $('createProjectForm');
+    },
+
+    submit: function() {
+      var that = this;
+      BS.FormSaver.save(this, this.formElement().action, OO.extend(BS.ErrorsAwareListener, {
+        onCompleteSave: function (form, responseXML) {
+          var err = BS.XMLResponse.processErrors(responseXML, this, form.propertiesErrorsHandler);
+          BS.ErrorsAwareListener.onCompleteSave(form, responseXML, err);
+          if (!err) {
+            this.onSuccessfulSave(responseXML);
+          }
+        },
+
+        projectName: function(elem) {
+          $j('#error_projectName').text(elem.firstChild.nodeValue);
+          that.highlightErrorField($("projectName"));
+        },
+
+        buildTypeName: function(elem) {
+          $j('#error_buildTypeName').text(elem.firstChild.nodeValue);
+          that.highlightErrorField($("buildTypeName"));
+        },
+
+        persistFailed: function(elem) {
+          $j('#error_persistFailed').text(elem.firstChild.nodeValue);
+        },
+
+        projectSettingsImportFailed: function(elem) {
+          $j('#error_projectSettingsImportFailed').text(elem.firstChild.nodeValue);
+        },
+
+        projectSettingsImportFailed_dslParam: function(elem) {
+          var params = window.location.search.toQueryParams();
+          delete params['init'];
+          window.location.search = Object.toQueryString(params);
+        },
+
+        vcsRoot: function(elem) {
+          $j('#error_vcsRoot').text(elem.firstChild.nodeValue);
+        },
+
+        duplicateVcsRootsFound: function(elem) {
+          BS.DuplicateVcsRootsDialog.showDialog(elem.firstChild.nodeValue,
+                                                function (vcsRootId) {
+                                                  BS.VcsUrlObjectSetupForm.formElement().selectedVcsRootId.value = vcsRootId;
+                                                  BS.VcsUrlObjectSetupForm.submit();
+                                                },
+                                                function () {
+                                                  BS.VcsUrlObjectSetupForm.formElement().skipDuplicateVcsRootCheck.value = 'true';
+                                                  BS.VcsUrlObjectSetupForm.submit();
+                                                });
+        },
+
+        onSuccessfulSave: function(responseXml) {
+          BS.XMLResponse.processRedirect(responseXml);
+        }
+      }));
+      return false;
+    }
+  });
+</script>
+
+
+
+
+<form id="duplicateVcsRoots" action="" method="post" onsubmit="return ;" autocomplete="off">
+  <div id="duplicateVcsRootsDialog" class="duplicateVcsRootsDialog  modalDialog">
+  <div class="dialogHeader">
+    <div class="closeWindow">
+      <a class="closeWindowLink" title="Close dialog window" href="#" onclick="BS.DuplicateVcsRootsDialog.close(); return false">×</a>
+    </div>
+    <div class="dialogHandle">
+      <h3 class="dialogTitle" id="duplicateVcsRootsTitle" title="Duplicate VCS Roots Found">Duplicate VCS Roots Found</h3>
+    </div>
+  </div>
+  <div class="modalDialogBody">
+    <script>
+    (function () {
+      var newForm = document.getElementById('duplicateVcsRoots_temp');
+      if (newForm == null) {
+        return;
+      }
+
+      var oldForm = document.getElementById('duplicateVcsRoots');
+      if (oldForm != null) {
+        oldForm.parentElement.removeChild(oldForm);
+      }
+      newForm.id = 'duplicateVcsRoots';
+    })();
+  </script>
+  <div id="duplicateVcsRootsContainer"></div>
+
+  <div class="popupSaveButtonsBlock">
+    <input class="btn" type="button" id="submitAnywayButton" value="Create Duplicate VCS Root" onclick="BS.DuplicateVcsRootsDialog._submitAnyway();">
+    <a class="btn cancel" href="http://172.17.0.1:8111/admin/createObjectMenu.html?projectId=test_DPrEKlqVjV&amp;showMode=createBuildTypeMenu#createFromUrl" showdiscardchangesmessage="false">Cancel</a><script>BS.fixCancel();</script>
+
+  </div>
+
+  </div>
+  <div data-iframe-height=""></div>
+</div>
+</form>
+
+
+
+  <!-- END EXTENSION CONTENT jetbrains.buildServer.controllers.admin.projects.setupFromUrl.SetupObjectFromVcsUrlExtension -->
+  
+
+
+
+    </div>
+                
+</main>
+
+              
+            
+          </div>
+        </div>
+
+        
+
+
+  
+
+
+
+
+
+
+    <!-- START EXTENSION CONTENT jetbrains.buildServer.web.forbiddenDomains.ForbiddenDomainHeaderWarning$Extension: name:jetbrains.buildServer.web.forbiddenDomains.ForbiddenDomainHeaderWarning: /forbiddenDomainWarning.jsp -->
+      
+
+
+
+
+
+
+
+
+
+  <!-- END EXTENSION CONTENT jetbrains.buildServer.web.forbiddenDomains.ForbiddenDomainHeaderWarning$Extension -->
+  
+
+    <!-- START EXTENSION CONTENT jetbrains.buildServer.web.openapi.SimplePageExtension: name:QodanaUIExtension-Plugin: /reactPlugin.html -->
+      
+<script src="/plugins/qodana/build-extension/bundle.js?1743455262418"></script>
+
+  <!-- END EXTENSION CONTENT jetbrains.buildServer.web.openapi.SimplePageExtension -->
+  
+
+    <!-- START EXTENSION CONTENT jetbrains.buildServer.usageStatistics.impl.GetRequestDetector: name:getRequestProcessor: /plugins/usage-statistics/empty.jsp -->
+      
+  <!-- END EXTENSION CONTENT jetbrains.buildServer.usageStatistics.impl.GetRequestDetector -->
+  
+
+
+
+  <div id="react-ui-version" data-react-root="true"><div class="Version__version--bJ">TeamCity Professional 2024.12.3 (build 174541)</div></div>
+  <script>
+    ReactUI.renderConnected(document.getElementById('react-ui-version'), ReactUI.Version);
+  </script>
+
+<div class="hidden">
+  
+
+
+
+
+
+
+    <!-- START EXTENSION CONTENT jetbrains.buildServer.serverSide.search.controller.SearchController$2: name:searchBuildByNumber: /plugins/searchBuildByNumber/input.jsp -->
+      
+
+
+
+
+
+<script type="text/javascript" src="/res/-1913649053728597819.js?v=1743455262418"></script>
+
+
+  <!-- END EXTENSION CONTENT jetbrains.buildServer.serverSide.search.controller.SearchController$2 -->
+  
+
+    <!-- START EXTENSION CONTENT jetbrains.buildServer.agentTerminal.web.AgentTerminalPanelExtension$1: name:ssm-agent-terminal-panel: /agent-terminal/agent-terminal-panel.html -->
+      
+
+
+
+<script>
+    window.TeamCityAgentTerminal = window.TeamCityAgentTerminal || {};
+    window.TeamCityAgentTerminal.terminalPanel = {
+        terminalPageLink: "/plugins/teamcity-agent-terminal/agentTerminal.html",
+    }
+</script>
+
+
+
+    
+    
+        
+
+
+<script type="text/javascript" src="/res/-3909775851846414738.js?v=1743455262418"></script>
+
+    
+
+
+  <!-- END EXTENSION CONTENT jetbrains.buildServer.agentTerminal.web.AgentTerminalPanelExtension$1 -->
+  
+
+    <!-- START EXTENSION CONTENT jetbrains.buildServer.web.openapi.SimplePageExtension: name:Coverage Plugin React: /coveragePluginReact.html -->
+      
+
+
+
+
+<script type="text/javascript" src="/res/3420197292881631278.js?v=1743455262418"></script>
+
+
+  <!-- END EXTENSION CONTENT jetbrains.buildServer.web.openapi.SimplePageExtension -->
+  
+
+
+
+</div>
+
+
+
+      </div>
+
+      <script type="text/javascript">(function() {var handler = function() {BS.ServerLink.onShutdown();};BS.EventTracker.subscribeOnEvent('H', 0, handler);})();</script>
+
+      <div id="react-hints-container" data-react-refreshable-root="true"></div>
+      <div id="react-service-worker-checker"></div>
+
+      
+        <script>
+          
+            ReactUI.renderHintsBoard('react-hints-container');
+          
+          ReactUI.serviceWorkers.setup();
+        </script>
+      
+
+      
+
+
+
+
+
+
+
+
+
+
+
+<form id="buildCommentForm" action="/ajax.html" method="post" onsubmit="return BS.BuildCommentDialog.submit();" autocomplete="off">
+  <div id="buildCommentFormDialog" class="buildCommentFormDialog  modalDialog">
+  <div class="dialogHeader">
+    <div class="closeWindow">
+      <a class="closeWindowLink" title="Close dialog window" href="#" onclick="BS.BuildCommentDialog.close();; return false">×</a>
+    </div>
+    <div class="dialogHandle">
+      <h3 class="dialogTitle" id="buildCommentFormTitle" title="Add build comment">Add build comment</h3>
+    </div>
+  </div>
+  <div class="modalDialogBody">
+    <script>
+    (function () {
+      var newForm = document.getElementById('buildCommentForm_temp');
+      if (newForm == null) {
+        return;
+      }
+
+      var oldForm = document.getElementById('buildCommentForm');
+      if (oldForm != null) {
+        oldForm.parentElement.removeChild(oldForm);
+      }
+      newForm.id = 'buildCommentForm';
+    })();
+  </script>
+  <textarea name="buildComment" rows="5" cols="46" class="commentTextArea" onfocus="if (this.value == this.defaultValue) this.value = ''" onblur="if (this.value == '') this.value='<your comment here>'">&lt;your comment here&gt;</textarea>
+  <input type="hidden" name="promotionId" value="">
+
+  <div class="popupSaveButtonsBlock">
+    
+
+
+
+
+
+<input type="submit" value="Save comment" class="btn btn_primary submitButton " id="BuildCommentSubmitButton">
+
+  <input type="hidden" name="tc-csrf-token" value="570e7b2d-46cb-40ca-9748-38aeebf96613" class="tc-csrf-token-input">
+
+
+    <a class="btn cancel" href="http://172.17.0.1:8111/admin/createObjectMenu.html?projectId=test_DPrEKlqVjV&amp;showMode=createBuildTypeMenu#createFromUrl">Cancel</a><script>BS.fixCancel();</script>
+
+    <i id="buildCommentProgressIcon" style="display: none; " class="ring-loader-inline progressRing progressRingDefault" title="Please wait..."></i>
+  </div>
+
+  </div>
+  <div data-iframe-height=""></div>
+</div>
+</form>
+
+<form id="muteTestsForm" action="#" method="post" onsubmit="return BS.BulkInvestigateDialog.submit();;" autocomplete="off">
+  <div id="muteTestsFormDialog" class="muteTestsFormDialog  modalDialog">
+  <div class="dialogHeader">
+    <div class="closeWindow">
+      <a class="closeWindowLink" title="Close dialog window" href="#" onclick="BS.BulkInvestigateDialog.close();; return false">×</a>
+    </div>
+    <div class="dialogHandle">
+      <h3 class="dialogTitle" id="muteTestsFormTitle" title="Mute test">Mute test</h3>
+    </div>
+  </div>
+  <div class="modalDialogBody">
+    <script>
+    (function () {
+      var newForm = document.getElementById('muteTestsForm_temp');
+      if (newForm == null) {
+        return;
+      }
+
+      var oldForm = document.getElementById('muteTestsForm');
+      if (oldForm != null) {
+        oldForm.parentElement.removeChild(oldForm);
+      }
+      newForm.id = 'muteTestsForm';
+    })();
+  </script>
+  <div id="mute-dialog-container"></div>
+  <div><i id="mute-dialog-progress" style="display: none; " class="ring-loader-inline progressRing progressRingInline" title="Please wait..."></i></div>
+
+  </div>
+  <div data-iframe-height=""></div>
+</div>
+</form>
+
+
+<form id="errorForm" action="#" method="post" onsubmit="return BS.ErrorDialog.close();;" autocomplete="off">
+  <div id="errorFormDialog" class="errorFormDialog  modalDialog">
+  <div class="dialogHeader">
+    <div class="closeWindow">
+      <a class="closeWindowLink" title="Close dialog window" href="#" onclick="BS.ErrorDialog.close();; return false">×</a>
+    </div>
+    <div class="dialogHandle">
+      <h3 class="dialogTitle" id="errorFormTitle" title=""></h3>
+    </div>
+  </div>
+  <div class="modalDialogBody">
+    <script>
+    (function () {
+      var newForm = document.getElementById('errorForm_temp');
+      if (newForm == null) {
+        return;
+      }
+
+      var oldForm = document.getElementById('errorForm');
+      if (oldForm != null) {
+        oldForm.parentElement.removeChild(oldForm);
+      }
+      newForm.id = 'errorForm';
+    })();
+  </script>
+
+  </div>
+  <div data-iframe-height=""></div>
+</div>
+</form>
+
+
+<div id="shutdownDialog" class=" modalDialog">
+  <div class="dialogHeader">
+    <div class="closeWindow">
+      <a class="closeWindowLink" title="Close dialog window" href="#" onclick="BS.ServerUnavailableModalDialog.close(); return false">×</a>
+    </div>
+    <div class="dialogHandle">
+      <h3 class="dialogTitle" id="shutdownDialogTitle" title="Server communication failure">Server communication failure</h3>
+    </div>
+  </div>
+  <div class="modalDialogBody">
+    
+  <strong id="shutdownDetails">Server is unavailable</strong>
+  <p id="onCommunicationFailure">Server stopped or communication with the server is not possible due to network failure.</p>
+  <p id="onServerShutdown">Server shutdown started.</p>
+  <p id="onAuthFailure">Please relogin to continue your work.</p>
+
+  </div>
+  <div data-iframe-height=""></div>
+</div>
+
+
+
+<form id="runBuild" action="/runCustomBuild.html" method="post" onsubmit="return BS.RunBuildDialog.submit();" autocomplete="off">
+  <div id="runBuildDialog" class="runBuildDialog editTagsDialog modalDialog">
+  <div class="dialogHeader">
+    <div class="closeWindow">
+      <a class="closeWindowLink" title="Close dialog window" href="#" onclick="BS.RunBuildDialog.close(); return false">×</a>
+    </div>
+    <div class="dialogHandle">
+      <h3 class="dialogTitle" id="runBuildTitle" title="Run Custom Build">Run Custom Build</h3>
+    </div>
+  </div>
+  <div class="modalDialogBody">
+    <script>
+    (function () {
+      var newForm = document.getElementById('runBuild_temp');
+      if (newForm == null) {
+        return;
+      }
+
+      var oldForm = document.getElementById('runBuild');
+      if (oldForm != null) {
+        oldForm.parentElement.removeChild(oldForm);
+      }
+      newForm.id = 'runBuild';
+    })();
+  </script>
+
+  </div>
+  <div data-iframe-height=""></div>
+</div>
+</form>
+
+<form id="personalPatchUploadForm" method="post" action="/runCustomBuild.html" onsubmit="return true" enctype="multipart/form-data" target="personalPatchHiddenIframe" autocomplete="off"></form>
+<iframe id="personalPatchHiddenIframe" name="personalPatchHiddenIframe" style="display:none;"></iframe>
+
+<form id="stopBuildForm" action="/ajax.html" method="post" onsubmit="return BS.StopBuildDialog.killBuild();;" autocomplete="off">
+  <div id="stopBuildFormDialog" class="stopBuildFormDialog  modalDialog">
+  <div class="dialogHeader">
+    <div class="closeWindow">
+      <a class="closeWindowLink" title="Close dialog window" href="#" onclick="BS.StopBuildDialog.close(); return false">×</a>
+    </div>
+    <div class="dialogHandle">
+      <h3 class="dialogTitle" id="stopBuildFormTitle" title="TODO">TODO</h3>
+    </div>
+  </div>
+  <div class="modalDialogBody">
+    <script>
+    (function () {
+      var newForm = document.getElementById('stopBuildForm_temp');
+      if (newForm == null) {
+        return;
+      }
+
+      var oldForm = document.getElementById('stopBuildForm');
+      if (oldForm != null) {
+        oldForm.parentElement.removeChild(oldForm);
+      }
+      newForm.id = 'stopBuildForm';
+    })();
+  </script>
+  <textarea id="removeQueuedBuildComment" name="comment" rows="3" cols="46" class="commentTextArea" onfocus="if (this.value == this.defaultValue) this.value = ''" onblur="if (this.value == '') this.value='<your comment here>'">&lt;your comment here&gt;</textarea>
+  <input type="hidden" name="kill" value="">
+  <input type="hidden" name="operationKind" value="0">
+
+  <div id="moreToStop">
+    Loading related builds...
+    <i id="saving" style="display: none; " class="ring-loader-inline progressRing progressRingInline" title="Loading related builds to stop..."></i>
+  </div>
+  <div id="moreToStopFragment" class="custom-scroll"></div>
+
+  <div id="moreToStopRetryNotice" class="attentionComment" hidden=""><span class="svg-icon js_buildStatusIcon buildStatusIcon buildStatusIcon_red-sign buildStatusIcon_size_S warningIcon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"><path fill-rule="evenodd" d="M1.7 14.243c.29.171.63.257 1.024.257h10.473c.393 0 .732-.086 1.016-.257.29-.172.513-.402.67-.691.159-.29.238-.61.238-.962a1.917 1.917 0 0 0-.271-.983L9.606 2.47a1.818 1.818 0 0 0-.718-.725A1.888 1.888 0 0 0 7.96 1.5c-.325 0-.636.081-.935.244a1.775 1.775 0 0 0-.71.725L1.07 11.607a2.018 2.018 0 0 0-.04 1.944c.157.29.38.52.67.692Zm6.267-4.43c-.393 0-.596-.2-.61-.597l-.094-3.292a.607.607 0 0 1 .182-.488.7.7 0 0 1 .509-.19.71.71 0 0 1 .514.197.59.59 0 0 1 .19.48L8.55 9.217c-.01.397-.204.596-.583.596Zm0 2.248a.829.829 0 0 1-.569-.21.706.706 0 0 1-.23-.535c0-.212.077-.388.23-.528a.814.814 0 0 1 .57-.217c.216 0 .401.07.555.21.158.14.237.318.237.535a.683.683 0 0 1-.237.535.811.811 0 0 1-.556.21Z" clip-rule="evenodd"></path></svg></span>The stop command has already been sent to the build. This will re-send stop command</div>
+
+  <div class="popupSaveButtonsBlock">
+    
+
+
+
+
+
+<input type="submit" value="Stop" class="btn btn_primary submitButton " id="submitRemoveQueuedBuild" name="submit">
+
+  <input type="hidden" name="tc-csrf-token" value="570e7b2d-46cb-40ca-9748-38aeebf96613" class="tc-csrf-token-input">
+
+
+    <a class="btn cancel" href="http://172.17.0.1:8111/admin/createObjectMenu.html?projectId=test_DPrEKlqVjV&amp;showMode=createBuildTypeMenu#createFromUrl" id="cancelRemoveQueuedBuild">Cancel</a><script>BS.fixCancel();</script>
+
+    <i id="stopBuildIndicator" style="display: none; " class="ring-loader-inline progressRing progressRingDefault" title="Please wait..."></i>
+  </div>
+
+  </div>
+  <div data-iframe-height=""></div>
+</div>
+</form>
+
+
+<form id="investigationForm" action="" method="post" onsubmit="return BS.ResponsibilityDialog.submit();" autocomplete="off">
+  <div id="investigationFormDialog" class="investigationFormDialog  modalDialog">
+  <div class="dialogHeader">
+    <div class="closeWindow">
+      <a class="closeWindowLink" title="Close dialog window" href="#" onclick="BS.ResponsibilityDialog.close();; return false">×</a>
+    </div>
+    <div class="dialogHandle">
+      <h3 class="dialogTitle" id="investigationFormTitle" title="Responsibility">Responsibility</h3>
+    </div>
+  </div>
+  <div class="modalDialogBody">
+    <script>
+    (function () {
+      var newForm = document.getElementById('investigationForm_temp');
+      if (newForm == null) {
+        return;
+      }
+
+      var oldForm = document.getElementById('investigationForm');
+      if (oldForm != null) {
+        oldForm.parentElement.removeChild(oldForm);
+      }
+      newForm.id = 'investigationForm';
+    })();
+  </script>
+  </div>
+  <div data-iframe-height=""></div>
+</div>
+</form>
+
+
+
+
+<form id="editBuildTagsForm" action="/ajax.html" method="post" onsubmit="return BS.Tags.submitTags();" autocomplete="off">
+  <div id="editBuildTagsFormDialog" class="editBuildTagsFormDialog editTagsDialog modalDialog">
+  <div class="dialogHeader">
+    <div class="closeWindow">
+      <a class="closeWindowLink" title="Close dialog window" href="#" onclick="BS.Tags.close(); return false">×</a>
+    </div>
+    <div class="dialogHandle">
+      <h3 class="dialogTitle" id="editBuildTagsFormTitle" title="Edit tags">Edit tags</h3>
+    </div>
+  </div>
+  <div class="modalDialogBody">
+    <script>
+    (function () {
+      var newForm = document.getElementById('editBuildTagsForm_temp');
+      if (newForm == null) {
+        return;
+      }
+
+      var oldForm = document.getElementById('editBuildTagsForm');
+      if (oldForm != null) {
+        oldForm.parentElement.removeChild(oldForm);
+      }
+      newForm.id = 'editBuildTagsForm';
+    })();
+  </script>
+  
+
+
+<textarea style="" class="expandable commentTextArea" name="buildTagsInfo" id="buildTagsInfoEditTags"></textarea>
+<script type="text/javascript">
+  (function() {
+    var id = 'buildTagsInfoEditTags';
+    BS.VisibilityHandlers.detachFrom(id);
+    BS.VisibilityHandlers.attachTo(id, {
+      updateVisibility: function() {
+        var element = $j(BS.Util.escapeId(id));
+        var domElement = element.get(0);
+        var minHeight = 40;
+        var maxHeight = 200;
+
+        function updateHeight() {
+          var verticalAddition = domElement.offsetHeight - domElement.clientHeight;
+          var desiredHeight = domElement.scrollHeight + verticalAddition;
+          var height = Math.max(minHeight, Math.min(desiredHeight, maxHeight));
+          domElement.style.height = height + 'px';
+        }
+
+        if (domElement) {
+          // even if textarea has one line value scrollHeight won't be less than 40 pixels
+          // changing the height to minimum value workarounds this problem
+          domElement.style.height = minHeight + 'px';
+          updateHeight();
+          // Listen to mouseup to detect native resize
+          element.on('input mouseup', updateHeight);
+        } else {
+          BS.VisibilityHandlers.detachFrom(id);
+        }
+      }
+    });
+  })();
+</script>
+
+<div id="editBuildTagsForm_availableTags" class="available-tags-container"></div>
+<span class="note"></span>
+  <div class="tagsApplyAll" style="display: none;">
+  
+  
+    <span class="custom-checkbox ring-checkbox-checkbox">
+      <input type="checkbox" class="custom-checkbox_input ring-checkbox-input" name="applyToChainBuilds" id="tag_applyToChainBuilds" value="true">
+      <div class="ring-checkbox-cellWrapper">
+        <span class="ring-checkbox-cell">
+          <span class="svg-icon ring-checkbox-check ring-checkbox-icon ring-icon-icon"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor"><path fill-rule="evenodd" d="M10.899 2.05a.6.6 0 0 1 .05.847L4.808 9.8a.6.6 0 0 1-.876.023L1.073 6.92a.6.6 0 0 1 .854-.843l2.41 2.447L10.053 2.1a.6.6 0 0 1 .847-.05Z" clip-rule="evenodd"></path></svg></span>
+        </span>
+      </div>
+      <input type="hidden" name="_applyToChainBuilds" value="">
+    </span>
+  
+  
+
+
+  <label for="tag_applyToChainBuilds">Apply to all snapshot dependencies</label>
+  <div class="grayNote">Note: the existing tags and pin status of the dependencies will be preserved</div>
+</div>
+
+
+  <div class="popupSaveButtonsBlock">
+    
+
+
+
+
+
+<input type="submit" value="Save" class="btn btn_primary submitButton ">
+
+  <input type="hidden" name="tc-csrf-token" value="570e7b2d-46cb-40ca-9748-38aeebf96613" class="tc-csrf-token-input">
+
+
+    <a class="btn cancel" href="http://172.17.0.1:8111/admin/createObjectMenu.html?projectId=test_DPrEKlqVjV&amp;showMode=createBuildTypeMenu#createFromUrl">Cancel</a><script>BS.fixCancel();</script>
+
+    <input type="hidden" value="" name="editTagsForPromotion">
+    <i id="savingTags" style="display: none; " class="ring-loader-inline progressRing progressRingDefault" title="Please wait..."></i>
+  </div>
+
+  </div>
+  <div data-iframe-height=""></div>
+</div>
+</form>
+
+
+
+<form id="abstractLoading" action="#" method="post" onsubmit="return BS.LoadingDialog.close();" autocomplete="off">
+  <div id="abstractLoadingDialog" class="abstractLoadingDialog  modalDialog">
+  <div class="dialogHeader">
+    <div class="closeWindow">
+      <a class="closeWindowLink" title="Close dialog window" href="#" onclick="BS.LoadingDialog.close();; return false">×</a>
+    </div>
+    <div class="dialogHandle">
+      <h3 class="dialogTitle" id="abstractLoadingTitle" title="Loading...">Loading...</h3>
+    </div>
+  </div>
+  <div class="modalDialogBody">
+    <script>
+    (function () {
+      var newForm = document.getElementById('abstractLoading_temp');
+      if (newForm == null) {
+        return;
+      }
+
+      var oldForm = document.getElementById('abstractLoading');
+      if (oldForm != null) {
+        oldForm.parentElement.removeChild(oldForm);
+      }
+      newForm.id = 'abstractLoading';
+    })();
+  </script>
+
+  <i id="abstractProgress" style="display: none; " class="ring-loader-inline progressRing progressRingInline" title="Please wait..."></i>
+
+  </div>
+  <div data-iframe-height=""></div>
+</div>
+</form>
+
+
+<div id="confirmDialog" class="modalDialog_small modalDialog">
+  <div class="dialogHeader">
+    <div class="closeWindow">
+      <a class="closeWindowLink" title="Close dialog window" href="#" onclick="BS.confirmDialog.doCancelAction();; return false">×</a>
+    </div>
+    <div class="dialogHandle">
+      <h3 class="dialogTitle" id="" title="Are you sure?">Are you sure?</h3>
+    </div>
+  </div>
+  <div class="modalDialogBody">
+    
+  <form id="confirmDialogForm" onsubmit="return false;">
+  <div class="confirmDialog__content"></div>
+  <div class="popupSaveButtonsBlock">
+    
+
+
+
+
+
+<input type="submit" value="OK" class="btn btn_primary submitButton " onclick="event.stopPropagation(); BS.confirmDialog.doAction();">
+
+  <input type="hidden" name="tc-csrf-token" value="570e7b2d-46cb-40ca-9748-38aeebf96613" class="tc-csrf-token-input">
+
+
+    <a class="btn cancel" href="http://172.17.0.1:8111/admin/createObjectMenu.html?projectId=test_DPrEKlqVjV&amp;showMode=createBuildTypeMenu#createFromUrl">Cancel</a><script>BS.fixCancel();</script>
+
+    <i id="confirmProgress" style="display: none; " class="ring-loader-inline progressRing progressRingDefault" title="Please wait..."></i>
+  </div>
+  </form>
+
+  </div>
+  <div data-iframe-height=""></div>
+</div>
+
+
+<form id="restartServerForm" action="#" method="post" onsubmit="return BS.RestartDialog.submit();" autocomplete="off">
+  <div id="restartServerFormDialog" class="restartServerFormDialog  modalDialog">
+  <div class="dialogHeader">
+    <div class="closeWindow">
+      <a class="closeWindowLink" title="Close dialog window" href="#" onclick="BS.RestartDialog.close(); return false">×</a>
+    </div>
+    <div class="dialogHandle">
+      <h3 class="dialogTitle" id="restartServerFormTitle" title=""></h3>
+    </div>
+  </div>
+  <div class="modalDialogBody">
+    <script>
+    (function () {
+      var newForm = document.getElementById('restartServerForm_temp');
+      if (newForm == null) {
+        return;
+      }
+
+      var oldForm = document.getElementById('restartServerForm');
+      if (oldForm != null) {
+        oldForm.parentElement.removeChild(oldForm);
+      }
+      newForm.id = 'restartServerForm';
+    })();
+  </script>
+  <div class="restartDialog__content"></div>
+  <div class="restartDialog__confirm">
+    Please type <strong class="hostnamePlaceholder"></strong> to confirm.
+    <input type="text" class="restartDialog__hostnameConfirmation hostnameConfirmation" autocomplete="off">
+  </div>
+
+  <div id="restartError" class="red-text" style="display:none; margin-top: 1em;"></div>
+
+  <div id="restartStarted" class="messageNote" style="display:none;">
+    <i id="restartIsRunningProgress" style="" class="ring-loader-inline progressRing progressRingInline" title="Please wait..."></i>
+    <span class="restartStartedText">TeamCity is restarting, the page will be reloaded automatically when the server starts.</span>
+  </div>
+
+  <div class="attentionComment hidden" id="restartTooLongWarning"><span class="svg-icon js_buildStatusIcon buildStatusIcon buildStatusIcon_red-sign buildStatusIcon_size_S warningIcon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"><path fill-rule="evenodd" d="M1.7 14.243c.29.171.63.257 1.024.257h10.473c.393 0 .732-.086 1.016-.257.29-.172.513-.402.67-.691.159-.29.238-.61.238-.962a1.917 1.917 0 0 0-.271-.983L9.606 2.47a1.818 1.818 0 0 0-.718-.725A1.888 1.888 0 0 0 7.96 1.5c-.325 0-.636.081-.935.244a1.775 1.775 0 0 0-.71.725L1.07 11.607a2.018 2.018 0 0 0-.04 1.944c.157.29.38.52.67.692Zm6.267-4.43c-.393 0-.596-.2-.61-.597l-.094-3.292a.607.607 0 0 1 .182-.488.7.7 0 0 1 .509-.19.71.71 0 0 1 .514.197.59.59 0 0 1 .19.48L8.55 9.217c-.01.397-.204.596-.583.596Zm0 2.248a.829.829 0 0 1-.569-.21.706.706 0 0 1-.23-.535c0-.212.077-.388.23-.528a.814.814 0 0 1 .57-.217c.216 0 .401.07.555.21.158.14.237.318.237.535a.683.683 0 0 1-.237.535.811.811 0 0 1-.556.21Z" clip-rule="evenodd"></path></svg></span></div>
+
+  <div class="popupSaveButtonsBlock">
+    
+
+
+
+
+
+<input type="submit" value="OK" class="btn btn_primary submitButton " id="restartDialogSubmit" onclick="event.stopPropagation(); BS.RestartDialog.submit();">
+
+  <input type="hidden" name="tc-csrf-token" value="570e7b2d-46cb-40ca-9748-38aeebf96613" class="tc-csrf-token-input">
+
+
+    <a class="btn cancel" href="http://172.17.0.1:8111/admin/createObjectMenu.html?projectId=test_DPrEKlqVjV&amp;showMode=createBuildTypeMenu#createFromUrl" id="restartCancelButton">Cancel</a><script>BS.fixCancel();</script>
+
+    <i id="restartDialogSavingProgress" style="display: none; " class="ring-loader-inline progressRing progressRingDefault" title="Please wait..."></i>
+  </div>
+
+  </div>
+  <div data-iframe-height=""></div>
+</div>
+</form>
+
+
+      <div data-iframe-height=""></div>
+      
+    
+  
+
+
+</body></html>
