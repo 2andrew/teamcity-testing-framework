@@ -5,7 +5,7 @@ import com.example.teamcity.api.requests.CheckedRequests;
 import io.qameta.allure.Feature;
 import org.testng.annotations.Test;
 
-import static com.example.teamcity.api.custom.AsyncConditions.waitUntilBuildFinished;
+import static com.example.teamcity.api.custom.AsyncConditions.waitUntilBuildFinishedByType;
 import static com.example.teamcity.api.enums.Endpoint.BUILD_QUEUE;
 
 @Feature("Start build")
@@ -18,7 +18,7 @@ public class StartBuildTest extends BaseApiTest {
         CheckedRequests userCheckRequests = setupBuildData();
         Build build = generateBuild(userCheckRequests);
 
-        waitUntilBuildFinished(userCheckRequests, build.getId());
+        waitUntilBuildFinishedByType(userCheckRequests, testData.getBuildType());
 
         Build buildResult = (Build) userCheckRequests.getRequest(BUILD_QUEUE).read("id:" + build.getId());
         checkBuildResults(buildResult);
